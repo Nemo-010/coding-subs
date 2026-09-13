@@ -1,0 +1,41 @@
+
+	
+		
+		
+			(function(html){html.className = html.className.replace(/\bno-js\b/,'js')})(document.documentElement);
+	
+	
+		window.dataLayer = window.dataLayer || [];
+				dataLayer.push({"pageType":"post","event":"postCategory","postCategory":["gemini","google-ai","google-one"]});
+			
+		
+	
+		
+		
+		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-THGGVXB');
+		
+		
+		
+		
+		
+		(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-W5LZ9VX');
+		
+		
+		
+	
+	What Gemini features you get with Google AI Plus, Pro [May 2026]
+	
+	
+	
+	
+	
+	
+	<meta property="og:url" content="https://

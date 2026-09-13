@@ -1,0 +1,131 @@
+Pricing and Plans | Replit
+ @font-face {
+ font-family: 'ReplitHack';
+ src: url('/public/fonts/hack-regular.woff2?sha=3114f1256') format('woff2'), url('/public/fonts/hack-regular.woff?sha=3114f1256') format('woff');
+ font-weight: 400;
+ font-style: normal;
+ }
+ 
+ @font-face {
+ font-family: 'ReplitHack';
+ src: url('/public/fonts/hack-bold.woff2?sha=3114f1256') format('woff2'), url('/public/fonts/hack-bold.woff?sha=3114f1256') format('woff');
+ font-weight: 700;
+ font-style: normal;
+ }
+ 
+ @font-face {
+ font-family: 'ReplitHack';
+ src: url('/public/fonts/hack-italic.woff2?sha=3114f1256') format('woff2'), url('/public/fonts/hack-italic.woff?sha=3114f1256') format('woff');
+ font-weight: 400;
+ font-style: italic;
+ }
+ 
+ @font-face {
+ font-family: 'ReplitHack';
+ src: url('/public/fonts/hack-bolditalic.woff2?sha=3114f1256') format('woff2'), url('/public/fonts/hack-bolditalic.woff?sha=3114f1256') format('woff');
+ font-weight: 700;
+ font-style: italic;
+ }
+ 
+function detectInAppBrowser(userAgent) {
+ if (!userAgent || userAgent.match(/iPhone|iPad|iPod|Android/i) === null) {
+ return { isInAppBrowser: false, iabHost: undefined };
+ }
+ var hosts = [
+ { host: 'instagram', tokens: [/Instagram/i] },
+ { host: 'tiktok', tokens: [/musical_ly/i, /\btrill_/i, /BytedanceWebview/i] },
+ { host: 'facebook', tokens: [/FB_IAB/i, /FBAN/i, /FBAV/i, /FBIOS/i, /\bFB4A\b/i] },
+ { host: 'snapchat', tokens: [/Snapchat/i] },
+ { host: 'line', tokens: [/\bLine\//i] },
+ { host: 'kakaotalk', tokens: [/KAKAOTALK/i] }
+ ];
+ for (var i = 0; i < hosts.length; i++) {
+ var tokens = hosts[i].tokens;
+ for (var j = 0; j < tokens.length; j++) {
+ if (userAgent.match(tokens[j]) !== null) {
+ return { isInAppBrowser: true, iabHost: hosts[i].host };
+ }
+ }
+ }
+ return { isInAppBrowser: false, iabHost: undefined };
+}
+function canSendPreloadWithoutReferrer() {
+ if (!window.fetch || !window.Request) {
+ return false;
+ }
+ try {
+ return new window.Request(window.location.href, {
+ referrerPolicy: 'no-referrer'
+ }).referrerPolicy === 'no-referrer';
+ } catch (_e) {
+ return false;
+ }
+}
+function sendPreloadLog(body) {
+ var url = 'https://http-intake.logs.us5.datadoghq.com/api/v2/logs?dd-api-key=pub31a5047a3a4692afb84a423db984dc57';
+ if (window.location.search || window.location.hash) {
+ if (!canSendPreloadWithoutReferrer()) {
+ return;
+ }
+ try {
+ var request = window.fetch(url, {
+ method: 'POST',
+ headers: {
+ Accept: 'application/json',
+ 'Content-Type': 'application/json'
+ },
+ credentials: 'omit',
+ referrerPolicy: 'no-referrer',
+ keepalive: true,
+ body: body
+ });
+ if (request && request['catch']) {
+ request['catch'](function () {});
+ }
+ } catch (_e) {}
+ return;
+ }
+ var xhr = new XMLHttpRequest();
+ xhr.open('POST', url, true);
+ xhr.setRequestHeader('Accept', 'application/json');
+ xhr.setRequestHeader('Content-Type', 'application/json');
+ xhr.send(body);
+}
+window.preloadErrorHandler = function (event) {
+ var inAppBrowser = detectInAppBrowser(window.navigator.userAgent);
+ sendPreloadLog(JSON.stringify({
+ ddsource: 'browser',
+ ddtags: 'env:production,version:4c4230a2',
+ message: 'Browser preload error',
+ preloadError: {
+ errorMessage: '[REDACTED]',
+ errorFile: '[REDACTED]',
+ errorLine: event.lineno,
+ errorColumn: event.colno,
+ errorStackOrType: '[REDACTED]',
+ errorJSType: typeof event.error
+ },
+ service: 'website',
+ http: {
+ useragent: window.navigator.userAgent
+ },
+ isInAppBrowser: inAppBrowser.isInAppBrowser,
+ iabHost: inAppBrowser.iabHost,
+ view: {
+ url: '[REDACTED]',
+ referrer: '[REDACTED]'
+ }
+ }));
+};
+// Skip reporting for the paid-social funnel cohort (marked on `/fb`) so its
+// auth hops don't emit preload errors; every other visitor installs normally.
+// Match the cookie name at a `; `-delimited boundary (values can't contain
+// `;`) so an unrelated cookie name/value can't accidentally suppress it.
+if (('; ' + document.cookie).indexOf('; rpl_iab_lp=') === -1) {
+ window.addEventListener('error', window.preloadErrorHandler);
+}
+ /* PLEX SANS */
+ /* ibm-plex-sans-regular - latin */
+ @font-face {
+ font-family: 'IBM Plex Sans';
+ font-st

@@ -1,0 +1,59 @@
+
+ 
+ Coding plan - Alibaba Cloud Model Studio - Alibaba Cloud Documentation Center
+ 
+ 
+ 
+window.globalData = {
+website: "intl",
+language: "en",
+nodeId:"3005961",
+channel: "",
+notfound: "",
+statusCode: "",
+errorType: ""
+};
+// UT的全局配置变量，在CDN加载前配置
+window.$ACE_TRACKER_CONFIG = {
+enableHistory: true,
+enableHash: false
+};
+-->
+ 
+ 
+ 
+ 
+ 
+ 
+ <link
+rel="icon"
+href="https://img.alicdn.com/imgextra/i2/O1CN01TFs5Qw27uYvfA6gib_!!6000000007857-55-tps-32-32.svg"
+type="image/x-icon"
+/>
+with(document)with(body)with(insertBefore(createElement("script"),firstChild))setAttribute("exparams","category=&userid=&aplus&yunid=&&trid=1a0d883617893059956733082e2404&asid=AQAAAACLpKZqIpZOdwAAAADERcfrSIlFCA==",id="tb-beacon-aplus",src=(location>"https"?"//g":"//g")+".alicdn.com/alilog/mlog/aplus_v2.js")
+ 
+Document Center
+&nbsp;
+All Products
+Search
+ 
+Document Center
+ Alibaba Cloud Model Studio
+ User Guide (Models)
+ Token Plan
+ Coding Plan
+ Overview
+ 
+ 
+<button type="button" class="navbar-toggle bc mr0" data-toggle="collapse"
+data-target="#sideMenu-mobile">
+all-products-head 
+This Product
+This Product
+All Products
+Alibaba Cloud Model Studio:Coding plan overview
+Document Center
+ 
+Alibaba Cloud Model Studio:Coding plan overview
+Last Updated:Sep 11, 2026
+<link rel="preload

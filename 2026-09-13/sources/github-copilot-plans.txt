@@ -1,0 +1,19 @@
+Plans for GitHub Copilot - GitHub Docs(function(){
+var MODES=["auto","light","dark"],THEMES=["light","dark","dark_dimmed","dark_high_contrast"],D={"colorMode":"auto","lightTheme":"light","darkTheme":"dark"};
+var css=D;
+try{
+var m=document.cookie.match(new RegExp('(?:^|; )'+"color_mode"+'=([^;]*)'));
+if(m){
+var p=JSON.parse(decodeURIComponent(m[1]));
+var fMode=function(x){return MODES.indexOf(x)>-1?x:null;};
+var fTheme=function(t){if(!t)return null;if(THEMES.indexOf(t.name)>-1)return t.name;if(THEMES.indexOf(t.color_mode)>-1)return t.color_mode;return null;};
+css={colorMode:fMode(p.color_mode)||D.colorMode,lightTheme:fTheme(p.light_theme)||D.lightTheme,darkTheme:fTheme(p.dark_theme)||D.darkTheme};
+}
+}catch(e){}
+try{
+var h=document.documentElement;
+h.setAttribute('data-color-mode',css.colorMode);
+h.setAttribute('data-light-theme',css.lightTheme);
+h.setAttribute('data-dark-theme',css.darkTheme);
+}catch(e){}
+})();Skip to main contentGitHub DocsVersion: Free, Pro, &amp; TeamSearch or ask CopilotSearch or askCopilotSelect language: current language is EnglishSearch or ask CopilotSearch or askCopilotOpen menuCollapse sidebarExpand sidebarScroll breadcrumbs leftHomeGitHub CopilotGet startedPlansScroll breadcrumbs rightGitHub CopilotGet startedQuickstartCopilot CLI quickstartCopilot app quickstartCopilot SDK quickstartWhat is GitHub Copilot?PlansFeaturesBest practicesEnterprise AI governanceConceptsCompletionsCode suggestionsCode referencingChatAgentsCloud agentAbout cloud agentAgent managementCustom agentsAbout automationsRationale, confidence, and approvalsMCP and cloud agentRisks and mitigationsCopilot CLIAbout Copilot CLIComparing CLI featuresCopilot CLI in ActionsCancel and roll backContext managementAbout remote controlCustom agentsAutonomous task completionParallel task executionResearching with CopilotSession dataAbout rubber duckLSP serversCLI extensionsTool searchUnderstanding local sandboxingGitHub Copilot appCopilot in JetBrainsCode review<a class="Primer_Brand__NavList-module__NavList__link___lJiXk" aria-current="false" data-testid="NavList-link" href="/en/copi

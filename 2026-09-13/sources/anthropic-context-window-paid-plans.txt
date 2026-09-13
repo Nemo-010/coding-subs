@@ -1,0 +1,17 @@
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://support.claude.com/en/","name":"All Collections","position":1},{"@type":"ListItem","item":"https://support.claude.com/en/collections/5953830-pro-and-max-plans","name":"Pro and Max plans","position":2},{"@type":"ListItem","item":"https://support.claude.com/en/collections/9811201-general","name":"General","position":3},{"@type":"ListItem","name":"How large is the context window on paid Claude plans?","position":4}]}{"@context":"https://schema.org","@type":"Article","description":"","headline":"How large is the context window on paid Claude plans?","inLanguage":"en","publisher":{"@type":"Organization","name":"Claude Help Center"},"url":"https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-claude-plans","dateModified":"2026-09-01T17:59:46Z"}How large is the context window on paid Claude plans? | Claude Help Center:root{--body-bg: rgb(250, 249, 245);
+--body-image: none;
+--body-bg-rgb: 250, 249, 245;
+--body-border: rgb(233, 229, 211);
+--body-primary-color: #1a1a1a;
+--body-secondary-color: #595959;
+--body-reaction-bg: rgb(241, 239, 228);
+--body-reaction-text-color: rgb(89, 89, 89);
+--body-toc-active-border: #737373;
+--body-toc-inactive-border: #f2f2f2;
+--body-toc-inactive-color: #595959;
+--body-toc-active-font-weight: 400;
+--body-table-border: rgb(216, 208, 177);
+--body-color: hsl(0, 0%, 0%);
+--footer-bg: rgb(20, 20, 19);
+--footer-image: none;
+--footer-border: rgb(46

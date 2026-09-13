@@ -1,0 +1,38 @@
+
+<html 
+ lang="en"
+ dir="ltr">
+ 
+ <meta name="google-signin-scope"
+ content="profile email https://www.googleapis.com/auth/developerprofiles https://www.googleapis.com/auth/developerprofiles.award https://www.googleapis.com/auth/devprofiles.full_control.firstparty">
+ 
+ 
+ 
+ 
+ <link rel="manifest" href="/_pwa/googledevai/manifest.json"
+ crossorigin="use-credentials">
+ 
+ 
+ 
+ <link rel="stylesheet"
+ href="//fonts.googleapis.com/css2?family=Material+Icons&family=Material+Symbols+Outlined&display=block">
+ 
+ 
+ 
+ <link rel="search" type="application/opensearchdescription+xml"
+ title="Google AI for Developers" href="https://ai.google.dev/s/opensearch.xml">
+ <link rel="alternate" hreflang="en"
+ href="https://ai.google.dev/gemini-api/docs/pricing" /><link rel="alternate" hreflang="ar"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=ar" /><link rel="alternate" hreflang="bn"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=bn" /><link rel="alternate" hreflang="zh-Hans"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=zh-cn" /><link rel="alternate" hreflang="zh-Hant"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=zh-tw" /><link rel="alternate" hreflang="fa"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=fa" /><link rel="alternate" hreflang="fr"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=fr" /><link rel="alternate" hreflang="de"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=de" /><link rel="alternate" hreflang="he"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=he" /><link rel="alternate" hreflang="hi"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=hi" /><link rel="alternate" hreflang="id"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=id" /><link rel="alternate" hreflang="it"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=it" /><link rel="alternate" hreflang="ja"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=ja" /><link rel="alternate" hreflang="ko"
+ href="https://ai.google.dev/gemini-api/docs/pricing?hl=ko" 

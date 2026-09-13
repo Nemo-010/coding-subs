@@ -1,0 +1,117 @@
+
+ 
+ 
+ 
+ Membership Benefits | Kimi Code Docs
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ .vp-doc .custom-block.details {
+ background-color: #ffffff;
+ border: 1px solid #e5e5e5;
+ border-radius: 8px;
+ margin-bottom: 6px;
+ }
+ html.dark .vp-doc .custom-block.details {
+ background-color: var(--vp-c-bg-soft);
+ border-color: var(--vp-c-divider);
+ }
+ .vp-doc .custom-block.details .custom-block-title {
+ font-size: 18px;
+ font-weight: 600;
+ }
+ .vp-doc .step-num {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ width: 1.45em;
+ height: 1.45em;
+ border-radius: 50%;
+ background: #f4f5f7;
+ color: #8a919c;
+ font-size: 0.85em;
+ font-weight: 500;
+ line-height: 1;
+ margin-right: 0.6em;
+ vertical-align: 0.1em;
+ }
+ .vp-doc .step {
+ position: relative;
+ border-left: 2px solid #f0f2f5;
+ padding-left: 1.4em;
+ margin-left: 0.75em;
+ padding-bottom: 0.6em;
+ }
+ .vp-doc .step:last-of-type {
+ border-left-color: transparent;
+ }
+ .vp-doc .step .step-num {
+ position: absolute;
+ left: -0.78em;
+ top: 0.15em;
+ margin-right: 0;
+ }
+ .model-spec-table table {
+ table-layout: fixed;
+ width: 100%;
+ }
+ .model-spec-table th,
+ .model-spec-table td {
+ word-wrap: break-word;
+ vertical-align: top;
+ }
+ .model-spec-table th:first-child,
+ .model-spec-table td:first-child {
+ width: 12%;
+ min-width: 100px;
+ }
+ .model-spec-table th:not(:first-child),
+ .model-spec-table td:not(:first-child) {
+ width: 22%;
+ }
+ .model-spec-table td code {
+ white-space: nowrap;
+ }
+ .feature-compare-table table {
+ table-layout: fixed;
+ width: 100%;
+ }
+ .feature-compare-table th:nth-child(1),
+ .feature-compare-table td:nth-child(1) {
+ width: 8em;
+ white-space: nowrap;
+ }
+ .feature-compare-table th:nth-child(2),
+ .feature-compare-table td:nth-child(2),
+ .feature-compare-table th:nth-child(3),
+ .feature-compare-table td:nth-child(3) {
+ width: 4.5em;
+ text-align: center;
+ }
+ @media (max-width: 768px) {
+ .model-spec-table {
+ overflow-x: auto;
+ display: block;
+ }
+ .model-spec-table table {
+ min-width: 720px;
+ table-layout: auto;
+ }
+ }
+ 
+ (()=>{const e=localStorage.getItem("vitepress-theme-appearance")||"auto",a=window.matchMedia("(prefers-color-scheme: dark)").matches;(!e||e==="auto"?a:e==="dark")&&document.documentElement.classList.add("dark")})();
+ document.documentElement.classList.toggle("mac",/Mac|iPhone|iPod|iPad/i.test(navigator.platform));
+ 
+ 
+ Skip to contentKimi Code DocsSearch⌘CtrlKEnglish简体中文English简体中文AppearanceMenuReturn to top Sidebar Navigation Kimi CodeOverviewModel ConfigurationMembership BenefitsWhat's NewCommunity GuidelinesHelp & FeedbackFAQError ReferenceContact & FeedbackKimi Code CLIGetting startedMigrating from kimi-cliGuidesCommon use casesInteraction and inputUsing Goal ModeSessions and contextUsing Kimi Code CLI in IDEsRemote ControlUsing Kimi Code in the browserConfigurationConfiguration filesProviders and modelsConfig overridesEnvironment variablesData locationsCustomizationModel Context ProtocolAgent SkillsPluginsAgents and Sub-AgentsHooksCustom ThemesReferencekimi Commandkimi acp SubcommandBuilt-in ToolsSlash CommandsKeyboard ShortcutsServer APIRelease NotesChangelogKimi Code for VS CodeQuick StartCore OperationsConfigurationCustomizationUse in Third-Party ToolsClaude CodeOpenCodeCodexHermes AgentOn this pageMembership Benefits ​Overview ​Kimi Code is the developer-focused AI coding service within Kimi membership benefits, provided together with a Kimi membership subscription and sharing the same quota. Requests from the CLI, VS Code, and third-party tools all count toward that quota.See the Kimi membership page for tiers and pricing.Quota and Limits ​Kimi Code&#39;s quota refreshes automatically every 7 days from your subscription date; unused quota does not roll over. Beyond the weekly quota, there is also a rolling 5-hour rate window — even with quota remaining, too many requests in a short time trigger rate limiting, which recovers automatically once the window rolls over.All logged-in devices and API Keys share the same quota; devices inactive for over 30 days are automatically unbound and can be restored by running /login again. Log in to the Kimi Code Console at any time to check remaining quota and rate-limit status and to manage API Keys and devices.Kimi Code shares quota with your Kimi membership plan: if your Kimi membership&#39;s monthly total is reached, Kimi Code quota is frozen until the monthly quota resets or you upgrade. Monthly usage can be viewed on the Subscription page.Extra Usage ​When your subscription quota runs out, you can keep making requests using your Extra Usage balance without waiting for a refresh. Only subscribed members can enable it, and Kimi on the web and Kimi Code share the same Extra Usage balance. See the full terms in the Extra Usage Agreement.Top-up entry points ​From the main site: go to the Kimi Subscription page, scroll to the &quot;Extra Usage&quot; module at the bottom then choose an amount and complete payment.From the Kimi Code Console: once your weekly quota or 5-hour quota reaches over 80% used, the progress card shows a Buy Extra Usage button that takes you to the subscription page to purchase.Enabling and managing ​Turn on the &quot;Extra Usage&quot; toggle, and when your subscription quota runs out, the system automatically deducts from your Extra Usage balance. Click Settings in the module to enable a monthly spending cap and set the maximum you can spend this month; the progress bar shows this month&#39;s Extra Usage consumption in real time.Billing and rules ​Billing: charged by actual usage — the more content read and generated, and the more complex the task, the higher the cost; the balance is shown in RMB, with rates as displayed on the platform. Extra Usage pricing is close to the official API pricing of the Kimi Open Platform; for heavy usage, upgrading your subscription is usually more cost-effective.Deduction priority: time-limited quotas such as the subscription are deducted first; Extra Usage is deducted last as a fallback. Once enabled, even if your subscription quota is maxed out, Extra Usage is consumed seamlessly and tasks don&#39;t stop or error out.Spending cap: enable a &quot;monthly spending cap&quot; in settings to limit how much Extra Usage can be spent this month; without it, there is no cap.Validity and stacking: the balance does not expire and stacks across top-ups; it remains usable after the subscription lapses, but you can&#39;t top up during the lapse — re-subscribe first to top up again.Refunds: generally non-refundable, non-transferable, and non-redeemable.Billing example (from official examples, for a rough sense of scale; actual rates per the platform): a simple request (e.g. &quot;recommend a rock song&quot;) costs about ¥0.03; a complex multi-step task (e.g. &quot;plan a week-long road trip from Chengdu to western Sichuan&quot;) costs about ¥1.6.Top-up limits: minimum ¥25 per top-up, up to 10 times and ¥3,000 per day, with a balance cap of ¥10,000.Checking your usage ​Kimi web / app: Settings → Subscription &amp; Invoices → My Quota.Kimi Code Console: once Extra Usage is enabled, log in to the Console to view your balance and usage.Kimi Code CLI: type /usage on the command line to check directly.FAQ ​Do Kimi on the web and Kimi Code use the same Extra Usage wallet? Yes. The Extra Usage balance is shared between Kimi and Kimi Code — top up once and use it in both; the Extra Usage you top up under &quot;My Quota&quot; and the one in the Kimi Code Console are the same balance.Which is deducted first, Extra Usage or subscription quota? Time-limited quotas such as the subscription are deducted first; Extra Usage is only deducted as a fallback once all time-limited quotas are exhausted.When I hit the monthly / weekly / hourly limit, or get rate-limited mid-session, can I keep going? Yes. Once Extra Usage is enabled you&#39;re not affected by subscription limits — whenever any quota is reached it seamlessly switches to the Extra Usage balance, so tasks don&#39;t stop or error out, and only Extra Usage is deducted without affecting your membership quota refresh.How is Extra Usage billed, and how does it compare with a same-priced subscription or Open Platform API? Billing depends on the request&#39;s input/output volume and cache hit rate; Extra Usage pricing is close to the Kimi Open Platform&#39;s official API, and for heavy usage upgrading your subscription is usually more cost-effective.Can unused balance roll over to next month, and does it stack? Yes — it&#39;s credit-based, doesn&#39;t expire, and stacks; it stays usable after the subscription lapses, but you can&#39;t top up during the lapse and must re-subscribe to top up again.When the balance is nearly used up (e.g. a 25 RMB top-up), will the current request finish? It guarantees the &quot;last model call&quot; completes even if its billing exceeds the limit, but it doesn&#39;t guarantee the whole task will finish.Is Extra Usage available for Enterprise? Not yet supported.After I close my account, is the balance refunded? To request a refund, go to Kimi.ai on the web, click your profile picture in the bottom-left corner, then select Get Help → User Feedback to reach our support team.PagerPrevious pageModel ConfigurationNext pageWhat's New
+ window.__VP_HASH_MAP__=JSON.parse("{\"en_index.md\":\"BJF6JZGz\",\"en_kimi-code-cli_configuration_config-files.md\":\"FLbbUwjD\",\"en_kimi-code-cli_configuration_data-locations.md\":\"Cka1tZfz\",\"en_kimi-code-cli_configuration_env-vars.md\":\"I1hwY8MJ\",\"en_kimi-code-cli_configuration_overrides.md\":\"DH105XIY\",\"en_kimi-code-cli_configuration_providers.md\":\"DZ0KnwoM\",\"en_kimi-code-cli_customization_agents.md\":\"w9JoJAzA\",\"en_kimi-code-cli_customization_hooks.md\":\"xT2s6O1-\",\"en_kimi-code-cli_customization_mcp.md\":\"DICRT5NY\",\"en_kimi-code-cli_customization_plugins.md\":\"BnJGic56\",\"en_kimi-code-cli_customization_skills.md\":\"CPPvG60B\",\"en_kimi-code-cli_customization_themes.md\":\"ChoIqCnL\",\"en_kimi-code-cli_guides_getting-started.md\":\"BUO5qAvP\",\"en_kimi-code-cli_guides_goals.md\":\"p3Zh62wz\",\"en_kimi-code-cli_guides_ides.md\":\"DRIJsf0d\",\"en_kimi-code-cli_guides_interaction.md\":\"BecBmEH2\",\"en_kimi-code-cli_guides_migration.md\":\"Cn2_MxmV\",\"en_kimi-code-cli_guides_remote-control.md\":\"iDp0PdGv\",\"en_kimi-code-cli_guides_sessions.md\":\"Dqk15TM4\",\"en_kimi-code-cli_guides_use-cases.md\":\"DJlE_vay\",\"en_kimi-code-cli_guides_web.md\":\"CjRgoq5d\",\"en_kimi-code-cli_reference_keyboard.md\":\"DLtdweT-\",\"en_kimi-code-cli_reference_kimi-acp.md\":\"CTpCZ4GN\",\"en_kimi-code-cli_reference_kimi-command.md\":\"CmDwgZao\",\"en_kimi-code-cli_reference_server-api.md\":\"BCKCZ0hy\",\"en_kimi-code-cli_reference_slash-commands.md\":\"DGoAFftY\",\"en_kimi-code-cli_reference_tools.md\":\"C3m5DiQ5\",\"en_kimi-code-cli_release-notes_changelog.md\":\"CvhC69-N\",\"en_kimi-code-for-vscode_configuration.md\":\"B97ApqJP\",\"en_kimi-code-for-vscode_core-operations.md\":\"BELV2jdA\",\"en_kimi-code-for-vscode_customization.md\":\"iujL3Gh2\",\"en_kimi-code-for-vscode_getting-started.md\":\"DW5qWWYb\",\"en_kimi-code_community-guidelines.md\":\"DnNgmPWd\",\"en_kimi-code_contact-and-feedback.md\":\"C5rr5Xd3\",\"en_kimi-code_error-reference.md\":\"DhbET1Wc\",\"en_kimi-code_faq.md\":\"DEn6SmJS\",\"en_kimi-code_membership.md\":\"6NGagaEG\",\"en_kimi-code_models.md\":\"ZTllEBQh\",\"en_kimi-code_whats-new.md\":\"C_rPY5Gm\",\"en_third-party-tools_claude-code.md\":\"Dt1ZaJil\",\"en_third-party-tools_codex.md\":\"BGxjePul\",\"en_third-party-tools_hermes.md\":\"7uqJzMs4\",\"en_third-party-tools_opencode.md\":\"9NVh4pWO\",\"index.md\":\"C-8q1jUW\",\"kimi-code-cli_configuration_config-files.md\":\"DY2jv-3H\",\"kimi-code-cli_configuration_data-locations.md\":\"BMK0-BRL\",\"kimi-code-cli_configuration_env-vars.md\":\"DukC4cBc\",\"kimi-code-cli_configuration_overrides.md\":\"D_F9AXpu\",\"kimi-code-cli_configuration_providers.md\":\"DVzqSYkY\",\"kimi-code-cli_customization_agents.md\":\"DSxuPiU-\",\"kimi-code-cli_customization_hooks.md\":\"DUuAIIMi\",\"kimi-code-cli_customization_mcp.md\":\"oFMQulGq\",\"kimi-code-cli_customization_plugins.md\":\"D5xdoOXJ\",\"kimi-code-cli_customization_skills.md\":\"BXM_at5D\",\"kimi-code-cli_customization_themes.md\":\"C8YytmJg\",\"kimi-code-cli_guides_getting-started.md\":\"BTqchiEO\",\"kimi-code-cli_guides_goals.md\":\"f96Un6ru\",\"kimi-code-cli_guides_ides.md\":\"BBkYKaPv\",\"kimi-code-cli_guides_interaction.md\":\"C3jwGgTi\",\"kimi-code-cli_guides_migration.md\":\"8Mi_kZgH\",\"kimi-code-cli_guides_remote-control.md\":\"DhPTQPBX\",\"kimi-code-cli_guides_sessions.md\":\"BwVe1izk\",\"kimi-code-cli_guides_use-cases.md\":\"CnH84UMQ\",\"kimi-code-cli_guides_web.md\":\"CFNZpbyy\",\"kimi-code-cli_reference_keyboard.md\":\"DAjJCBA_\",\"kimi-code-cli_reference_kimi-acp.md\":\"PJVXebXt\",\"kimi-code-cli_reference_kimi-command.md\":\"CymEN27E\",\"kimi-code-cli_reference_server-api.md\":\"DBvAhODW\",\"kimi-code-cli_reference_slash-commands.md\":\"4wQM_Pos\",\"kimi-code-cli_reference_tools.md\":\"ChvYGu4h\",\"kimi-code-cli_release-notes_changelog.md\":\"CvKHPcV5\",\"kimi-code-for-vscode_configuration.md\":\"Du2OjAv2\",\"kimi-code-for-vscode_core-operations.md\":\"R0JCVAQY\",\"kimi-code-for-vscode_customization.md\":\"DDuHeLpe\",\"kimi-code-for-vscode_getting-started.md\":\"BygN84Y5\",\"kimi-code_community-guidelines.md\":\"Cp_9-sdO\",\"kimi-code_contact-and-feedback.md\":\"VuTT8F8d\",\"kimi-code_error-reference.md\":\"DAax4yy5\",\"kimi-code_faq.md\":\"1Acv2DdF\",\"kimi-code_membership.md\":\"CAxRJtQH\",\"kimi-code_models.md\":\"B7QX_dnO\",\"kimi-code_whats-new.md\":\"BMmAtE86\",\"third-party-tools_claude-code.md\":\"CbjkPzRe\",\"third-party-tools_codex.md\":\"JomuPpox\",\"third-party-tools_hermes.md\":\"CMG8Ja6O\",\"third-party-tools_opencode.md\":\"7_G9paYb\"}");window.__VP_SITE_DATA__=JSON.parse("{\"lang\":\"en-US\",\"dir\":\"ltr\",\"title\":\"Kimi Code Docs\",\"description\":\"A VitePress site\",\"base\":\"/code/docs/\",\"head\":[],\"router\":{\"prefetchLinks\":true},\"appearance\":true,\"themeConfig\":{\"outline\":\"deep\",\"docFooter\":{\"prev\":\"上一页\",\"next\":\"下一页\"},\"search\":{\"provider\":\"local\"},\"socialLinks\":[{\"icon\":\"github\",\"link\":\"https://github.com/MoonshotAI/kimi-code\"}]},\"locales\":{\"root\":{\"label\":\"简体中文\",\"lang\":\"zh-Hans\",\"title\":\"Kimi Code 文档\"},\"en\":{\"label\":\"English\",\"lang\":\"en-US\",\"title\":\"Kimi Code Docs\"}},\"scrollOffset\":134,\"cleanUrls\":false,\"additionalConfig\":{\"/\":{\"lang\":\"zh-Hans\",\"description\":\"Kimi Code 文档\",\"themeConfig\":{\"sidebar\":[{\"text\":\"Kimi Code\",\"items\":[{\"text\":\"产品概览\",\"link\":\"/\"},{\"text\":\"模型配置\",\"link\":\"/kimi-code/models\"},{\"text\":\"会员权益\",\"link\":\"/kimi-code/membership\"},{\"text\":\"最新动态\",\"link\":\"/kimi-code/whats-new\"},{\"text\":\"社区倡议\",\"link\":\"/kimi-code/community-guidelines\"},{\"text\":\"帮助与反馈\",\"collapsed\":false,\"items\":[{\"text\":\"常见问题\",\"link\":\"/kimi-code/faq\"},{\"text\":\"错误参考\",\"link\":\"/kimi-code/error-reference\"},{\"text\":\"联系与反馈\",\"link\":\"/kimi-code/contact-and-feedback\"}]}]},{\"text\":\"Kimi Code CLI\",\"items\":[{\"text\":\"开始使用\",\"link\":\"/kimi-code-cli/guides/getting-started\"},{\"text\":\"从 kimi-cli 迁移\",\"link\":\"/kimi-code-cli/guides/migration\"},{\"text\":\"指南\",\"collapsed\":false,\"items\":[{\"text\":\"常见使用案例\",\"link\":\"/kimi-code-cli/guides/use-cases\"},{\"text\":\"交互与输入\",\"link\":\"/kimi-code-cli/guides/interaction\"},{\"text\":\"使用目标模式\",\"link\":\"/kimi-code-cli/guides/goals\"},{\"text\":\"会话与上下文\",\"link\":\"/kimi-code-cli/guides/sessions\"},{\"text\":\"在 IDE 中使用\",\"link\":\"/kimi-code-cli/guides/ides\"},{\"text\":\"远程控制\",\"link\":\"/kimi-code-cli/guides/remote-control\"},{\"text\":\"在网页中使用\",\"link\":\"/kimi-code-cli/guides/web\"}]},{\"text\":\"配置\",\"collapsed\":false,\"items\":[{\"text\":\"配置文件\",\"link\":\"/kimi-code-cli/configuration/config-files\"},{\"text\":\"平台与模型\",\"link\":\"/kimi-code-cli/configuration/providers\"},{\"text\":\"配置覆盖\",\"link\":\"/kimi-code-cli/configuration/overrides\"},{\"text\":\"环境变量\",\"link\":\"/kimi-code-cli/configuration/env-vars\"},{\"text\":\"数据路径\",\"link\":\"/kimi-code-cli/configuration/data-locations\"}]},{\"text\":\"定制化\",\"collapsed\":false,\"items\":[{\"text\":\"Model Context Protocol\",\"link\":\"/kimi-code-cli/customization/mcp\"},{\"text\":\"Agent Skills\",\"link\":\"/kimi-code-cli/customization/skills\"},{\"text\":\"Plugins\",\"link\":\"/kimi-code-cli/customization/plugins\"},{\"text\":\"Agent 与 subagent\",\"link\":\"/kimi-code-cli/customization/agents\"},{\"text\":\"Hooks\",\"link\":\"/kimi-code-cli/customization/hooks\"},{\"text\":\"自定义主题\",\"link\":\"/kimi-code-cli/customization/themes\"}]},{\"text\":\"参考手册\",\"collapsed\":true,\"items\":[{\"text\":\"kimi 命令\",\"link\":\"/kimi-code-cli/reference/kimi-command\"},{\"text\":\"kimi acp 子命令\",\"link\":\"/kimi-code-cli/reference/kimi-acp\"},{\"text\":\"内置工具\",\"link\":\"/kimi-code-cli/reference/tools\"},{\"text\":\"斜杠命令\",\"link\":\"/kimi-code-cli/reference/slash-commands\"},{\"text\":\"键盘快捷键\",\"link\":\"/kimi-code-cli/reference/keyboard\"},{\"text\":\"服务 API\",\"link\":\"/kimi-code-cli/reference/server-api\"}]},{\"text\":\"发布说明\",\"collapsed\":true,\"items\":[{\"text\":\"变更记录\",\"link\":\"/kimi-code-cli/release-notes/changelog\"}]}]},{\"text\":\"Kimi Code for VS Code\",\"items\":[{\"text\":\"快速开始\",\"link\":\"/kimi-code-for-vscode/getting-started\"},{\"text\":\"核心操作\",\"link\":\"/kimi-code-for-vscode/core-operations\"},{\"text\":\"配置\",\"link\":\"/kimi-code-for-vscode/configuration\"},{\"text\":\"定制化\",\"link\":\"/kimi-code-for-vscode/customization\"}]},{\"text\":\"在更多第三方工具中使用\",\"items\":[{\"text\":\"Claude Code\",\"link\":\"/third-party-tools/claude-code\"},{\"text\":\"OpenCode\",\"link\":\"/third-party-tools/opencode\"},{\"text\":\"Codex\",\"link\":\"/third-party-tools/codex\"},{\"text\":\"Hermes Agent\",\"link\":\"/third-party-tools/hermes\"}]}]}},\"/en/\":{\"lang\":\"en-US\",\"description\":\"Kimi Code Documentation\",\"themeConfig\":{\"sidebar\":[{\"text\":\"Kimi Code\",\"items\":[{\"text\":\"Overview\",\"link\":\"/en/\"},{\"text\":\"Model Configuration\",\"link\":\"/en/kimi-code/models\"},{\"text\":\"Membership Benefits\",\"link\":\"/en/kimi-code/membership\"},{\"text\":\"What's New\",\"link\":\"/en/kimi-code/whats-new\"},{\"text\":\"Community Guidelines\",\"link\":\"/en/kimi-code/community-guidelines\"},{\"text\":\"Help & Feedback\",\"collapsed\":false,\"items\":[{\"text\":\"FAQ\",\"link\":\"/en/kimi-code/faq\"},{\"text\":\"Error Reference\",\"link\":\"/en/kimi-code/error-reference\"},{\"text\":\"Contact & Feedback\",\"link\":\"/en/kimi-code/contact-and-feedback\"}]}]},{\"text\":\"Kimi Code CLI\",\"items\":[{\"text\":\"Getting started\",\"link\":\"/en/kimi-code-cli/guides/getting-started\"},{\"text\":\"Migrating from kimi-cli\",\"link\":\"/en/kimi-code-cli/guides/migration\"},{\"text\":\"Guides\",\"collapsed\":false,\"items\":[{\"text\":\"Common use cases\",\"link\":\"/en/kimi-code-cli/guides/use-cases\"},{\"text\":\"Interaction and input\",\"link\":\"/en/kimi-code-cli/guides/interaction\"},{\"text\":\"Using Goal Mode\",\"link\":\"/en/kimi-code-cli/guides/goals\"},{\"text\":\"Sessions and context\",\"link\":\"/en/kimi-code-cli/guides/sessions\"},{\"text\":\"Using Kimi Code CLI in IDEs\",\"link\":\"/en/kimi-code-cli/guides/ides\"},{\"text\":\"Remote Control\",\"link\":\"/en/kimi-code-cli/guides/remote-control\"},{\"text\":\"Using Kimi Code in the browser\",\"link\":\"/en/kimi-code-cli/guides/web\"}]},{\"text\":\"Configuration\",\"collapsed\":false,\"items\":[{\"text\":\"Configuration files\",\"link\":\"/en/kimi-code-cli/configuration/config-files\"},{\"text\":\"Providers and models\",\"link\":\"/en/kimi-code-cli/configuration/providers\"},{\"text\":\"Config overrides\",\"link\":\"/en/kimi-code-cli/configuration/overrides\"},{\"text\":\"Environment variables\",\"link\":\"/en/kimi-code-cli/configuration/env-vars\"},{\"text\":\"Data locations\",\"link\":\"/en/kimi-code-cli/configuration/data-locations\"}]},{\"text\":\"Customization\",\"collapsed\":false,\"items\":[{\"text\":\"Model Context Protocol\",\"link\":\"/en/kimi-code-cli/customization/mcp\"},{\"text\":\"Agent Skills\",\"link\":\"/en/kimi-code-cli/customization/skills\"},{\"text\":\"Plugins\",\"link\":\"/en/kimi-code-cli/customization/plugins\"},{\"text\":\"Agents and Sub-Agents\",\"link\":\"/en/kimi-code-cli/customization/agents\"},{\"text\":\"Hooks\",\"link\":\"/en/kimi-code-cli/customization/hooks\"},{\"text\":\"Custom Themes\",\"link\":\"/en/kimi-code-cli/customization/themes\"}]},{\"text\":\"Reference\",\"collapsed\":true,\"items\":[{\"text\":\"kimi Command\",\"link\":\"/en/kimi-code-cli/reference/kimi-command\"},{\"text\":\"kimi acp Subcommand\",\"link\":\"/en/kimi-code-cli/reference/kimi-acp\"},{\"text\":\"Built-in Tools\",\"link\":\"/en/kimi-code-cli/reference/tools\"},{\"text\":\"Slash Commands\",\"link\":\"/en/kimi-code-cli/reference/slash-commands\"},{\"text\":\"Keyboard Shortcuts\",\"link\":\"/en/kimi-code-cli/reference/keyboard\"},{\"text\":\"Server API\",\"link\":\"/en/kimi-code-cli/reference/server-api\"}]},{\"text\":\"Release Notes\",\"collapsed\":true,\"items\":[{\"text\":\"Changelog\",\"link\":\"/en/kimi-code-cli/release-notes/changelog\"}]}]},{\"text\":\"Kimi Code for VS Code\",\"items\":[{\"text\":\"Quick Start\",\"link\":\"/en/kimi-code-for-vscode/getting-started\"},{\"text\":\"Core Operations\",\"link\":\"/en/kimi-code-for-vscode/core-operations\"},{\"text\":\"Configuration\",\"link\":\"/en/kimi-code-for-vscode/configuration\"},{\"text\":\"Customization\",\"link\":\"/en/kimi-code-for-vscode/customization\"}]},{\"text\":\"Use in Third-Party Tools\",\"items\":[{\"text\":\"Claude Code\",\"link\":\"/en/third-party-tools/claude-code\"},{\"text\":\"OpenCode\",\"link\":\"/en/third-party-tools/opencode\"},{\"text\":\"Codex\",\"link\":\"/en/third-party-tools/codex\"},{\"text\":\"Hermes Agent\",\"link\":\"/en/third-party-tools/hermes\"}]}],\"search\":{\"options\":{\"placeholder\":\"Search\",\"translations\":{\"button\":{\"buttonText\":\"Search\",\"buttonAriaLabel\":\"Search\"},\"modal\":{\"displayDetails\":\"Display details\",\"resetButtonTitle\":\"Clear search\",\"backButtonTitle\":\"Back\",\"noResultsText\":\"No results for\",\"footer\":{\"selectText\":\"Select\",\"selectKeyAriaLabel\":\"Enter key\",\"navigateText\":\"Switch\",\"navigateUpKeyAriaLabel\":\"Up arrow\",\"navigateDownKeyAriaLabel\":\"Down arrow\",\"closeText\":\"Close\",\"closeKeyAriaLabel\":\"ESC key\"}}}}},\"docFooter\":{\"prev\":\"Previous page\",\"next\":\"Next page\"},\"outline\":{\"level\":\"deep\",\"label\":\"On this page\"},\"notFound\":{\"title\":\"PAGE NOT FOUND\",\"quote\":\"But if you don't change your direction, and if you keep looking, you may end up where you are heading.\",\"linkLabel\":\"go to home\",\"linkText\":\"Take me home\"},\"langMenuLabel\":\"Languages\",\"returnToTopLabel\":\"Return to top\",\"sidebarMenuLabel\":\"Menu\",\"darkModeSwitchLabel\":\"Appearance\",\"lightModeSwitchTitle\":\"Switch to light mode\",\"darkModeSwitchTitle\":\"Switch to dark mode\",\"skipToContentLabel\":\"Skip to content\"}}}}");
+ 
+ 
