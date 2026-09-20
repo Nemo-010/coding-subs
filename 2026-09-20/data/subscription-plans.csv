@@ -1,0 +1,11 @@
+provider,plan,currency,price,period,what_you_get,type,source
+AIGoCode,Pro,CNY,399,4 weeks,"USD 440 credit, USD 110/7d",flat plan,aigocode.com/#pricing 2026-09-20
+AIGoCode,Max,CNY,899,4 weeks,"USD 1040 credit, USD 260/7d",flat plan,aigocode.com/#pricing 2026-09-20
+AIGoCode,Ultra,CNY,1799,4 weeks,"USD 2120 credit, USD 530/7d",flat plan,aigocode.com/#pricing 2026-09-20
+Qiniu AI,Enterprise S,CNY,2999,month,"~1.07B credits/mo (list CNY 4284, 7 discount)",credit plan,qiniu.com/ai/plan 2026-09-20
+Qiniu AI,Enterprise M,CNY,4999,month,"~2.08B credits/mo (list CNY 8332, 6 discount)",credit plan,qiniu.com/ai/plan 2026-09-20
+Qiniu AI,Enterprise B,CNY,9999,month,"~5.00B credits/mo (list CNY 19998, 5 discount)",credit plan,qiniu.com/ai/plan 2026-09-20
+FennoAI,Coding Plan promo,USD,1.99,one-off,USD 50 credit,promo,sub2api README sponsor text 2026-09-20
+CodexEverywhere,Free trial,USD,0,one-off,USD 20 trial credit,promo,docs.codex-everywhere.com 2026-09-20
+Pateway,Signup + first purchase,USD,0,one-off,USD 1 signup + USD 3 first purchase (up to USD 66 per transaction),promo,pateway.ai landing 2026-09-20
+Qiniu AI,Free tokens,USD,0,one-off,3M tokens (developer) / 12M (enterprise),promo,sub2api README sponsor text 2026-09-20

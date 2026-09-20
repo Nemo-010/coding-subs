@@ -9,6 +9,7 @@ coding-agent usage by subscription** — model landscape, provider arbitrage, pu
 | Date | Report | Scope |
 |---|---|---|
 | **2026-09-13** | [2026-09-13/README.md](2026-09-13/README.md) | Full pass: 45-model landscape (AA snapshot), 44 access plans across 26 provider groups, workload tests, rankings |
+| **2026-09-20** | [2026-09-20/README.md](2026-09-20/README.md) | Relay/provider pass: the 26 providers advertised in `Wei-Shaw/sub2api`'s sponsor table, ranked by cheapest published plans, with free/cheap/reliable/deal categories |
 
 Each pass directory contains the report (`README.md`), the underlying databases (`data/`),
 numbered citations with access dates (`references/`), and raw snapshots of primary sources
@@ -20,8 +21,11 @@ Model quality comes from an Artificial Analysis dataset snapshot (Intelligence I
 Terminal-Bench v4.0, context windows, API prices, modalities). Subscription economics come from
 first-party pricing pages and docs wherever possible — fetched and archived in `sources/` on the
 research date — with every unverifiable number labeled ESTIMATED or UNKNOWN rather than guessed.
-Each pass undergoes five independent reviews (recorded in [docs/reviews.md](docs/reviews.md))
-before being committed.
+The 2026-09-20 relay pass applies the same rule to a different universe: the providers advertised
+in a third-party project's README, where sponsor copy is treated as advertisement and only the
+provider's own published rate card is VERIFIED. Each pass undergoes independent reviews
+(recorded in [docs/reviews.md](docs/reviews.md) for 2026-09-13 and
+[docs/reviews-2026-09-20.md](docs/reviews-2026-09-20.md) for 2026-09-20) before being committed.
 
 ## Conventions
 

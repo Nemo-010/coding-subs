@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
-"""Data-integrity checks for a coding-subs research pass.
+"""Data-integrity checks for coding-subs research passes.
 
 Usage: python3 tools/validate.py [PASS_DIR]   (default: latest YYYY-MM-DD dir)
 Exit code 0 = all checks pass; 1 = failures (printed).
+
+Two pass shapes exist:
+  * model/subscription pass  -> data/models-database.csv (original 2026-09-13 checks)
+  * provider/relay pass      -> data/providers-database.csv (2026-09-20 checks)
+A pass is validated against whichever shape its data/ directory matches.
 """
 import csv, json, os, re, sys
 from datetime import date
@@ -23,11 +28,7 @@ def latest_pass() -> Path:
     return passes[-1] if passes else ROOT
 
 
-def main() -> int:
-    pass_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else latest_pass()
-    print(f"validating pass: {pass_dir.name}")
-
-    # --- layout ---
+def layout_checks(pass_dir: Path) -> None:
     for sub in ("data", "references", "sources"):
         check((pass_dir / sub).is_dir(), f"missing directory {sub}/")
     check((pass_dir / "README.md").is_file(), "missing report README.md")
@@ -37,55 +38,49 @@ def main() -> int:
     if os.environ.get("STRICT_DATE"):
         check(pass_dir.name == str(date.today()), f"pass dir {pass_dir.name} != today {date.today()}")
 
-    # --- models database ---
+
+def model_pass_checks(pass_dir: Path) -> None:
     mpath = pass_dir / "data" / "models-database.csv"
-    check(mpath.is_file(), "missing data/models-database.csv")
-    if mpath.is_file():
-        with mpath.open() as f:
-            models = list(csv.DictReader(f))
-        check(len(models) >= 30, f"models DB has {len(models)} rows, need >= 30")
-        need = {"model_slug", "provider", "release_date", "aa_intelligence_index",
-                "terminal_bench_v4", "context_window_tokens", "ctx_ge_1m",
-                "image_input", "api_input_usd_per_m", "api_output_usd_per_m"}
-        check(need.issubset(models[0].keys()), f"models DB missing columns: {need - set(models[0].keys())}")
-        slugs = set()
-        for r in models:
-            s = r["model_slug"]
-            check(s and s not in slugs, f"duplicate/empty model slug: {s!r}")
-            slugs.add(s)
-            try:
-                ctx = int(r["context_window_tokens"])
-            except ValueError:
-                failures.append(f"{s}: non-integer context {r['context_window_tokens']!r}")
-                continue
-            want = "YES" if ctx >= 1_000_000 else "NO"
-            check(r["ctx_ge_1m"] == want, f"{s}: ctx_ge_1m={r['ctx_ge_1m']} inconsistent with ctx={ctx}")
-            for pcol in ("api_input_usd_per_m", "api_output_usd_per_m"):
-                v = r[pcol]
-                if v not in ("", None):
-                    try:
-                        check(float(v) >= 0, f"{s}: negative {pcol}")
-                    except ValueError:
-                        failures.append(f"{s}: non-numeric {pcol}={v!r}")
-        # frontier band present per brief (Opus 5 class)
-        check("claude-opus-5" in slugs, "models DB missing claude-opus-5")
+    with mpath.open() as f:
+        models = list(csv.DictReader(f))
+    check(len(models) >= 30, f"models DB has {len(models)} rows, need >= 30")
+    need = {"model_slug", "provider", "release_date", "aa_intelligence_index",
+            "terminal_bench_v4", "context_window_tokens", "ctx_ge_1m",
+            "image_input", "api_input_usd_per_m", "api_output_usd_per_m"}
+    check(need.issubset(models[0].keys()), f"models DB missing columns: {need - set(models[0].keys())}")
+    slugs = set()
+    for r in models:
+        s = r["model_slug"]
+        check(s and s not in slugs, f"duplicate/empty model slug: {s!r}")
+        slugs.add(s)
+        try:
+            ctx = int(r["context_window_tokens"])
+        except ValueError:
+            failures.append(f"{s}: non-integer context {r['context_window_tokens']!r}")
+            continue
+        want = "YES" if ctx >= 1_000_000 else "NO"
+        check(r["ctx_ge_1m"] == want, f"{s}: ctx_ge_1m={r['ctx_ge_1m']} inconsistent with ctx={ctx}")
+        for pcol in ("api_input_usd_per_m", "api_output_usd_per_m"):
+            v = r[pcol]
+            if v not in ("", None):
+                try:
+                    check(float(v) >= 0, f"{s}: negative {pcol}")
+                except ValueError:
+                    failures.append(f"{s}: non-numeric {pcol}={v!r}")
+    check("claude-opus-5" in slugs, "models DB missing claude-opus-5")
 
-    # --- providers database ---
     ppath = pass_dir / "data" / "providers-database.csv"
-    check(ppath.is_file(), "missing data/providers-database.csv")
-    if ppath.is_file():
-        with ppath.open() as f:
-            providers = list(csv.DictReader(f))
-        check(len(providers) >= 25, f"providers DB has {len(providers)} rows, need >= 25")
-        pneed = {"provider", "coding_tool", "price_usd_month", "usage_mechanism",
-                 "ctx_1m_at_sub_level", "bundled_inference", "status", "source_quality"}
-        check(pneed.issubset(providers[0].keys()), f"providers DB missing columns: {pneed - set(providers[0].keys())}")
-        distinct = {r["provider"] for r in providers}
-        check(len(distinct) >= 20, f"only {len(distinct)} distinct providers, need >= 20")
-        for r in providers:
-            check(r["source_quality"] != "", f"{r['provider']}/{r['coding_tool']}: empty source_quality")
+    with ppath.open() as f:
+        providers = list(csv.DictReader(f))
+    check(len(providers) >= 25, f"providers DB has {len(providers)} rows, need >= 25")
+    pneed = {"provider", "coding_tool", "price_usd_month", "usage_mechanism",
+             "ctx_1m_at_sub_level", "bundled_inference", "status", "source_quality"}
+    check(pneed.issubset(providers[0].keys()), f"providers DB missing columns: {pneed - set(providers[0].keys())}")
+    distinct = {r["provider"] for r in providers}
+    check(len(distinct) >= 20, f"only {len(distinct)} distinct providers, need >= 20")
+    for r in providers:
+        check(r["source_quality"] != "", f"{r['provider']}/{r['coding_tool']}: empty source_quality")
 
-    # --- AA snapshot ---
     apath = pass_dir / "data" / "aa-snapshot-2026-09-13.json"
     if apath.is_file():
         aa = json.loads(apath.read_text())
@@ -95,20 +90,16 @@ def main() -> int:
         iis = [r["intelligenceIndex"] for r in aa]
         check(iis == sorted(iis, reverse=True), "AA snapshot not sorted by II desc")
 
-    # --- report cross-checks ---
     report = (pass_dir / "README.md").read_text()
     for anchor in ("BEST DEAL FOUND", "HIDDEN DEALS", "ARBITRAGE OPPORTUNITIES",
                    "WHAT I WOULD BUY", "Workload test", "1M-context deep dive",
                    "Multimodal deep dive", "Rankings", "Method"):
         check(anchor in report, f"report missing section: {anchor}")
     check("52.5M" in report, "report missing 52.5M workload figure")
-    # workload arithmetic
     check(15 + 37.5 == 52.5, "workload arithmetic 15M + 37.5M != 52.5M")
-    # GLM capacity claim must match weekly allowance x 4.33 weeks (48-97M/wk)
     for wk, mo in ((48, 208), (97, 420)):
         check(abs(wk * 4.33 - mo) <= 1, f"GLM weekly {wk}M x 4.33 != {mo}M")
     check("208–420M" in report, "report missing GLM Lite monthly capacity 208–420M")
-    # every model slug cited with backticks in the DB exists in models DB
     if mpath.is_file():
         with mpath.open() as f:
             slugs = {r["model_slug"] for r in csv.DictReader(f)}
@@ -117,27 +108,99 @@ def main() -> int:
             if norm.startswith(("claude-", "gpt-", "gemini-", "qwen", "kimi-", "glm-", "muse-",
                                 "minimax-", "deepseek-", "grok-", "mimo-")):
                 check(norm in slugs, f"report cites model `{cited}` not in models DB")
-        # GLM capacity consistency between report (x4.33wk) and providers DB
-        if ppath.is_file():
-            with ppath.open() as f:
-                prow = next((r for r in csv.DictReader(f) if r["coding_tool"] == "GLM Coding Plan Lite"), {})
-            est = prow.get("est_token_capacity_month", "")
-            for fig in ("208-420M", "632M-1,264M"):
-                check(fig in est, f"providers DB GLM Lite capacity missing {fig} (4.33wk math)")
-            for fig in ("208–420M", "632M–1.26B", "632M–1,264M"):
-                pass  # report uses en-dashes; primary check is the CSV side above
-            check("208–420M" in report, "report GLM Lite capacity disagrees with DB")
+        with ppath.open() as f:
+            prow = next((r for r in csv.DictReader(f) if r["coding_tool"] == "GLM Coding Plan Lite"), {})
+        est = prow.get("est_token_capacity_month", "")
+        for fig in ("208-420M", "632M-1,264M"):
+            check(fig in est, f"providers DB GLM Lite capacity missing {fig} (4.33wk math)")
+        check("208–420M" in report, "report GLM Lite capacity disagrees with DB")
 
-    # --- references ---
-    refs = (pass_dir / "references" / "references.md").read_text() if (pass_dir / "references" / "references.md").is_file() else ""
-    check("2026-09-13" in refs, "references missing access date")
-    check(refs.count("\n") > 40, "references suspiciously short")
 
-    # --- sources present ---
-    n_sources = len(list((pass_dir / "sources").glob("*"))) if (pass_dir / "sources").is_dir() else 0
-    check(n_sources >= 20, f"only {n_sources} source snapshots, expected >= 20")
+def provider_pass_checks(pass_dir: Path) -> None:
+    drop = pass_dir.name  # e.g. 2026-09-20
+    ppath = pass_dir / "data" / "providers-database.csv"
+    check(ppath.is_file(), "missing data/providers-database.csv")
+    if ppath.is_file():
+        with ppath.open() as f:
+            provs = list(csv.DictReader(f))
+        check(len(provs) >= 26, f"provider DB has {len(provs)} rows, need >= 26")
+        need = {"provider", "category", "url", "free_offer", "price_basis",
+                "cheapest_published", "rate_card_published", "source_quality"}
+        check(need.issubset(provs[0].keys()), f"provider DB missing columns: {need - set(provs[0].keys())}")
+        distinct = {r["provider"] for r in provs}
+        check(len(distinct) >= 20, f"only {len(distinct)} distinct providers, need >= 20")
+        for r in provs:
+            check(r["source_quality"] in ("VERIFIED", "ADVERTISED", "UNKNOWN"),
+                  f"{r['provider']}: bad source_quality {r['source_quality']!r}")
 
-    # --- result ---
+    rpath = pass_dir / "data" / "rate-cards.csv"
+    check(rpath.is_file(), "missing data/rate-cards.csv")
+    if rpath.is_file():
+        with rpath.open() as f:
+            cards = list(csv.DictReader(f))
+        check(len(cards) >= 20, f"rate-cards has {len(cards)} rows, need >= 20")
+        for r in cards:
+            try:
+                oi, oo = float(r["official_in_usd_per_m"]), float(r["official_out_usd_per_m"])
+                pi, po = float(r["provider_in_usd_per_m"]), float(r["provider_out_usd_per_m"])
+                mult = float(r["multiple"])
+            except ValueError as e:
+                failures.append(f"rate-card non-numeric: {r} ({e})")
+                continue
+            for val, name in ((oi, "official_in"), (oo, "official_out"), (pi, "provider_in"),
+                              (po, "provider_out"), (mult, "multiple")):
+                check(val > 0, f"{r['provider']}/{r['model']}: non-positive {name}")
+            check(abs(pi / oi - mult) <= 0.005,
+                  f"{r['provider']}/{r['model']}: input multiple {pi/oi:.4f} != {mult}")
+            check(abs(po / oo - mult) <= 0.005,
+                  f"{r['provider']}/{r['model']}: output multiple {po/oo:.4f} != {mult}")
+
+    apath = pass_dir / "data" / "subscription-plans.csv"
+    check(apath.is_file(), "missing data/subscription-plans.csv")
+
+    ipath = pass_dir / "data" / "reachability.json"
+    check(ipath.is_file(), "missing data/reachability.json")
+    if ipath.is_file():
+        rj = json.loads(ipath.read_text())
+        check(rj.get("rounds") == 3, f"reachability rounds={rj.get('rounds')}, expected 3")
+        check(len(rj.get("results", {})) >= 26, "reachability covers <26 endpoints")
+
+    sidx = pass_dir / "sources" / "sites" / "index.json"
+    check(sidx.is_file(), "missing sources/sites/index.json")
+    if sidx.is_file():
+        sites = json.loads(sidx.read_text())
+        check(len(sites) >= 26, f"only {len(sites)} site snapshots, need >= 26")
+
+    report = (pass_dir / "README.md").read_text()
+    for anchor in ("BEST DEAL FOUND", "did NOT establish", "RANKING 1", "RANKING 2",
+                   "Best \"free\"", "Best \"cheap\"", "Best \"reliable\"", "Best \"deal\"",
+                   "Known gaps", "Provenance"):
+        check(anchor in report, f"report missing section: {anchor}")
+    check("2026-09-20" in report, "report missing research date")
+    check("19794bc" in report, "report missing subject commit pin")
+
+    refs = (pass_dir / "references" / "references.md").read_text()
+    check(drop in refs, f"references missing access date {drop}")
+    ref_nums = {int(m.group(1)) for m in re.finditer(r"^(\d+)\.", refs, re.M)}
+    check(len(ref_nums) >= 20, f"references has {len(ref_nums)} numbered entries, need >= 20")
+    for cited in {int(n) for n in re.findall(r"source (\d+)", report)}:
+        check(cited in ref_nums, f"report cites source {cited} with no reference entry")
+
+
+def main() -> int:
+    pass_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else latest_pass()
+    print(f"validating pass: {pass_dir.name}")
+    layout_checks(pass_dir)
+
+    model_shape = (pass_dir / "data" / "models-database.csv").is_file()
+    provider_shape = (pass_dir / "data" / "providers-database.csv").is_file()
+    if model_shape:
+        model_pass_checks(pass_dir)
+    if provider_shape and not model_shape:
+        provider_pass_checks(pass_dir)
+    if not model_shape and not provider_shape:
+        failures.append("pass has neither models-database.csv nor providers-database.csv")
+
     if failures:
         print(f"FAIL ({len(failures)}):")
         for m in failures:

@@ -1,0 +1,26 @@
+provider,model,official_in_usd_per_m,official_out_usd_per_m,provider_in_usd_per_m,provider_out_usd_per_m,multiple,pool,source
+hao.ai,gpt-6-astra,10,50,1.5,7.5,0.15,default,hao.ai/models 2026-09-20
+hao.ai,claude-fable-5-1,10,50,2.5,12.5,0.25,default,hao.ai/models 2026-09-20
+hao.ai,claude-opus-5,5,25,1.0,5.0,0.2,default,hao.ai/models 2026-09-20
+hao.ai,gpt-5.6-sol,4,20,0.6,3.0,0.15,default,hao.ai/models 2026-09-20
+hao.ai,gpt-5.6-terra,2,12,0.3,1.8,0.15,default,hao.ai/models 2026-09-20
+hao.ai,gpt-5.6-luna,0.2,1.2,0.06,0.36,0.3,default,hao.ai/models 2026-09-20
+hao.ai,grok-4.6,2,6,0.3,0.9,0.15,default,hao.ai/models 2026-09-20
+CodexEverywhere,gpt-6-astra,10,50,0.3,1.5,0.03,Codex Plus Pool,docs.codex-everywhere.com/models/ 2026-09-20
+CodexEverywhere,gpt-5.6-sol,5,30,0.15,0.9,0.03,Codex Plus Pool,docs.codex-everywhere.com/models/ 2026-09-20
+CodexEverywhere,gpt-5.6-terra,2,12,0.06,0.36,0.03,Codex Plus Pool,docs.codex-everywhere.com/models/ 2026-09-20
+CodexEverywhere,gpt-5.6-luna,0.2,1.2,0.006,0.036,0.03,Codex Plus Pool,docs.codex-everywhere.com/models/ 2026-09-20
+CodexEverywhere,claude-opus-5,5,25,0.225,1.125,0.045,Kiro,docs.codex-everywhere.com/models/ 2026-09-20
+CodexEverywhere,claude-sonnet-5,2,10,0.09,0.45,0.045,Kiro,docs.codex-everywhere.com/models/ 2026-09-20
+CodexEverywhere,claude-fable-5-1,10,50,2.4,12.0,0.24,Claude Max Pool,docs.codex-everywhere.com/models/ 2026-09-20
+CodexEverywhere,grok-4.6,2,6,0.12,0.36,0.06,Heavy Pool,docs.codex-everywhere.com/models/ 2026-09-20
+CodexEverywhere,gemini-3.1-pro,2,12,0.12,0.72,0.06,Antigravity beta,docs.codex-everywhere.com/models/ 2026-09-20
+CodexEverywhere,deepseek-v4-pro,0.66,1.98,0.594,1.782,0.9,DeepSeek official,docs.codex-everywhere.com/models/ 2026-09-20
+LanoX,gpt-6-astra,10,50,1.67,8.35,0.167,<=272K,lanox.ai/model-access 2026-09-20
+LanoX,gpt-5.6-sol,4,20,0.668,3.34,0.167,<=272K,lanox.ai/model-access 2026-09-20
+LanoX,gpt-5.6-terra,2,12,0.334,2.004,0.167,<=272K,lanox.ai/model-access 2026-09-20
+OpenModel,claude-fable-5,10,50,4,20,0.4,catalog,openmodel.ai/model-pricing 2026-09-20
+OpenModel,claude-opus-5,5,25,2,10,0.4,catalog,openmodel.ai/model-pricing 2026-09-20
+OpenModel,claude-sonnet-5,2,10,0.8,4.0,0.4,catalog,openmodel.ai/model-pricing 2026-09-20
+OpenModel,claude-haiku-4-5,1,5,0.4,2.0,0.4,catalog,openmodel.ai/model-pricing 2026-09-20
+CCTK.AI,claude-opus-4-8,5,25,10.5,52.5,2.1,Claude group,home.cctk.ai pricing example 2026-09-20

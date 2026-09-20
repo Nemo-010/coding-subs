@@ -1,0 +1,449 @@
+{
+  "CodexEverywhere": {
+    "url": "https://codex-everywhere.com/",
+    "http": 200,
+    "bytes": 28502,
+    "seconds": 0.29,
+    "error": null,
+    "title": "CodexEverywhere - AI API Gateway",
+    "frontend": "sub2api",
+    "config": {
+      "site_name": "CodexEverywhere",
+      "site_subtitle": "Real GPT-5.6 series at 3% of OpenAI pricing.",
+      "registration_enabled": true,
+      "email_verify_enabled": true,
+      "payment_enabled": true,
+      "subscription_enabled": null,
+      "available_channels_enabled": false,
+      "model_plaza_enabled": false,
+      "model_plaza_require_auth": false,
+      "affiliate_enabled": true,
+      "risk_control_enabled": true,
+      "custom_endpoints": [
+        {
+          "name": "Compatible API Endpoints",
+          "endpoint": "https://codex-easy.ai",
+          "description": ""
+        }
+      ],
+      "custom_menus": null,
+      "version": "",
+      "backend_mode_enabled": false,
+      "balance_payment_disabled": null,
+      "invitation_code_required": null
+    }
+  },
+  "OpenModel": {
+    "url": "https://www.openmodel.ai/",
+    "http": 200,
+    "bytes": 155350,
+    "seconds": 0.36,
+    "error": null,
+    "title": "OpenModel — Multi-Model LLM API Gateway",
+    "frontend": null,
+    "config": null
+  },
+  "APIKEY.FUN": {
+    "url": "https://apikey.fan/",
+    "http": 200,
+    "bytes": 45492,
+    "seconds": 0.46,
+    "error": null,
+    "title": "APIKEY.FAN - AI中转，一个Api Key就够了！",
+    "frontend": "sub2api",
+    "config": {
+      "site_name": "APIKEY.FAN",
+      "site_subtitle": "一个 API Key，连接全球顶尖大模型。",
+      "registration_enabled": true,
+      "email_verify_enabled": true,
+      "payment_enabled": true,
+      "subscription_enabled": false,
+      "available_channels_enabled": false,
+      "model_plaza_enabled": false,
+      "model_plaza_require_auth": false,
+      "affiliate_enabled": true,
+      "risk_control_enabled": true,
+      "custom_endpoints": [
+        {
+          "name": "专线直连 API（禁用生图）",
+          "endpoint": "https://slb.apikey.fan",
+          "description": "适合对迟敏感的场景使用（禁用生图）"
+        },
+        {
+          "name": "CF企业级 API",
+          "endpoint": "https://api.apikey.fan",
+          "description": "推荐生产环境使用的 API"
+        }
+      ],
+      "custom_menus": null,
+      "version": "",
+      "backend_mode_enabled": false,
+      "balance_payment_disabled": null,
+      "invitation_code_required": null
+    }
+  },
+  "CCTK.AI": {
+    "url": "https://cctk.ai/",
+    "http": 200,
+    "bytes": 43467,
+    "seconds": 0.49,
+    "error": null,
+    "title": "CCTK.AI - AI API Gateway",
+    "frontend": "sub2api",
+    "config": {
+      "site_name": "CCTK.AI",
+      "site_subtitle": " ",
+      "registration_enabled": true,
+      "email_verify_enabled": true,
+      "payment_enabled": true,
+      "subscription_enabled": null,
+      "available_channels_enabled": true,
+      "model_plaza_enabled": false,
+      "model_plaza_require_auth": false,
+      "affiliate_enabled": true,
+      "risk_control_enabled": true,
+      "custom_endpoints": [
+        {
+          "name": "加速端点",
+          "endpoint": "https://api.cctk.ai",
+          "description": ""
+        }
+      ],
+      "custom_menus": null,
+      "version": "",
+      "backend_mode_enabled": false,
+      "balance_payment_disabled": null,
+      "invitation_code_required": null
+    }
+  },
+  "BmoPlus": {
+    "url": "https://shop.bmoplus.com/",
+    "http": 200,
+    "bytes": 35151,
+    "seconds": 0.55,
+    "error": null,
+    "title": "笔墨小铺- 专供GPT Claude Gemini相关羊毛",
+    "frontend": null,
+    "config": null
+  },
+  "Aimzoon": {
+    "url": "http://aimzoon.com/",
+    "http": 200,
+    "bytes": 798,
+    "seconds": 0.35,
+    "error": null,
+    "title": "Sub2API - AI API Gateway",
+    "frontend": null,
+    "config": null
+  },
+  "AIGoCode": {
+    "url": "https://aigocode.com/",
+    "http": 200,
+    "bytes": 154089,
+    "seconds": 0.95,
+    "error": null,
+    "title": "AIGoCode - AI 开发者工作台 | Developer Tools",
+    "frontend": null,
+    "config": null
+  },
+  "Nagora": {
+    "url": "https://nagora.ai/",
+    "http": 200,
+    "bytes": 239989,
+    "seconds": 0.79,
+    "error": null,
+    "title": "Nagora - AI API Gateway",
+    "frontend": "sub2api",
+    "config": {
+      "site_name": "Nagora",
+      "site_subtitle": "AI API Gateway",
+      "registration_enabled": true,
+      "email_verify_enabled": true,
+      "payment_enabled": true,
+      "subscription_enabled": null,
+      "available_channels_enabled": false,
+      "model_plaza_enabled": false,
+      "model_plaza_require_auth": false,
+      "affiliate_enabled": false,
+      "risk_control_enabled": true,
+      "custom_endpoints": [
+        {
+          "name": "备用地址",
+          "endpoint": "https://nagora.ai",
+          "description": ""
+        }
+      ],
+      "custom_menus": null,
+      "version": "",
+      "backend_mode_enabled": false,
+      "balance_payment_disabled": null,
+      "invitation_code_required": null
+    }
+  },
+  "Pateway": {
+    "url": "https://pateway.ai/",
+    "http": 200,
+    "bytes": 15559,
+    "seconds": 1.35,
+    "error": null,
+    "title": "PatewayAI - Claude & Codex API 中转站 | AI 大模型 API 代理接入 | Pateway AI API 中转",
+    "frontend": null,
+    "config": null
+  },
+  "PPToken": {
+    "url": "https://api.pptoken.cc/",
+    "http": 200,
+    "bytes": 194477,
+    "seconds": 1.07,
+    "error": null,
+    "title": "PPToken - AI API Gateway",
+    "frontend": "sub2api",
+    "config": {
+      "site_name": "PPToken",
+      "site_subtitle": "Subscription to API Conversion Platform",
+      "registration_enabled": true,
+      "email_verify_enabled": true,
+      "payment_enabled": true,
+      "subscription_enabled": true,
+      "available_channels_enabled": false,
+      "model_plaza_enabled": false,
+      "model_plaza_require_auth": true,
+      "affiliate_enabled": true,
+      "risk_control_enabled": true,
+      "custom_endpoints": [
+        {
+          "name": "默认请求地址(Base Url)",
+          "endpoint": "https://api.pptoken.cc/v1",
+          "description": "🔔重要提醒🔔：Claude系列使用 https://api.pptoken.cc  网址后面的 /v1 需要去掉"
+        },
+        {
+          "name": "【OpenAi模型】大陆优化线路(⭐无需VPN)",
+          "endpoint": "https://cn.pptoken.cc/v1",
+          "description": "针对大陆的优化线路，访问速度大大提升，无需使用VPN代理，使用VPN代理反而会慢，甚至无法访问！ "
+        },
+        {
+          "name": "【OpenAi模型】北美线路(使用美国VPN)",
+          "endpoint": "https://us.pptoken.cc/v1",
+          "description": "需使用代理VPN，该服务器在美国洛杉矶，不支持新加坡等东南亚国家节点，如遇首Token延迟高或无法访问等情况，请切换VPN的地区节点，哪里快用哪里。"
+        },
+        {
+          "name": "🌞【Claude模型】专用请求地址(Base Url)",
+          "endpoint": "https://api.pptoken.cc",
+          "description": "大陆优化节点(无需VPN)：https://cn.pptoken.cc         北美节点：https://pptoken.top               网址后面都不带 /v1 也不要带 /"
+        },
+        {
+          "name": "🌐Cloudflare全球CDN线路【无法生图】",
+          "endpoint": "https://pptoken.top",
+          "description": "Cloudflare全球优化线路，访问速度显著提升，无需使用VPN代理，因Cloudflare参数限制，该线路暂时无法生图。"
+        }
+      ],
+      "custom_menus": null,
+      "version": "",
+      "backend_mode_enabled": false,
+      "balance_payment_disabled": null,
+      "invitation_code_required": null
+    }
+  },
+  "hao.ai": {
+    "url": "https://hao.ai/",
+    "http": 200,
+    "bytes": 423923,
+    "seconds": 0.56,
+    "error": null,
+    "title": "HaoAI - Fast, Reliable AI API Gateway for GPT, Claude &amp; Grok - hao.ai",
+    "frontend": null,
+    "config": null
+  },
+  "ETok": {
+    "url": "https://etok.ai/",
+    "http": 200,
+    "bytes": 34573,
+    "seconds": 2.08,
+    "error": null,
+    "title": "ETok — AI Coding Tutorials &amp; Coding Plans | ETok - AI Coding Tutorials &amp; Coding Plans",
+    "frontend": null,
+    "config": null
+  },
+  "APIMart": {
+    "url": "https://go.apimart.ai/",
+    "http": 200,
+    "bytes": 479892,
+    "seconds": 1.04,
+    "error": null,
+    "title": "Discounted AI API Aggregator: GPT-5, Sora 2 | APIMart",
+    "frontend": null,
+    "config": null
+  },
+  "QiniuAI": {
+    "url": "https://www.qiniu.com/",
+    "http": 200,
+    "bytes": 160294,
+    "seconds": 1.96,
+    "error": null,
+    "title": "七牛云 | 一站式中立音视频云 + AI",
+    "frontend": null,
+    "config": null
+  },
+  "LanoX": {
+    "url": "https://lanox.ai/",
+    "http": 200,
+    "bytes": 432585,
+    "seconds": 2.02,
+    "error": null,
+    "title": "One platform for the best AI",
+    "frontend": null,
+    "config": null
+  },
+  "PP.dog": {
+    "url": "https://pp.dog/",
+    "http": 200,
+    "bytes": 283085,
+    "seconds": 1.45,
+    "error": null,
+    "title": "PP.dog - AI API Gateway",
+    "frontend": "sub2api",
+    "config": {
+      "site_name": "PP.dog",
+      "site_subtitle": "Subscription to API Conversion Platform",
+      "registration_enabled": true,
+      "email_verify_enabled": false,
+      "payment_enabled": true,
+      "subscription_enabled": true,
+      "available_channels_enabled": false,
+      "model_plaza_enabled": false,
+      "model_plaza_require_auth": true,
+      "affiliate_enabled": true,
+      "risk_control_enabled": false,
+      "custom_endpoints": [
+        {
+          "name": "🌐下游中转站直连端点",
+          "endpoint": "https://api.pp.dog",
+          "description": "下游中转站专用美国西部服务器直连端点(支持超高并发）。"
+        }
+      ],
+      "custom_menus": null,
+      "version": "",
+      "backend_mode_enabled": false,
+      "balance_payment_disabled": null,
+      "invitation_code_required": null
+    }
+  },
+  "Swiftproxy": {
+    "url": "https://www.swiftproxy.net/",
+    "http": null,
+    "bytes": 0,
+    "seconds": 0.23,
+    "error": "<HTTPError 403: 'Forbidden'>",
+    "title": "",
+    "frontend": null,
+    "config": null
+  },
+  "Veilx": {
+    "url": "https://veilx.io/",
+    "http": 200,
+    "bytes": 19251,
+    "seconds": 1.53,
+    "error": null,
+    "title": "veilx · 一体化 CDN 加速与安全平台",
+    "frontend": null,
+    "config": null
+  },
+  "RoxyBrowser": {
+    "url": "https://roxybrowser.com/",
+    "http": 200,
+    "bytes": 179920,
+    "seconds": 1.24,
+    "error": null,
+    "title": "Antidetect Browser for Multi-Accounting - Free Trial | RoxyBrowser",
+    "frontend": null,
+    "config": null
+  },
+  "Proxy4Free": {
+    "url": "https://www.proxy4free.com/",
+    "http": 200,
+    "bytes": 332885,
+    "seconds": 1.22,
+    "error": null,
+    "title": "The Highest Quality Proxies - Residential Ip Resource Service - Proxy4free",
+    "frontend": null,
+    "config": null
+  },
+  "AxisNow": {
+    "url": "https://www.axisnow.io/",
+    "http": 200,
+    "bytes": 62599,
+    "seconds": 0.59,
+    "error": null,
+    "title": "AxisNow - Multi-CDN｜Private CDN｜Application Security &amp; Delivery",
+    "frontend": null,
+    "config": null
+  },
+  "RapidProxy": {
+    "url": "https://www.rapidproxy.io/",
+    "http": 200,
+    "bytes": 386292,
+    "seconds": 1.3,
+    "error": null,
+    "title": "RapidProxy: 90M+ Residential Proxies for Scalable Scraping",
+    "frontend": null,
+    "config": null
+  },
+  "Bestproxy": {
+    "url": "https://bestproxy.com/",
+    "http": 200,
+    "bytes": 344061,
+    "seconds": 2.39,
+    "error": null,
+    "title": "BestProxy - Best Residential Proxies &amp; Socks5 Proxy",
+    "frontend": null,
+    "config": null
+  },
+  "FennoAI": {
+    "url": "https://api.fenno.ai/",
+    "http": 200,
+    "bytes": 337671,
+    "seconds": 3.21,
+    "error": null,
+    "title": "Fenno - AI Coding Models for Mainstream Dev Tools",
+    "frontend": "sub2api",
+    "config": {
+      "site_name": "Fenno",
+      "site_subtitle": "Subscription to API Conversion Platform",
+      "registration_enabled": true,
+      "email_verify_enabled": true,
+      "payment_enabled": true,
+      "subscription_enabled": null,
+      "available_channels_enabled": true,
+      "model_plaza_enabled": null,
+      "model_plaza_require_auth": null,
+      "affiliate_enabled": true,
+      "risk_control_enabled": true,
+      "custom_endpoints": [],
+      "custom_menus": null,
+      "version": "",
+      "backend_mode_enabled": false,
+      "balance_payment_disabled": null,
+      "invitation_code_required": null
+    }
+  },
+  "DuckIP": {
+    "url": "https://www.duckip.cn/",
+    "http": 200,
+    "bytes": 418348,
+    "seconds": 1.21,
+    "error": null,
+    "title": "全球AI数据基础服务商 - 达可云IP",
+    "frontend": null,
+    "config": null
+  },
+  "ColaProxy": {
+    "url": "https://colaproxy.com/",
+    "http": 200,
+    "bytes": 384881,
+    "seconds": 1.54,
+    "error": null,
+    "title": "ColaProxy - Premium Global Residential Proxies｜Optimal Value &amp; Stability",
+    "frontend": null,
+    "config": null
+  }
+}

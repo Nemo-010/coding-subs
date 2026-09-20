@@ -1,0 +1,579 @@
+{
+  "date": "2026-09-20",
+  "via": "api.rv.pkgforge.dev reverse proxy",
+  "rounds": 3,
+  "results": {
+    "CCTK.AI": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 358,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 447,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 454,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 447
+    },
+    "OpenModel": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 362,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 377,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 287,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 362
+    },
+    "ETok": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 2039,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 2048,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 474,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 2039
+    },
+    "APIKEY.FUN": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 348,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 311,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 294,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 311
+    },
+    "AIGoCode": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 805,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 867,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 600,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 805
+    },
+    "CodexEverywhere": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 583,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 573,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 595,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 583
+    },
+    "BmoPlus": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 518,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 550,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 571,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 550
+    },
+    "Pateway": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 1227,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1246,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1176,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 1227
+    },
+    "PPToken": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 376,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1758,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1070,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 1070
+    },
+    "Aimzoon": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 312,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 296,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 310,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 310
+    },
+    "Nagora": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 540,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 598,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 268,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 540
+    },
+    "QiniuAI": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 1110,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 330,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 916,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 916
+    },
+    "FennoAI": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 1041,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1068,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 764,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 1041
+    },
+    "LanoX": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 507,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 513,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1606,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 513
+    },
+    "hao.ai": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 353,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 223,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 385,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 353
+    },
+    "APIMart": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 629,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 561,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 770,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 629
+    },
+    "PP.dog": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 1022,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 590,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 249,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 590
+    },
+    "Bestproxy": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 1647,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1084,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1468,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 1468
+    },
+    "Veilx": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 2191,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 2048,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1427,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 2048
+    },
+    "RoxyBrowser": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 1077,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 415,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1159,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 1077
+    },
+    "Proxy4Free": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 1050,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 811,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 673,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 811
+    },
+    "RapidProxy": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 705,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 667,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 776,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 705
+    },
+    "Swiftproxy": {
+      "runs": [
+        {
+          "http": 403,
+          "ms": 220,
+          "error": "HTTPError"
+        },
+        {
+          "http": 403,
+          "ms": 192,
+          "error": "HTTPError"
+        },
+        {
+          "http": 403,
+          "ms": 204,
+          "error": "HTTPError"
+        }
+      ],
+      "ok": 0,
+      "rounds": 3,
+      "median_ms_ok": null
+    },
+    "DuckIP": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 1363,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 784,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1125,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 1125
+    },
+    "AxisNow": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 440,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 390,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 480,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 440
+    },
+    "ColaProxy": {
+      "runs": [
+        {
+          "http": 200,
+          "ms": 1861,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1836,
+          "error": null
+        },
+        {
+          "http": 200,
+          "ms": 1035,
+          "error": null
+        }
+      ],
+      "ok": 3,
+      "rounds": 3,
+      "median_ms_ok": 1836
+    }
+  }
+}
