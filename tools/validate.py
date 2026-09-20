@@ -171,6 +171,35 @@ def provider_pass_checks(pass_dir: Path) -> None:
         sites = json.loads(sidx.read_text())
         check(len(sites) >= 26, f"only {len(sites)} site snapshots, need >= 26")
 
+    upath = pass_dir / "data" / "providers-union.csv"
+    check(upath.is_file(), "missing data/providers-union.csv (run tools/research-providers.sh)")
+    if upath.is_file():
+        with upath.open() as f:
+            union = list(csv.DictReader(f))
+        check(len(union) >= 40, f"provider union has {len(union)} rows, need >= 40")
+        uneed = {"provider", "display_name", "kind", "repos", "in_both",
+                 "confidence", "methods", "evidence_count", "first_evidence"}
+        check(uneed.issubset(union[0].keys()),
+              f"union missing columns: {uneed - set(union[0].keys())}")
+        both = [r for r in union if r["in_both"] == "yes"]
+        check(len(both) >= 15, f"only {len(both)} providers appear in both repos")
+        for r in union:
+            check(r["repos"] != "", f"{r['provider']}: empty repos")
+            check(r["evidence_count"] != "", f"{r['provider']}: empty evidence_count")
+    for sub in ("sub2api", "cliproxyapi"):
+        sp = pass_dir / "data" / f"providers-{sub}.csv"
+        check(sp.is_file(), f"missing data/providers-{sub}.csv")
+        check((pass_dir / "data" / f"providers-{sub}.jsonl").is_file(),
+              f"missing data/providers-{sub}.jsonl evidence")
+
+    recon = pass_dir / "RECONCILED-PROVIDERS.md"
+    check(recon.is_file(), "missing RECONCILED-PROVIDERS.md")
+    if recon.is_file():
+        rtext = recon.read_text()
+        check("CLIProxyAPI" in rtext, "reconciled report does not mention CLIProxyAPI")
+        check("did NOT establish" in rtext, "reconciled report missing 'did NOT establish'")
+        check("61fdfc34" in rtext, "reconciled report missing CLIProxyAPI commit pin")
+
     report = (pass_dir / "README.md").read_text()
     for anchor in ("BEST DEAL FOUND", "did NOT establish", "RANKING 1", "RANKING 2",
                    "Best \"free\"", "Best \"cheap\"", "Best \"reliable\"", "Best \"deal\"",

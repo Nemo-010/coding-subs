@@ -159,3 +159,32 @@ config, `pricing/` = pricing and docs routes). The subject tree is cited at comm
     GitHub Copilot #1449 closed-unmerged; merged: antigravity #73, grok #3310, minimax
     #6758, opencode #6747, ollama #4850/#6388/#6769, seedance #7247, bedrock #2642, vertex
     #1618. "Open PR" is not "supported".
+
+## CLIProxyAPI (second subject, added 2026-09-20)
+
+41. **`router-for-me/CLIProxyAPI`** at `61fdfc341b96`
+    (2026-09-20). Cloned to `/workspace/CLIProxyAPI`.
+42. **`internal/constant/constant.go:8-29`** — protocol constants: `gemini`,
+    `gemini-interactions`, `codex`, `claude`, `openai`, `openai-response`,
+    `antigravity`, `interactions`.
+43. **`internal/auth/`** — OAuth/credential providers: antigravity, claude, codex,
+    devin, empty, kimi, meta, vertex, xai.
+44. **`internal/registry/models/models.json`** — 13 tiers, 135 models (claude 16,
+    gemini 14, vertex 21, gemini-cli 7, aistudio 16, codex-free/team/plus/pro
+    4/6/7/7, kimi 10, antigravity 12, xai 10, meta 5). Struct at
+    `internal/registry/model_definitions.go:30-42`.
+45. **`README.md:14-40`** — the README provider table names only 5 providers
+    (Anthropic, Antigravity, Kimi, OpenAI, xAI). The code supports more; this gap
+    is the second instance of the first pass's error class.
+46. **`README.md` Sponsor section** — 14 sponsor rows / 15 hosts, fetched
+    2026-09-20. Text extracts in `sources/cliproxyapi/`.
+47. **`config.example.yaml:100-131`** — OpenAI-compatible upstreams and plugins;
+    `internal/pluginhost/adapters.go` shows a plugin may provide auth *and* a
+    model provider, so this layer is unbounded.
+48. **Cross-repo sponsor discrepancy**: RapidProxy is $0.65/GB in sub2api's README
+    and $0.55/GB in CLIProxyAPI's — same vendor, two prices. Bestproxy/Swiftproxy
+    list $0.5/GB and $0.7/GB in CLIProxyAPI but no price in sub2api.
+49. **New relay vendors only in CLIProxyAPI**: Aiberm, AICodeMirror, Cubence,
+    PackyCode, FluxA+Baidu AgenticPlan. Sponsor endpoints all answered 200 through
+    `api.rv.pkgforge.dev`; Aiberm/PackyAPI pricing is client-side and unreadable
+    from static HTML; Cubence `/pricing` serves a static base-rate table.

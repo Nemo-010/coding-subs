@@ -1,5 +1,10 @@
 # sub2api provider-support surface (correction to the first pass)
 
+> **See also [RECONCILED-PROVIDERS.md](RECONCILED-PROVIDERS.md)**, which adds the
+> second subject (`router-for-me/CLIProxyAPI`), reconciles the two sponsor markets,
+> and ships the structure-agnostic miner (`tools/research-providers.sh`). The
+> union of both repos is `data/providers-union.csv` (72 providers, 31 in both).
+
 ## Why this file exists
 
 The first version of this pass ranked the **26 rows of the README sponsor table**

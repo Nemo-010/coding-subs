@@ -25,7 +25,9 @@ code-grounded study is in **[PROVIDER-SUPPORT.md](PROVIDER-SUPPORT.md)**, with
 [data/cheapest-per-model.csv](data/cheapest-per-model.csv) and
 [data/subscription-plan-providers.csv](data/subscription-plan-providers.csv).
 Read that file for anything about "which providers sub2api supports"; read this README
-only for the sponsor-market pricing.
+only for the sponsor-market pricing. A second subject, `router-for-me/CLIProxyAPI`,
+and the reconciled union of both are in
+**[RECONCILED-PROVIDERS.md](RECONCILED-PROVIDERS.md)**.
 
 ---
 

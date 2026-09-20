@@ -1,0 +1,45 @@
+repo,provider,display_name,kind,confidence,methods,evidence_count,first_evidence
+cliproxyapi,openrouter,OpenRouter,aggregator,low,vocab,7,/workspace/CLIProxyAPI/README.md:130
+cliproxyapi,perplexity,Perplexity,aggregator,low,vocab,3,/workspace/CLIProxyAPI/README.md:248
+cliproxyapi,zenmux,ZenMux,aggregator,low,vocab,2,/workspace/CLIProxyAPI/config.example.yaml:795
+cliproxyapi,anthropic,Anthropic,first-party,high,cases|consts|json|markdown|markdown-host|vocab,67,/workspace/CLIProxyAPI/README.md:26
+cliproxyapi,baidu,Baidu Qianfan,first-party,low,vocab,1,/workspace/CLIProxyAPI/README.md:109
+cliproxyapi,deepseek,DeepSeek,first-party,high,json|vocab,32,/workspace/CLIProxyAPI/README.md:97
+cliproxyapi,google,Google,first-party,high,json|vocab,70,/workspace/CLIProxyAPI/cmd/fetch_devin_models/main.go:371
+cliproxyapi,grok,xAI Grok,first-party,high,consts|vocab,160,/workspace/CLIProxyAPI/README.md:7
+cliproxyapi,kimi,Moonshot Kimi,first-party,high,cases|consts|dirs|json|json-keys|markdown|markdown-host|vocab,349,/workspace/CLIProxyAPI/internal/auth/kimi/:0
+cliproxyapi,meta,Meta Llama,first-party,high,json|vocab,60,/workspace/CLIProxyAPI/config.example.yaml:578
+cliproxyapi,minimax,MiniMax,first-party,low,vocab,6,/workspace/CLIProxyAPI/README.md:97
+cliproxyapi,nvidia,NVIDIA NIM,first-party,high,json|vocab,3,/workspace/CLIProxyAPI/cmd/fetch_devin_models/main.go:379
+cliproxyapi,openai,OpenAI,first-party,high,cases|consts|dirs|json|markdown|vocab,133,/workspace/CLIProxyAPI/internal/thinking/provider/openai/:0
+cliproxyapi,qwen,Alibaba Qwen,first-party,low,vocab,1,/workspace/CLIProxyAPI/sdk/cliproxy/usage/accounting.go:358
+cliproxyapi,vertex,Google Vertex AI,first-party,high,cases|consts|dirs|json-keys|vocab,37,/workspace/CLIProxyAPI/internal/auth/vertex/:0
+cliproxyapi,xai,xAI,first-party,high,cases|config|consts|dirs|json|markdown|vocab,30,/workspace/CLIProxyAPI/internal/auth/xai/:0
+cliproxyapi,xfspark,iFlytek Spark,first-party,low,vocab,1,/workspace/CLIProxyAPI/internal/runtime/executor/codex_executor_request.go:429
+cliproxyapi,zhipu,Zhipu GLM,first-party,high,json|vocab,8,/workspace/CLIProxyAPI/cmd/fetch_devin_models/main.go:377
+cliproxyapi,qiniu,Qiniu,infra:aggregator,high,markdown,2,/workspace/CLIProxyAPI/README.md:72
+cliproxyapi,axisnow,Axisnow,infra:cdn,high,consts|markdown|markdown-host|vocab,12,/workspace/CLIProxyAPI/README.md:88
+cliproxyapi,apimart,Apimart,infra:media,high,consts|markdown|vocab,10,/workspace/CLIProxyAPI/README.md:84
+cliproxyapi,agentmarket,Agentmarket,infra:payment,medium,markdown-host,5,/workspace/CLIProxyAPI/README.md:108
+cliproxyapi,cyberpay,Cyberpay,infra:payment,high,consts|markdown|vocab,10,/workspace/CLIProxyAPI/README.md:64
+cliproxyapi,bestproxy,Bestproxy,infra:proxy,high,consts|markdown|markdown-host|vocab,5,/workspace/CLIProxyAPI/README.md:80
+cliproxyapi,rapidproxy,Rapidproxy,infra:proxy,high,consts|markdown|markdown-host|vocab,21,/workspace/CLIProxyAPI/README.md:100
+cliproxyapi,swiftproxy,Swiftproxy,infra:proxy,high,consts|markdown|markdown-host|vocab,17,/workspace/CLIProxyAPI/README.md:92
+cliproxyapi,aiberm,Aiberm,infra:relay,high,consts|markdown|markdown-host|vocab,18,/workspace/CLIProxyAPI/README.md:96
+cliproxyapi,aicodemirror,Aicodemirror,infra:relay,high,consts|markdown|markdown-host|vocab,19,/workspace/CLIProxyAPI/README.md:56
+cliproxyapi,apikey,Apikey,infra:relay,high,consts|markdown-host|vocab,26,/workspace/CLIProxyAPI/README.md:60
+cliproxyapi,cubence,Cubence,infra:relay,high,consts|markdown|markdown-host|vocab,19,/workspace/CLIProxyAPI/README.md:76
+cliproxyapi,fenno,Fenno,infra:relay,high,consts|markdown|vocab,11,/workspace/CLIProxyAPI/README.md:68
+cliproxyapi,packyapi,Packyapi,infra:relay,medium,markdown-host|vocab,15,/workspace/CLIProxyAPI/README.md:43
+cliproxyapi,pateway,Pateway,infra:relay,high,markdown|markdown-host,9,/workspace/CLIProxyAPI/README.md:104
+cliproxyapi,agy,Antigravity,oauth-subscription,high,consts,1,/workspace/CLIProxyAPI/sdk/cliproxy/session/info.go:403
+cliproxyapi,aistudio,Google AI Studio,oauth-subscription,high,cases|json-keys|vocab,20,/workspace/CLIProxyAPI/internal/registry/model_definitions.go:28
+cliproxyapi,antigravity,Google Antigravity,oauth-subscription,high,cases|consts|dirs|json|markdown|markdown-host|vocab,430,/workspace/CLIProxyAPI/internal/auth/antigravity/:0
+cliproxyapi,augment,Augment Code,oauth-subscription,low,vocab,1,/workspace/CLIProxyAPI/internal/runtime/executor/claude_executor_request.go:2391
+cliproxyapi,claude,Anthropic Claude,oauth-subscription,high,cases|config|consts|dirs|json-keys|markdown-host|vocab,201,/workspace/CLIProxyAPI/internal/auth/claude/:0
+cliproxyapi,codex,OpenAI Codex,oauth-subscription,high,cases|config|consts|dirs|json-keys|vocab,892,/workspace/CLIProxyAPI/internal/auth/codex/:0
+cliproxyapi,devin,Devin (Cognition),oauth-subscription,high,cases|consts|dirs|json|vocab,309,/workspace/CLIProxyAPI/internal/auth/devin/:0
+cliproxyapi,gemini,Google Gemini,oauth-subscription,high,cases|consts|dirs|json-keys|vocab,163,/workspace/CLIProxyAPI/internal/thinking/provider/gemini/:0
+cliproxyapi,kiro,Amazon Kiro,oauth-subscription,low,vocab,3,/workspace/CLIProxyAPI/README.md:252
+cliproxyapi,opencode,OpenCode Zen/Go,oauth-subscription,high,consts|vocab,17,/workspace/CLIProxyAPI/README.md:69
+cliproxyapi,trae,ByteDance Trae,oauth-subscription,low,vocab,3,/workspace/CLIProxyAPI/README.md:252

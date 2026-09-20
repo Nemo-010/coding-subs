@@ -1,0 +1,73 @@
+provider,display_name,kind,repos,in_both,confidence,methods,evidence_count,first_evidence
+openrouter,OpenRouter,aggregator,cliproxyapi|sub2api,yes,low,vocab,9,/workspace/sub2api/backend/internal/service/gateway_usage_billing.go:771
+perplexity,Perplexity,aggregator,cliproxyapi,no,low,vocab,3,/workspace/CLIProxyAPI/README.md:248
+zai,Z.AI GLM,aggregator,sub2api,no,low,vocab,1,/workspace/sub2api/backend/internal/service/cn_provider_quota_service.go:350
+zenmux,ZenMux,aggregator,cliproxyapi,no,low,vocab,2,/workspace/CLIProxyAPI/config.example.yaml:795
+aliyun,Alibaba Cloud,first-party,sub2api,no,high,consts,1,/workspace/sub2api/frontend/src/views/admin/SettingsView.vue:9927
+anthropic,Anthropic,first-party,cliproxyapi|sub2api,yes,high,cases|consts|json|markdown|markdown-host|vocab,247,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:178
+ark,Volcengine Ark,first-party,sub2api,no,medium,markdown-host,1,/workspace/sub2api/docs/seedance-api.md:7
+baidu,Baidu Qianfan,first-party,cliproxyapi|sub2api,yes,low,vocab,2,/workspace/sub2api/backend/internal/service/openai_model_mapping.go:55
+bedrock,Amazon Bedrock,first-party,sub2api,no,high,consts|json|vocab,36,/workspace/sub2api/backend/internal/domain/constants.go:62
+dashscope,Alibaba DashScope,first-party,sub2api,no,low,vocab,1,/workspace/sub2api/backend/internal/service/openai_gateway_cc_tool_call_identity.go:15
+deepseek,DeepSeek,first-party,cliproxyapi|sub2api,yes,high,cases|consts|json|vocab,331,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:184
+google,Google,first-party,cliproxyapi|sub2api,yes,high,cases|json|markdown-host|vocab,108,/workspace/sub2api/backend/ent/schema/auth_identity.go:20
+grok,xAI Grok,first-party,cliproxyapi|sub2api,yes,high,cases|config|consts|vocab,1455,/workspace/sub2api/README.md:68
+hunyuan,Tencent Hunyuan,first-party,sub2api,no,low,vocab,1,/workspace/sub2api/backend/internal/service/openai_model_mapping.go:47
+kimi,Moonshot Kimi,first-party,cliproxyapi|sub2api,yes,high,cases|consts|dirs|json|json-keys|markdown|markdown-host|vocab,600,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:182
+meta,Meta Llama,first-party,cliproxyapi,no,high,json|vocab,60,/workspace/CLIProxyAPI/config.example.yaml:578
+minimax,MiniMax,first-party,cliproxyapi|sub2api,yes,high,cases|consts|vocab,152,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:185
+nvidia,NVIDIA NIM,first-party,cliproxyapi,no,high,json|vocab,3,/workspace/CLIProxyAPI/cmd/fetch_devin_models/main.go:379
+openai,OpenAI,first-party,cliproxyapi|sub2api,yes,high,cases|consts|dirs|json|markdown|vocab,474,/workspace/sub2api/README_JA.md:63
+qwen,Alibaba Qwen,first-party,cliproxyapi|sub2api,yes,low,vocab,13,/workspace/sub2api/README.md:128
+tencent,Tencent Hunyuan,first-party,sub2api,no,high,consts,1,/workspace/sub2api/frontend/src/views/admin/SettingsView.vue:9925
+vertex,Google Vertex AI,first-party,cliproxyapi|sub2api,yes,high,cases|consts|dirs|json|json-keys|vocab,48,/workspace/sub2api/backend/internal/service/batch_image.go:15
+volcengine,Volcengine,first-party,sub2api,no,medium,markdown-host|vocab,3,/workspace/sub2api/docs/seedance-api.md:45
+xai,xAI,first-party,cliproxyapi|sub2api,yes,high,cases|config|consts|dirs|json|markdown|vocab,33,/workspace/sub2api/backend/internal/pkg/xai/billing.go:16
+xfspark,iFlytek Spark,first-party,cliproxyapi|sub2api,yes,high,consts|vocab,17,/workspace/sub2api/backend/ent/account.go:82
+zhipu,Zhipu GLM,first-party,cliproxyapi|sub2api,yes,high,cases|consts|json|vocab,145,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:183
+bmoplus,Bmoplus,infra:accounts,sub2api,no,high,consts|markdown|vocab,9,/workspace/sub2api/README.md:67
+qiniu,Qiniu,infra:aggregator,cliproxyapi|sub2api,yes,high,markdown,4,/workspace/sub2api/README.md:117
+roxybrowser,Roxybrowser,infra:browser,sub2api,no,high,consts|markdown|markdown-host|vocab,16,/workspace/sub2api/README.md:94
+axisnow,Axisnow,infra:cdn,cliproxyapi|sub2api,yes,high,consts|markdown|markdown-host|vocab,28,/workspace/sub2api/README.md:157
+veilx,Veilx,infra:cdn,sub2api,no,high,consts|markdown|markdown-host|vocab,21,/workspace/sub2api/README.md:88
+apimart,Apimart,infra:media,cliproxyapi|sub2api,yes,high,consts|markdown|vocab,20,/workspace/sub2api/README.md:152
+agentmarket,Agentmarket,infra:payment,cliproxyapi,no,medium,markdown-host,5,/workspace/CLIProxyAPI/README.md:108
+cyberpay,Cyberpay,infra:payment,cliproxyapi,no,high,consts|markdown|vocab,10,/workspace/CLIProxyAPI/README.md:64
+bestproxy,Bestproxy,infra:proxy,cliproxyapi|sub2api,yes,high,consts|markdown|markdown-host|vocab,21,/workspace/sub2api/README.md:72
+colaproxy,Colaproxy,infra:proxy,sub2api,no,high,consts|markdown|markdown-host|vocab,17,/workspace/sub2api/README.md:167
+duckip,Duckip,infra:proxy,sub2api,no,high,consts|markdown|markdown-host|vocab,18,/workspace/sub2api/README.md:147
+proxy4free,Proxy4Free,infra:proxy,sub2api,no,high,consts|markdown|markdown-host|vocab,16,/workspace/sub2api/README.md:100
+rapidproxy,Rapidproxy,infra:proxy,cliproxyapi|sub2api,yes,high,consts|markdown|markdown-host|vocab,42,/workspace/sub2api/README.md:132
+swiftproxy,Swiftproxy,infra:proxy,cliproxyapi|sub2api,yes,high,consts|markdown|markdown-host|vocab,34,/workspace/sub2api/README.md:142
+aiberm,Aiberm,infra:relay,cliproxyapi,no,high,consts|markdown|markdown-host|vocab,18,/workspace/CLIProxyAPI/README.md:96
+aicodemirror,Aicodemirror,infra:relay,cliproxyapi,no,high,consts|markdown|markdown-host|vocab,19,/workspace/CLIProxyAPI/README.md:56
+aigocode,Aigocode,infra:relay,sub2api,no,high,consts|markdown|markdown-host|vocab,16,/workspace/sub2api/README.md:57
+aimzoon,Aimzoon,infra:relay,sub2api,no,high,consts|markdown|markdown-host|vocab,19,/workspace/sub2api/README.md:106
+apikey,Apikey,infra:relay,cliproxyapi|sub2api,yes,high,consts|markdown-host|vocab,171,/workspace/sub2api/README.md:52
+cctk,Cctk,infra:relay,sub2api,no,medium,markdown-host,9,/workspace/sub2api/README.md:37
+codex-everywhere,Codex Everywhere,infra:relay,sub2api,no,high,markdown|vocab,9,/workspace/sub2api/README.md:62
+cubence,Cubence,infra:relay,cliproxyapi,no,high,consts|markdown|markdown-host|vocab,19,/workspace/CLIProxyAPI/README.md:76
+etok,Etok,infra:relay,sub2api,no,high,consts|markdown|markdown-host|vocab,15,/workspace/sub2api/README.md:47
+fenno,Fenno,infra:relay,cliproxyapi|sub2api,yes,high,consts|markdown|vocab,21,/workspace/sub2api/README.md:122
+haoai,Haoai,infra:relay,sub2api,no,medium,markdown-host,6,/workspace/sub2api/README.md:137
+lanox,Lanox,infra:relay,sub2api,no,high,markdown|markdown-host,9,/workspace/sub2api/README.md:127
+nagora,Nagora,infra:relay,sub2api,no,high,consts|markdown|markdown-host|vocab,18,/workspace/sub2api/README.md:112
+openmodel,Openmodel,infra:relay,sub2api,no,high,consts|markdown|markdown-host|vocab,15,/workspace/sub2api/README.md:42
+packyapi,Packyapi,infra:relay,cliproxyapi,no,medium,markdown-host|vocab,15,/workspace/CLIProxyAPI/README.md:43
+pateway,Pateway,infra:relay,cliproxyapi|sub2api,yes,high,consts|markdown|markdown-host|vocab,24,/workspace/sub2api/README.md:77
+ppdog,Ppdog,infra:relay,sub2api,no,medium,markdown-host,9,/workspace/sub2api/README.md:162
+pptoken,Pptoken,infra:relay,sub2api,no,high,consts|markdown|vocab,9,/workspace/sub2api/README.md:82
+seedance,ByteDance Seedance,media,sub2api,no,high,consts|vocab,19,/workspace/sub2api/README.md:128
+agy,Antigravity,oauth-subscription,cliproxyapi,no,high,consts,1,/workspace/CLIProxyAPI/sdk/cliproxy/session/info.go:403
+aistudio,Google AI Studio,oauth-subscription,cliproxyapi|sub2api,yes,high,cases|json-keys|markdown-host|vocab,21,/workspace/sub2api/deploy/README.md:377
+antigravity,Google Antigravity,oauth-subscription,cliproxyapi|sub2api,yes,high,cases|consts|dirs|json|markdown|markdown-host|vocab,1102,/workspace/sub2api/README.md:827
+augment,Augment Code,oauth-subscription,cliproxyapi,no,low,vocab,1,/workspace/CLIProxyAPI/internal/runtime/executor/claude_executor_request.go:2391
+claude,Anthropic Claude,oauth-subscription,cliproxyapi|sub2api,yes,high,cases|config|consts|dirs|json-keys|markdown-host|vocab,245,/workspace/sub2api/backend/ent/schema/account.go:63
+codebuddy,Tencent CodeBuddy,oauth-subscription,sub2api,no,low,vocab,1,/workspace/sub2api/backend/internal/service/openai_gateway_scheduling.go:152
+codex,OpenAI Codex,oauth-subscription,cliproxyapi|sub2api,yes,high,cases|config|consts|dirs|json-keys|markdown-host|vocab,1755,/workspace/sub2api/README.md:38
+cursor,Cursor,oauth-subscription,sub2api,no,high,consts,1,/workspace/sub2api/frontend/src/views/HomeView.vue:260
+devin,Devin (Cognition),oauth-subscription,cliproxyapi,no,high,cases|consts|dirs|json|vocab,309,/workspace/CLIProxyAPI/internal/auth/devin/:0
+gemini,Google Gemini,oauth-subscription,cliproxyapi|sub2api,yes,high,cases|config|consts|dirs|json|json-keys|vocab,293,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:179
+kiro,Amazon Kiro,oauth-subscription,cliproxyapi|sub2api,yes,high,consts|vocab,13,/workspace/sub2api/backend/internal/handler/openai_gateway_handler.go:765
+opencode,OpenCode Zen/Go,oauth-subscription,cliproxyapi|sub2api,yes,high,consts|vocab,251,/workspace/sub2api/README.md:123
+trae,ByteDance Trae,oauth-subscription,cliproxyapi|sub2api,yes,low,vocab,5,/workspace/sub2api/frontend/src/i18n/locales/en/admin/accounts.ts:869

@@ -1,0 +1,60 @@
+repo,provider,display_name,kind,confidence,methods,evidence_count,first_evidence
+sub2api,openrouter,OpenRouter,aggregator,low,vocab,2,/workspace/sub2api/backend/internal/service/gateway_usage_billing.go:771
+sub2api,zai,Z.AI GLM,aggregator,low,vocab,1,/workspace/sub2api/backend/internal/service/cn_provider_quota_service.go:350
+sub2api,aliyun,Alibaba Cloud,first-party,high,consts,1,/workspace/sub2api/frontend/src/views/admin/SettingsView.vue:9927
+sub2api,anthropic,Anthropic,first-party,high,cases|consts|json|vocab,180,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:178
+sub2api,ark,Volcengine Ark,first-party,medium,markdown-host,1,/workspace/sub2api/docs/seedance-api.md:7
+sub2api,baidu,Baidu Qianfan,first-party,low,vocab,1,/workspace/sub2api/backend/internal/service/openai_model_mapping.go:55
+sub2api,bedrock,Amazon Bedrock,first-party,high,consts|json|vocab,36,/workspace/sub2api/backend/internal/domain/constants.go:62
+sub2api,dashscope,Alibaba DashScope,first-party,low,vocab,1,/workspace/sub2api/backend/internal/service/openai_gateway_cc_tool_call_identity.go:15
+sub2api,deepseek,DeepSeek,first-party,high,cases|consts|json|vocab,299,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:184
+sub2api,google,Google,first-party,high,cases|markdown-host|vocab,38,/workspace/sub2api/backend/ent/schema/auth_identity.go:20
+sub2api,grok,xAI Grok,first-party,high,cases|config|consts|vocab,1295,/workspace/sub2api/README.md:68
+sub2api,hunyuan,Tencent Hunyuan,first-party,low,vocab,1,/workspace/sub2api/backend/internal/service/openai_model_mapping.go:47
+sub2api,kimi,Moonshot Kimi,first-party,high,cases|consts|vocab,251,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:182
+sub2api,minimax,MiniMax,first-party,high,cases|consts|vocab,146,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:185
+sub2api,openai,OpenAI,first-party,high,cases|consts|json|markdown|vocab,341,/workspace/sub2api/README_JA.md:63
+sub2api,qwen,Alibaba Qwen,first-party,low,vocab,12,/workspace/sub2api/README.md:128
+sub2api,tencent,Tencent Hunyuan,first-party,high,consts,1,/workspace/sub2api/frontend/src/views/admin/SettingsView.vue:9925
+sub2api,vertex,Google Vertex AI,first-party,high,consts|json|vocab,11,/workspace/sub2api/backend/internal/service/batch_image.go:15
+sub2api,volcengine,Volcengine,first-party,medium,markdown-host|vocab,3,/workspace/sub2api/docs/seedance-api.md:45
+sub2api,xai,xAI,first-party,high,cases|vocab,3,/workspace/sub2api/backend/internal/pkg/xai/billing.go:16
+sub2api,xfspark,iFlytek Spark,first-party,high,consts|vocab,16,/workspace/sub2api/backend/ent/account.go:82
+sub2api,zhipu,Zhipu GLM,first-party,high,cases|consts|vocab,137,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:183
+sub2api,bmoplus,Bmoplus,infra:accounts,high,consts|markdown|vocab,9,/workspace/sub2api/README.md:67
+sub2api,qiniu,Qiniu,infra:aggregator,high,markdown,2,/workspace/sub2api/README.md:117
+sub2api,roxybrowser,Roxybrowser,infra:browser,high,consts|markdown|markdown-host|vocab,16,/workspace/sub2api/README.md:94
+sub2api,axisnow,Axisnow,infra:cdn,high,consts|markdown|markdown-host|vocab,16,/workspace/sub2api/README.md:157
+sub2api,veilx,Veilx,infra:cdn,high,consts|markdown|markdown-host|vocab,21,/workspace/sub2api/README.md:88
+sub2api,apimart,Apimart,infra:media,high,consts|markdown|vocab,10,/workspace/sub2api/README.md:152
+sub2api,bestproxy,Bestproxy,infra:proxy,high,consts|markdown|markdown-host|vocab,16,/workspace/sub2api/README.md:72
+sub2api,colaproxy,Colaproxy,infra:proxy,high,consts|markdown|markdown-host|vocab,17,/workspace/sub2api/README.md:167
+sub2api,duckip,Duckip,infra:proxy,high,consts|markdown|markdown-host|vocab,18,/workspace/sub2api/README.md:147
+sub2api,proxy4free,Proxy4Free,infra:proxy,high,consts|markdown|markdown-host|vocab,16,/workspace/sub2api/README.md:100
+sub2api,rapidproxy,Rapidproxy,infra:proxy,high,consts|markdown|markdown-host|vocab,21,/workspace/sub2api/README.md:132
+sub2api,swiftproxy,Swiftproxy,infra:proxy,high,consts|markdown|markdown-host|vocab,17,/workspace/sub2api/README.md:142
+sub2api,aigocode,Aigocode,infra:relay,high,consts|markdown|markdown-host|vocab,16,/workspace/sub2api/README.md:57
+sub2api,aimzoon,Aimzoon,infra:relay,high,consts|markdown|markdown-host|vocab,19,/workspace/sub2api/README.md:106
+sub2api,apikey,Apikey,infra:relay,high,consts|markdown-host|vocab,145,/workspace/sub2api/README.md:52
+sub2api,cctk,Cctk,infra:relay,medium,markdown-host,9,/workspace/sub2api/README.md:37
+sub2api,codex-everywhere,Codex Everywhere,infra:relay,high,markdown|vocab,9,/workspace/sub2api/README.md:62
+sub2api,etok,Etok,infra:relay,high,consts|markdown|markdown-host|vocab,15,/workspace/sub2api/README.md:47
+sub2api,fenno,Fenno,infra:relay,high,consts|markdown|vocab,10,/workspace/sub2api/README.md:122
+sub2api,haoai,Haoai,infra:relay,medium,markdown-host,6,/workspace/sub2api/README.md:137
+sub2api,lanox,Lanox,infra:relay,high,markdown|markdown-host,9,/workspace/sub2api/README.md:127
+sub2api,nagora,Nagora,infra:relay,high,consts|markdown|markdown-host|vocab,18,/workspace/sub2api/README.md:112
+sub2api,openmodel,Openmodel,infra:relay,high,consts|markdown|markdown-host|vocab,15,/workspace/sub2api/README.md:42
+sub2api,pateway,Pateway,infra:relay,high,consts|markdown|markdown-host|vocab,15,/workspace/sub2api/README.md:77
+sub2api,ppdog,Ppdog,infra:relay,medium,markdown-host,9,/workspace/sub2api/README.md:162
+sub2api,pptoken,Pptoken,infra:relay,high,consts|markdown|vocab,9,/workspace/sub2api/README.md:82
+sub2api,seedance,ByteDance Seedance,media,high,consts|vocab,19,/workspace/sub2api/README.md:128
+sub2api,aistudio,Google AI Studio,oauth-subscription,medium,markdown-host,1,/workspace/sub2api/deploy/README.md:377
+sub2api,antigravity,Google Antigravity,oauth-subscription,high,consts|markdown-host|vocab,672,/workspace/sub2api/README.md:827
+sub2api,claude,Anthropic Claude,oauth-subscription,low,vocab,44,/workspace/sub2api/backend/ent/schema/account.go:63
+sub2api,codebuddy,Tencent CodeBuddy,oauth-subscription,low,vocab,1,/workspace/sub2api/backend/internal/service/openai_gateway_scheduling.go:152
+sub2api,codex,OpenAI Codex,oauth-subscription,medium,markdown-host|vocab,863,/workspace/sub2api/README.md:38
+sub2api,cursor,Cursor,oauth-subscription,high,consts,1,/workspace/sub2api/frontend/src/views/HomeView.vue:260
+sub2api,gemini,Google Gemini,oauth-subscription,high,cases|config|consts|json|vocab,130,/workspace/sub2api/backend/ent/channelmonitor/channelmonitor.go:179
+sub2api,kiro,Amazon Kiro,oauth-subscription,high,consts|vocab,10,/workspace/sub2api/backend/internal/handler/openai_gateway_handler.go:765
+sub2api,opencode,OpenCode Zen/Go,oauth-subscription,low,vocab,234,/workspace/sub2api/README.md:123
+sub2api,trae,ByteDance Trae,oauth-subscription,low,vocab,2,/workspace/sub2api/frontend/src/i18n/locales/en/admin/accounts.ts:869
