@@ -1,0 +1,76 @@
+provider_id,name,api,plan_priced_models,total_models,sample_models
+nvidia,Nvidia,https://integrate.api.nvidia.com/v1,101,105,abacusai/dracarys-llama-3.1-70b-instruct; baai/bge-m3; black-forest-labs/flux.1-dev; black-forest-labs/flux_1-kontext-dev; black-forest-labs/flux_1-schnell; black-forest-labs/flux_2-klein-4b
+kenari,Kenari,https://kenari.id/v1,59,59,claude-fable-5; claude-opus-4-7; claude-opus-4-8; claude-opus-5; claude-sonnet-4-6; claude-sonnet-5
+opencode,OpenCode Zen,https://opencode.ai/zen/v1,32,107,big-pickle; deepseek-v4-flash-free; glm-4.7-free; glm-5-free; grok-code; hy3-free
+alibaba-token-plan,Alibaba Token Plan,https://token-plan.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1,28,28,MiniMax-M2.5; deepseek-v3.2; deepseek-v4-flash; deepseek-v4-flash-0731; deepseek-v4-pro; deepseek-v4-pro-0813
+alibaba-token-plan-cn,Alibaba Token Plan (China),https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1,28,28,MiniMax-M2.5; deepseek-v3.2; deepseek-v4-flash; deepseek-v4-flash-0731; deepseek-v4-pro; deepseek-v4-pro-0813
+kilo,Kilo Gateway,https://api.kilo.ai/api/gateway,26,378,cohere/north-mini-code:free; dots-studio/dots-3-note-preview:free; google/lyria-3-clip-preview; google/lyria-3-pro-preview; inclusionai/ling-3.0-flash-fin:free; inclusionai/ling-3.0-flash-sante:free
+gitlab,GitLab Duo,,25,25,duo-chat-fable-5; duo-chat-fable-5-1; duo-chat-gpt-5-1; duo-chat-gpt-5-2; duo-chat-gpt-5-2-codex; duo-chat-gpt-5-3-codex
+openrouter,OpenRouter,https://openrouter.ai/api/v1,24,371,cohere/north-mini-code:free; dots-studio/dots-3-note-preview:free; google/gemma-4-26b-a4b-it:free; google/gemma-4-31b-it:free; google/lyria-3-clip-preview; google/lyria-3-pro-preview
+scnet-token-plan,SCNet Token Plan,https://api.scnet.cn/api/llm/v1,19,19,DeepSeek-V4-Flash; DeepSeek-V4-Flash-0731; DeepSeek-V4-Pro; DeepSeek-V4-Pro-0813; DeepSeek-V4.1-Flash; GLM-5
+iflowcn,iFlow,https://apis.iflow.cn/v1,14,14,deepseek-r1; deepseek-v3; deepseek-v3.2; glm-4.6; kimi-k2; kimi-k2-0905
+requesty,Requesty,https://router.requesty.ai/v1,12,153,gemma-4-31b-it; laguna-m.1; laguna-xs.2; leanstral-1-5; leanstral-1-5@eu; ling-3.0-tiny
+inferx,InferX,https://model.inferx.net/endpoints/v1,12,12,Agents-A1; Devstral-2-123B-Instruct-2512-int4-AutoRound; Ornith-1.0-35B-FP8; Qwen3-Coder-Next-FP8; Qwen3-Coder-Next-FP8-no-thinking; Qwen3-Embedding-8B
+unorouter,UnoRouter,https://api.unorouter.com/v1,11,23,deepseek-v4-flash:free; deepseek-v4-pro:free; gemma-4-31b-it:free; glm-4.5-flash:free; glm-5.2:free; gpt-5.4:free
+alibaba-coding-plan-cn,Alibaba Coding Plan (China),https://coding.dashscope.aliyuncs.com/v1,10,12,MiniMax-M2.5; glm-4.7; glm-5; kimi-k2.5; qwen3-coder-next; qwen3-coder-plus
+vercel,Vercel AI Gateway,,10,375,inclusionai/ling-3.0-flash-fin; inclusionai/ling-3.0-flash-fin-free; inclusionai/ling-3.0-flash-sante; inclusionai/ling-3.0-flash-sante-free; inclusionai/ling-3.0-flash-vl; inclusionai/ling-3.0-flash-vl-free
+alibaba-coding-plan,Alibaba Coding Plan,https://coding-intl.dashscope.aliyuncs.com/v1,10,12,MiniMax-M2.5; glm-4.7; glm-5; kimi-k2.5; qwen3-coder-next; qwen3-coder-plus
+volcengine-coding-plan,Volcengine Ark Coding Plan,https://ark.cn-beijing.volces.com/api/coding/v3,10,10,deepseek-v4-flash; deepseek-v4-pro; doubao-seed-2.0-lite; doubao-seed-2.1-turbo; doubao-seed-evolving; glm-5.3
+qvac,QVAC,,9,9,gemma4-31b; gpt-oss-120b; gpt-oss-20b; qwen3.5-0.8b; qwen3.5-2b; qwen3.5-4b
+tencent-coding-plan,Tencent Coding Plan (China),https://api.lkeap.cloud.tencent.com/coding/v3,8,8,glm-5; hunyuan-2.0-instruct; hunyuan-2.0-thinking; hunyuan-t1; hunyuan-turbos; kimi-k2.5
+xiaomi-token-plan-cn,Xiaomi Token Plan (China),https://token-plan-cn.xiaomimimo.com/v1,7,7,mimo-v2-pro; mimo-v2-tts; mimo-v2.5; mimo-v2.5-pro; mimo-v2.5-tts; mimo-v2.5-tts-voiceclone
+llama,Llama,https://api.llama.com/compat/v1/,7,7,cerebras-llama-4-maverick-17b-128e-instruct; cerebras-llama-4-scout-17b-16e-instruct; groq-llama-4-maverick-17b-128e-instruct; llama-3.3-70b-instruct; llama-3.3-8b-instruct; llama-4-maverick-17b-128e-instruct-fp8
+zai-coding-plan,Z.AI Coding Plan,https://api.z.ai/api/coding/paas/v4,7,7,glm-4.7; glm-5-turbo; glm-5.2; glm-5.2-highspeed; glm-5.3; glm-5.3-flash
+modelscope,ModelScope,https://api-inference.modelscope.cn/v1,7,7,Qwen/Qwen3-235B-A22B-Instruct-2507; Qwen/Qwen3-235B-A22B-Thinking-2507; Qwen/Qwen3-30B-A3B-Instruct-2507; Qwen/Qwen3-30B-A3B-Thinking-2507; Qwen/Qwen3-Coder-30B-A3B-Instruct; ZhipuAI/GLM-4.5
+minimax-cn-coding-plan,MiniMax Token Plan (minimax.cn),https://api.minimax.cn/anthropic/v1,7,7,MiniMax-M2; MiniMax-M2.1; MiniMax-M2.5; MiniMax-M2.5-highspeed; MiniMax-M2.7; MiniMax-M2.7-highspeed
+xiaomi-token-plan-ams,Xiaomi Token Plan (Europe),https://token-plan-ams.xiaomimimo.com/v1,7,7,mimo-v2-pro; mimo-v2-tts; mimo-v2.5; mimo-v2.5-pro; mimo-v2.5-tts; mimo-v2.5-tts-voiceclone
+minimax-coding-plan,MiniMax Token Plan (minimax.io),https://api.minimax.io/anthropic/v1,7,7,MiniMax-M2; MiniMax-M2.1; MiniMax-M2.5; MiniMax-M2.5-highspeed; MiniMax-M2.7; MiniMax-M2.7-highspeed
+umans-ai-coding-plan,Umans AI Coding Plan,https://api.code.umans.ai/v1,7,7,umans-coder; umans-deepseek-v4-flash-0731; umans-deepseek-v4-pro-0813; umans-flash; umans-glm-5.3-flash; umans-kimi-k3
+xiaomi-token-plan-sgp,Xiaomi Token Plan (Singapore),https://token-plan-sgp.xiaomimimo.com/v1,7,7,mimo-v2-pro; mimo-v2-tts; mimo-v2.5; mimo-v2.5-pro; mimo-v2.5-tts; mimo-v2.5-tts-voiceclone
+nan,NaN,https://api.nan.builders/v1,7,7,deepseek-v4-flash; gemma4; glm5.3; glm5.3-flash; mimo-v2.5; qwen3.6
+pendra,Pendra,https://api.pendra.ai/api/v1,6,6,deepseek-v4-flash; glm-4.7-flash; gpt-oss:120b; llama3.3:70b; qwen3-coder:30b; qwen3.6:27b
+zenmux,ZenMux,https://zenmux.ai/api/v1,6,122,anthropic/claude-sonnet-5-free; moonshotai/kimi-k2.7-code-free; moonshotai/kimi-k3-free; stepfun/step-3.7-flash-free; z-ai/glm-4.6v-flash-free; z-ai/glm-4.7-flash-free
+aihubmix,AIHubMix,,5,82,coding-glm-5.1-free; coding-minimax-m2.7-free; ox-alpha; xiaomi-mimo-v2.5-free; xiaomi-mimo-v2.5-pro-free
+sensenova,SenseNova (China),https://token.sensenova.cn/v1,5,5,deepseek-v4-flash; deepseek-v4-pro; glm-5.2; kimi-k3; sensenova-6.8-flash-lite
+orcarouter,OrcaRouter,https://api.orcarouter.ai/v1,5,117,deepseek/deepseek-v4-flash-free; orcarouter/auto; orcarouter/free; tencent/hy3-free; z-ai/glm-5.3-flash-free
+atomic-chat,Atomic Chat,http://127.0.0.1:1337/v1,5,5,Meta-Llama-3_1-8B-Instruct-GGUF; Qwen3_5-9B-MLX-4bit; Qwen3_5-9B-Q4_K_M; gemma-4-E4B-it-IQ4_XS; gemma-4-E4B-it-MLX-4bit
+empiriolabs,EmpirioLabs AI,https://api.empiriolabs.ai/v1,4,62,gemma-3-27b; glm-4-5-flash; glm-4-6v-flash; glm-4-7-flash
+kimi-code-plan-global,Kimi For Coding (kimi.ai),https://api.kimi.ai/coding/v1,4,4,k3; k3-256k; kimi-for-coding; kimi-for-coding-highspeed
+kimi-code-plan-cn,Kimi For Coding (kimi.com),https://api.kimi.com/coding/v1,4,4,k3; k3-256k; kimi-for-coding; kimi-for-coding-highspeed
+siliconflow-cn,SiliconFlow (China),https://api.siliconflow.cn/v1,3,47,PaddlePaddle/PaddleOCR-VL-1.5; Qwen/Qwen3.5-4B; deepseek-ai/DeepSeek-OCR
+regolo-ai,Regolo AI,https://api.regolo.ai/v1,3,18,brick-v1-beta; deepseek-ocr-2; faster-whisper-large-v3
+poe,Poe,https://api.poe.com/v1,3,137,fireworks-ai/kimi-k2.5-fw; google/gemma-4-31b; openai/gpt-5.3-codex-spark
+poolside,Poolside,https://inference.poolside.ai/v1,3,3,poolside/laguna-m.1; poolside/laguna-s-2.1; poolside/laguna-xs-2.1
+zhipuai-coding-plan,Zhipu AI Coding Plan,https://open.bigmodel.cn/api/coding/paas/v4,3,4,glm-5.3; glm-5.3-flash; glm-5.3-highspeed
+llmgateway,DevPass (LLM Gateway),https://api.llmgateway.io/v1,3,193,atria-dawn-preview; auto; custom
+lmstudio,LMStudio,http://127.0.0.1:1234/v1,3,3,openai/gpt-oss-20b; qwen/qwen3-30b-a3b-2507; qwen/qwen3-coder-30b
+bothub,Bothub,https://openai.bothub.ru/v1,2,8,gemma-4-31b-it:free; nemotron-3-ultra-550b-a55b:free
+nano-gpt,NanoGPT,https://nano-gpt.com/api/v1,2,577,auto-model; nano-gpt-help
+nova,Nova,https://api.nova.amazon.com/v1,2,2,nova-2-lite-v1; nova-2-pro-v1
+alibaba-cn,Alibaba (China),https://dashscope.aliyuncs.com/compatible-mode/v1,2,90,deepseek-r1-distill-llama-8b; deepseek-r1-distill-qwen-1-5b
+ovhcloud,OVHcloud AI Endpoints,https://oai.endpoints.kepler.ai.cloud.ovh.net/v1,2,14,qwen3guard-gen-0.6b; qwen3guard-gen-8b
+google,Google,,2,39,lyria-3-clip-preview; lyria-3-pro-preview
+zhipuai,Zhipu AI,https://open.bigmodel.cn/api/paas/v4,2,16,glm-4.5-flash; glm-4.7-flash
+agnes,Agnes AI,https://apihub.agnes-ai.com/v1,2,3,agnes-2.0-flash; agnes-2.5-flash
+hetzner,Hetzner,https://inference.hetzner.com/api/v1,2,2,Qwen/Qwen3.6-35B-A3B-FP8; Qwen3.8-27B
+zai,Z.AI,https://api.z.ai/api/paas/v4,2,17,glm-4.5-flash; glm-4.7-flash
+tencent-tokenhub,Tencent TokenHub,https://tokenhub.tencentmaas.com/v1,2,3,hy3; hy3-preview
+cortecs,Cortecs,https://api.cortecs.ai/v1,2,106,qwen3guard-gen-0.6b; qwen3guard-gen-8b
+llmgateway-providers,LLM Gateway,https://api.llmgateway.io/v1,1,402,atria/atria-dawn-preview
+groq,Groq,,1,16,allam-2-7b
+zeldoc,Zeldoc,https://api.zeldoc.ai/v1,1,1,zdev
+llmtr,LLMTR,https://llmtr.com/v1,1,32,poolside/laguna-xs-2.1
+huggingface,Hugging Face,https://router.huggingface.co/v1,1,77,zai-org/GLM-4.7-Flash
+jiekou,Jiekou.AI,https://api.jiekou.ai/openai,1,61,xiaomimimo/mimo-v2-flash
+tokenrouter,TokenRouter,https://api.tokenrouter.com/v1,1,1,z-ai/glm-5.3-free
+standardcompute,Standard Compute,https://api.stdcmpt.com/v1,1,1,standardcompute
+infomaniak,Infomaniak,https://api.infomaniak.com/2/ai/${INFOMANIAK_PRODUCT_ID}/openai/v1,1,10,mini_lm_l12_v2
+merge-gateway,Merge Gateway,https://api-gateway.merge.dev/v1/ai-sdk,1,187,nvidia/nemotron-3.5-lightning-30b-a3b
+kuae-cloud-coding-plan,KUAE Cloud Coding Plan,https://coding-plan-endpoint.kuaecloud.net/v1,1,1,GLM-4.7
+amd,AMD,https://developer.amd.com.cn/radeon/api/v1,1,6,Qwen3.8-27B
+meganova,Meganova,https://api.meganova.ai/v1,1,19,mistralai/Mistral-Small-3.2-24B-Instruct-2506
+cohere,Cohere,,1,14,north-mini-code-1-0
+mistral,Mistral,,1,35,labs-devstral-small-2512
+opencode-go,OpenCode Go,https://opencode.ai/zen/go/v1,1,36,ox-alpha-free
+tencent-token-plan,Tencent Token Plan,https://api.lkeap.cloud.tencent.com/plan/v3,1,2,hy3
+lynkr,Lynkr,http://127.0.0.1:8081/v1,1,1,lynkr-auto

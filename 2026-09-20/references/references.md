@@ -131,3 +131,31 @@ config, `pricing/` = pricing and docs routes). The subject tree is cited at comm
     — evidence of what somebody believed or advertised, never evidence of what the code or
     the service does. Two claims above ("0.25× impossible", "pptoken did not exit-scam")
     are community belief, cited as belief.
+
+## Provider-support surface (added in the scope correction)
+
+34. **`Wei-Shaw/sub2api` `backend/internal/domain/constants.go:20-35`** — the first-class
+    platform enum (`anthropic`, `openai`, `gemini`, `antigravity`, `grok`, `kimi`, `zhipu`,
+    `deepseek`, `minimax`, `opencode_go`, `composite`) and, at `:55-63`, the account types
+    (`oauth`, `setup-token`, `apikey`, `upstream`, `bedrock`, `service_account`). The
+    `upstream` type (`:61`) is BYO base-url + API key, i.e. the unbounded provider path.
+35. **`backend/internal/service/upstream_models.go`** — `modelsDevRegistryURL =
+    "https://models.dev/api.json"` (`:23`), 6 h TTL (`:24`), fetcher `:532-575`, structs
+    `:61-88`, API/host matching `:643-720`. Note the struct carries **no cost field**, so
+    sub2api uses the registry for capability metadata only.
+36. **`backend/internal/config/config.go:2292`** — `pricing.remote_url` →
+    `raw.githubusercontent.com/Wei-Shaw/model-price-repo/main/model_prices_and_context_window.json`.
+37. **`Wei-Shaw/model-price-repo` README** — the catalog is a filtered (prefix-rules) sync of
+    the LiteLLM pricing file, rebuilt every 10 minutes. The filter is why the remote file has
+    only 13 provider tags despite LiteLLM's much larger set.
+38. **`https://models.dev/api.json`**, fetched 2026-09-20 through `api.rv.pkgforge.dev`
+    (4,710,664 B): **222 providers, 7,868 models**, 212 with cost data, 178 with ≥1 paid
+    model, 75 with ≥1 `cost: 0` route. third-party registry, not a sub2api document.
+39. **`frontend/src/components/account/credentialsBuilder.ts:373`** — `CN_BASE_URL_PRESETS`:
+    the concrete endpoints an operator can attach for kimi / zhipu / deepseek / minimax
+    (payg × coding × chat_completions/anthropic/responses), plus OpenCode Zen/Go.
+40. **Tracker merge-state** (`api/issues.json`) — Kiro #6777 open, Devin #7171 open, Cursor
+    #6289 open, Qoder #5035 open, qwen Token Plan #6748 open, MiniMax Token Plan #6404 open,
+    GitHub Copilot #1449 closed-unmerged; merged: antigravity #73, grok #3310, minimax
+    #6758, opencode #6747, ollama #4850/#6388/#6769, seedance #7247, bedrock #2642, vertex
+    #1618. "Open PR" is not "supported".

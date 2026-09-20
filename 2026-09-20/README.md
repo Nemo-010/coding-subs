@@ -14,6 +14,23 @@ citations: [references/references.md](references/references.md). Raw snapshots:
 
 ---
 
+## ⚠ Scope correction (added after review)
+
+**The tables in this README rank the 26 README sponsor rows, which is a sponsorship
+list, not sub2api's provider surface.** sub2api's actual provider support is much wider:
+ten first-class platforms, six account types (including a BYO-base-url `upstream` type),
+and the **models.dev registry it fetches — 222 providers, 7,868 models**. The full
+code-grounded study is in **[PROVIDER-SUPPORT.md](PROVIDER-SUPPORT.md)**, with
+[data/modelsdev-providers.csv](data/modelsdev-providers.csv),
+[data/cheapest-per-model.csv](data/cheapest-per-model.csv) and
+[data/subscription-plan-providers.csv](data/subscription-plan-providers.csv).
+Read that file for anything about "which providers sub2api supports"; read this README
+only for the sponsor-market pricing.
+
+---
+
+---
+
 ## ⛔ What this pass did NOT establish
 
 Read this before the ranking. It is the honest half of the document.

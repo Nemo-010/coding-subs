@@ -65,3 +65,18 @@ different site; the pass-directory date is the pin.
 - `Swiftproxy` pricing — HTTP 403 on both routes (recorded `UNKNOWN`, not "down").
 - `ETok` model pages (404) and the `APIKEY.FUN` / `PP.dog` / `Nagora` / `PPToken` docs
   subdomains (530) — the landing pages are what answered.
+
+## Not snapshotted (large third-party datasets, re-fetchable)
+
+The **models.dev registry** (`https://models.dev/api.json`, 4.7 MB) is not committed. It is
+what sub2api fetches at `service/upstream_models.go:23`, so the provider-support counts in
+[PROVIDER-SUPPORT.md](../PROVIDER-SUPPORT.md) derive from it. Re-fetch:
+
+```sh
+curl -s https://api.rv.pkgforge.dev/https://models.dev/api.json -o modelsdev.json
+```
+
+The derived tables **are** committed: `data/modelsdev-providers.csv`,
+`data/cheapest-per-model.csv`, `data/subscription-plan-providers.csv`. The remote pricing
+catalog (`Wei-Shaw/model-price-repo`) is likewise not committed; its URL is in
+`backend/internal/config/config.go:2292`.

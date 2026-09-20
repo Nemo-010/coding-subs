@@ -9,7 +9,7 @@ coding-agent usage by subscription** — model landscape, provider arbitrage, pu
 | Date | Report | Scope |
 |---|---|---|
 | **2026-09-13** | [2026-09-13/README.md](2026-09-13/README.md) | Full pass: 45-model landscape (AA snapshot), 44 access plans across 26 provider groups, workload tests, rankings |
-| **2026-09-20** | [2026-09-20/README.md](2026-09-20/README.md) | Relay/provider pass: the 26 providers advertised in `Wei-Shaw/sub2api`'s sponsor table, ranked by cheapest published plans, with free/cheap/reliable/deal categories |
+| **2026-09-20** | [2026-09-20/README.md](2026-09-20/README.md) | Relay/provider pass: the 26 providers advertised in `Wei-Shaw/sub2api`'s sponsor table, ranked by cheapest published plans, with free/cheap/reliable/deal categories. Provider-support surface (10 first-class platforms, 6 account types, the 222-provider `models.dev` registry sub2api fetches) is in [2026-09-20/PROVIDER-SUPPORT.md](2026-09-20/PROVIDER-SUPPORT.md) |
 
 Each pass directory contains the report (`README.md`), the underlying databases (`data/`),
 numbered citations with access dates (`references/`), and raw snapshots of primary sources
