@@ -29,6 +29,16 @@ only for the sponsor-market pricing. A second subject, `router-for-me/CLIProxyAP
 and the reconciled union of both are in
 **[RECONCILED-PROVIDERS.md](RECONCILED-PROVIDERS.md)**.
 
+**A fourth universe was added after a miss (2026-09-20, revision 2).** Neither gateway
+can contain a coding agent, because an agent reaches a gateway as a **client**, not as
+an upstream provider; and the 2026-09-13 pass enumerated coding *plans* from a fixed
+reading list, never the agent market. The category enumeration is in
+**[PROVIDER-BY-PROVIDER.md](PROVIDER-BY-PROVIDER.md)**, with
+[data/agents-universe.csv](data/agents-universe.csv). It records **18 agents absent from
+all three sources** — **Command Code** (`commandcode.ai`) and **Open Interpreter** first
+among them — and states the method correction: enumerate the category, do not search for
+a string.
+
 ---
 
 ---

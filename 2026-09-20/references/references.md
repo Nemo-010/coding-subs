@@ -188,3 +188,30 @@ config, `pricing/` = pricing and docs routes). The subject tree is cited at comm
     PackyCode, FluxA+Baidu AgenticPlan. Sponsor endpoints all answered 200 through
     `api.rv.pkgforge.dev`; Aiberm/PackyAPI pricing is client-side and unreadable
     from static HTML; Cubence `/pricing` serves a static base-rate table.
+50. **Command Code** (`commandcode.ai`, pricing page) — fetched 2026-09-20 through
+    `api.rv.pkgforge.dev`. Vendor's own page: Go $1, GOAT $10, Pro $20, Max 10× $100,
+    Max 20× $200 per month; API plan $15 + PAYG zero markup; Teams $40; Enterprise
+    custom. Claims taste-1 meta-model, 99%+ cache hits, 100K+ developers, 40K+ paid
+    customers, 357 releases. Text extract: `sources/agents/commandcode-pricing.txt`.
+    Grade: **ADVERTISED (own page, not independently verified)**.
+51. **Absence check (Command Code / Open Interpreter)** — `grep -rIn -iE 'command ?[-_ ]?code'`
+    and `'open ?interpreter'` over `Wei-Shaw/sub2api` and `router-for-me/CLIProxyAPI`
+    return nothing; neither name appears in the 2026-09-13 pass either (`grep -rIn` over
+    `2026-09-13/`). Absence was established by category enumeration (below), not by this
+    grep, because a negative grep cannot rule a provider out.
+52. **Coding-agent category enumeration** — GitHub search API (`gh api
+    search/repositories`, sort=stars) for `coding agent`, `ai coding assistant`,
+    `cli coding agent`, `agentic coding`, `terminal coding agent`, `ai code review
+    agent`, `code editor ai`; 214 distinct repositories collected. Cross-checked against
+    both repos with **product-context** patterns. Result: `data/agents-universe.csv`
+    (30 agents; 18 absent from all three sources).
+53. **Method finding — bare-token false positives**: a bare `cursor` matches 136
+    occurrences in sub2api (all pagination cursors) and a bare `continue` matches 557
+    (the Go keyword). The previous pass's string search shares this defect in the
+    opposite direction: it under-matches a real provider while a naive token scan
+    over-matches. Both are fixed by requiring a product-context pattern.
+54. **Structural finding**: a coding agent cannot appear as a *provider* in either
+    repo. sub2api reaches agents through the `upstream` account type
+    (`domain/constants.go:55-63`) and CLIProxyAPI through OpenAI-compatible config
+    (`config.example.yaml:100-131`); in both, the agent is a **client**. This is why
+    the two-repo universe was structurally incapable of surfacing Command Code.

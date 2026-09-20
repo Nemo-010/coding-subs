@@ -9,7 +9,7 @@ coding-agent usage by subscription** — model landscape, provider arbitrage, pu
 | Date | Report | Scope |
 |---|---|---|
 | **2026-09-13** | [2026-09-13/README.md](2026-09-13/README.md) | Full pass: 45-model landscape (AA snapshot), 44 access plans across 26 provider groups, workload tests, rankings |
-| **2026-09-20** | [2026-09-20/README.md](2026-09-20/README.md) | Relay/provider pass over `Wei-Shaw/sub2api` **and** `router-for-me/CLIProxyAPI`: sponsor markets ranked by cheapest published plans. Provider-support surface (first-class platforms, account types, the 222-provider `models.dev` registry) in [PROVIDER-SUPPORT.md](2026-09-20/PROVIDER-SUPPORT.md); reconciled union of both repos (72 providers) in [RECONCILED-PROVIDERS.md](2026-09-20/RECONCILED-PROVIDERS.md) |
+| **2026-09-20** | [2026-09-20/README.md](2026-09-20/README.md) | Relay/provider pass over `Wei-Shaw/sub2api` **and** `router-for-me/CLIProxyAPI`: sponsor markets ranked by cheapest published plans. Provider-support surface (first-class platforms, account types, the 222-provider `models.dev` registry) in [PROVIDER-SUPPORT.md](2026-09-20/PROVIDER-SUPPORT.md); reconciled union of both repos (72 providers) in [RECONCILED-PROVIDERS.md](2026-09-20/RECONCILED-PROVIDERS.md); and the coding-agent/harness universe neither gateway can contain (agents are clients, not upstreams) in [PROVIDER-BY-PROVIDER.md](2026-09-20/PROVIDER-BY-PROVIDER.md) — 30 agents, 18 absent from all three sources, incl. Command Code and Open Interpreter |
 
 Each pass directory contains the report (`README.md`), the underlying databases (`data/`),
 numbered citations with access dates (`references/`), and raw snapshots of primary sources
