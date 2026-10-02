@@ -140,6 +140,59 @@ def main() -> int:
         iis = [r["intelligenceIndex"] for r in aa]
         check(iis == sorted(iis, reverse=True), f"{cand.name} not sorted by II desc")
 
+    # --- CSV structural integrity: header width must match every row ---------
+    # A row with more fields than the header silently shifts every trailing
+    # column, so status/source_quality land in the wrong place and DictReader
+    # hides the extra cells under a None key. That is how a price table shipped
+    # six broken rows past "all checks passed".
+    for cpath in sorted((pass_dir / "data").glob("*.csv")):
+        with cpath.open(newline="") as f:
+            raw = list(csv.reader(f))
+        if not raw:
+            continue
+        width = len(raw[0])
+        for i, row in enumerate(raw[1:], start=2):
+            if len(row) != width:
+                check(False, f"{cpath.name}:{i} has {len(row)} fields, header has {width}"
+                             f" (columns from field {width} onward are shifted)")
+        # a well-formed file also has no unnamed/duplicate columns
+        check(all(h.strip() for h in raw[0]), f"{cpath.name}: empty column name in header")
+        check(len(set(raw[0])) == width, f"{cpath.name}: duplicate column name in header")
+
+    # --- cost table arithmetic must close --------------------------------------
+    # Every row asserts price_usd_month, monthly_tokens_low and usd_per_mtok_low.
+    # These are the same quantity in three units, so they must agree; a row whose
+    # implied price differs from its stated one is a derivation error, not a
+    # rounding difference. This is the check that would have caught publishing
+    # $0.0013/M off a request-count column.
+    cpt = pass_dir / "data" / "cost-per-usable-token.csv"
+    if cpt.is_file():
+        with cpt.open(newline="") as f:
+            crows = list(csv.DictReader(f))
+        for r in crows:
+            plan = r.get("plan", "?")
+            tok, per, price = r.get("monthly_tokens_low", ""), r.get("usd_per_mtok_low", ""), r.get("price_usd_month", "")
+            if "UNKNOWN" in tok.upper() or "UNKNOWN" in per.upper() or not tok.strip() or not per.strip():
+                continue  # honestly unknown; the report must say so, the arithmetic cannot
+            try:
+                tok_f, per_f, price_f = float(tok), float(per), float(price)
+            except ValueError:
+                failures.append(f"{plan}: non-numeric cost row ({tok!r}, {per!r}, {price!r})")
+                continue
+            if tok_f <= 0 or per_f <= 0:
+                continue
+            # the three cells are one quantity in three units and must agree to
+            # within 5%. The only sanctioned gap is a vendor-published effective-
+            # usage multiplier, which the row must name in capacity_basis.
+            implied = price_f / (tok_f / 1e6)
+            if abs(per_f - implied) / max(implied, 1e-9) > 0.05:
+                named = any(k in r.get("capacity_basis", "").lower()
+                            for k in ("effective usage", "multiplier", "x further", "doubled"))
+                if not named:
+                    failures.append(
+                        f"{plan}: states ${per_f}/M but {tok_f/1e6:,.0f}M tokens for ${price_f} "
+                        f"implies ${implied:.4f}/M ({implied/per_f:.2f}x) — reconcile or name the multiplier")
+
     # --- report ---
     report = (pass_dir / "README.md").read_text()
     check("BEST DEAL FOUND" in report, "report missing section: BEST DEAL FOUND")

@@ -114,9 +114,9 @@ THIRD-PARTY = a study we did not run; UNKNOWN = never published.
 | GLM Lite (GLM-5.3-Flash, off-peak) | $18 | 1,264M | **$0.014** | HIGH |
 | GLM Max (GLM-5.3-Flash, off-peak) | $160 | 17,731M | **$0.009** | HIGH |
 | GLM Pro (GLM-5.3-Flash, off-peak) | $72 | 7,598M | $0.009 | HIGH |
-| OpenCode Go (MiMo-V2.6-Flash) | $10 | 7,878M (monthly column) / 34,200M (weekly column) | **$0.0013 – $0.0008** | MEDIUM — **CORRECTED**, see below |
-| OpenCode Go Plus (MiMo-V2.6-Flash ceiling) | $40 | 15,756M | $0.0025 | MEDIUM |
-| Command Code GOAT (DeepSeek V4.1 Flash allowance) | $10 | 6,211M | $0.0016 | MEDIUM |
+| OpenCode Go (Muse Spark 1.3 Contributor) | $10 | 480M | **$0.0208** | HIGH — from vendor token price x ceiling |
+| OpenCode Go Plus (Muse Spark 1.3 Contributor) | $40 | 960M | $0.0417 | HIGH |
+| Command Code GOAT | $10 | UNKNOWN | — | **WITHDRAWN** (credits, not tokens) |
 | MiniMax Ultra | $132 | 9,800M | $0.013 | THIRD-PARTY |
 | MiniMax Max | $55 | 5,100M | $0.011 | THIRD-PARTY |
 | MiniMax Plus | $22 | 1,700M | $0.013 | THIRD-PARTY |
@@ -129,14 +129,20 @@ Two things to read carefully. First, the per-model ceilings on OpenCode Go and C
 column is named. Second, the third-party Claude and MiniMax token figures are *saturated-use*
 back-calculations; using half the allowance doubles the real price.
 
-**A correction this pass made to itself.** The OpenCode Go row was first published at $0.0013/M by
-dividing the vendor's *monthly* request column. The vendor's three window columns do not reconcile:
-for MiMo-V2.6-Flash it lists 30,100 requests / 5 h, 75,200 / week and 150,400 / month, and
-150,400 ÷ 75,200 = **2.0** when a month is 4.3 weeks. Reading the weekly column instead gives
-**~$260/month of ceiling, $0.0008/M**. Both readings are now printed, and the row says the grid is
-self-inconsistent rather than picking the flattering column. Still the cheapest verified token price
-in this market — and the point is that this repo's own table needed the same scrutiny it applies to
-vendors.
+**Corrections this pass made to itself — eight rows, not one.** The OpenCode Go row was published at
+$0.0013/M, derived by dividing a *request-count* column. That is not a price. The vendor publishes
+per-model **token prices** ($0.14/$0.28 per M for MiMo-V2.6-Flash) *and* a monthly **$ ceiling**
+($60), so the figure is computable directly: $10 ÷ (60 ÷ blended-price) = **$0.0208/M**, off by
+**16x**. The row now derives from the vendor's token price, and the cheapest model on the plan is
+Muse Spark 1.3 Contributor, not MiMo.
+
+Worse, an arithmetic sweep found the same error class in **seven more rows**: six GLM rows and one
+Claude row stated a $/M that did not match the price and token count on the same line — the GLM
+figures were 2.0x out because the token count came from the *campaign-doubled* allowance while the
+price was divided by the undoubled plan. `tools/validate.py` now checks that every cost row's three
+cells agree to within 5%; against the pre-fix tree it fails **8 times**. The Command Code GOAT row
+was **withdrawn** entirely: the vendor sells *credits with effective-usage multipliers*, not tokens,
+so no honest tokens-per-dollar figure exists.
 
 ## Workload test — 52.5M tokens/month (15M in + 37.5M out)
 
