@@ -21,7 +21,7 @@ Citations: [references/references.md](references/references.md). Raw snapshots:
 |---|---|---|
 | Cheapest large allowance per dollar | **Z.ai GLM Coding Plan Lite — $18/mo, up to 1,264M GLM-5.3-Flash tokens/month off-peak (632M peak-billed).** Campaign extended to 2026-10-07. | DOCUMENTED (first-party credit table) |
 | Best measured value per dollar | **SuperGrok — $30/mo buys ≈190× its price in Grok 4.7 API usage at the weekly meter (≈$5,700 list).** | MEASURED (third-party meter study) |
-| Best *verified token price* | **OpenCode Go — $10/mo, up to $60/month of list-value usage on open models; MiMo-V2.6-Flash works out to ~$0.0013/M token.** | DOCUMENTED (first-party per-model grid) |
+| Best *verified token price* | **OpenCode Go — $10/mo on open models; MiMo-V2.6-Flash is $0.0013–$0.0008/M depending on which of the vendor's own window columns you read. See the correction below.** | DOCUMENTED (first-party grid, self-inconsistent) |
 | Best free entry that needs no card | **NVIDIA NIM (40 RPM on 100+ models, incl. DeepSeek V4.1 Flash and GLM-5.3), Gemini API free tier, Groq free plan.** | THIRD-PARTY-VERIFIED (dated) |
 | Best free coding agent without a paid plan | **Cline / Aider (BYOK), Kiro Free (50 credits/month), Gemini CLI free tier (1,000 requests/day).** | THIRD-PARTY-VERIFIED (dated) |
 
@@ -49,7 +49,30 @@ cost-per-token without assuming a cache-hit rate.
 Twelve days, and the top of the market moved: **every frontier lab shipped a new flagship**, and
 the cheap end of the open-model market got a documented price grid instead of marketing.
 
-## Fresh research: measured subscription multipliers
+## Fresh research: anonymous access, measured
+
+Everything above is re-verification — the same sources fetched and diffed. The new research in this
+pass is a **measurement**: 25 free-tier endpoints probed with real unauthenticated requests, three
+rounds each.
+
+**One of 25 answers an agent with no account, no card and no key. Twenty-two of the rest are not
+down — they are gated (401/403).** A directory calling them "free" describes the price, not the
+access, and for an anonymous caller those are different facts. Six endpoints publish a full
+`/models` catalogue anonymously (NVIDIA NIM 81 models, Hugging Face 134, OrcaRouter 205, AIHubMix
+417, DeepInfra 183) and then refuse to serve a single token.
+
+The one that works, `space-bunny-free` on OpenCode Zen, is characterised in
+[ANON-ACCESS-PROBE.md](ANON-ACCESS-PROBE.md): it returned a correct unified diff for a bug-fix task,
+and it **billed 89,063 prompt tokens for a ~400,000-character prompt it had evidently read** (the
+needle was retrieved) while returning an empty completion. Eleven of the twelve sibling `-free`
+models on the same gateway return "free tier can only be used from within OpenCode" or a country
+block to an external caller.
+
+That probe also **caught an error in this pass's own table** (see the correction below the
+cost-per-token table): the OpenCode Go $0.0013/M row came from dividing the vendor's monthly column,
+and the vendor's own monthly and weekly columns disagree by 2.0x against 4.3 weeks per month.
+
+## Measured subscription multipliers
 
 The upstream issue [#2](https://github.com/talaria0101/coding-subs/issues/2) asks for *adjusted / real*
 usage. This pass evaluated the two repos offered there and adopts one class of evidence from them:
@@ -91,7 +114,7 @@ THIRD-PARTY = a study we did not run; UNKNOWN = never published.
 | GLM Lite (GLM-5.3-Flash, off-peak) | $18 | 1,264M | **$0.014** | HIGH |
 | GLM Max (GLM-5.3-Flash, off-peak) | $160 | 17,731M | **$0.009** | HIGH |
 | GLM Pro (GLM-5.3-Flash, off-peak) | $72 | 7,598M | $0.009 | HIGH |
-| OpenCode Go (MiMo-V2.6-Flash ceiling) | $10 | 7,878M | **$0.0013** | MEDIUM (per-model grid) |
+| OpenCode Go (MiMo-V2.6-Flash) | $10 | 7,878M (monthly column) / 34,200M (weekly column) | **$0.0013 – $0.0008** | MEDIUM — **CORRECTED**, see below |
 | OpenCode Go Plus (MiMo-V2.6-Flash ceiling) | $40 | 15,756M | $0.0025 | MEDIUM |
 | Command Code GOAT (DeepSeek V4.1 Flash allowance) | $10 | 6,211M | $0.0016 | MEDIUM |
 | MiniMax Ultra | $132 | 9,800M | $0.013 | THIRD-PARTY |
@@ -105,6 +128,15 @@ Two things to read carefully. First, the per-model ceilings on OpenCode Go and C
 **per model** — a reader gets that ceiling on one model, not the sum, which is why the "best model"
 column is named. Second, the third-party Claude and MiniMax token figures are *saturated-use*
 back-calculations; using half the allowance doubles the real price.
+
+**A correction this pass made to itself.** The OpenCode Go row was first published at $0.0013/M by
+dividing the vendor's *monthly* request column. The vendor's three window columns do not reconcile:
+for MiMo-V2.6-Flash it lists 30,100 requests / 5 h, 75,200 / week and 150,400 / month, and
+150,400 ÷ 75,200 = **2.0** when a month is 4.3 weeks. Reading the weekly column instead gives
+**~$260/month of ceiling, $0.0008/M**. Both readings are now printed, and the row says the grid is
+self-inconsistent rather than picking the flattering column. Still the cheapest verified token price
+in this market — and the point is that this repo's own table needed the same scrutiny it applies to
+vendors.
 
 ## Workload test — 52.5M tokens/month (15M in + 37.5M out)
 

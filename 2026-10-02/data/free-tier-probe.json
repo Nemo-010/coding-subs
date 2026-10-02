@@ -1,0 +1,987 @@
+{
+  "date": "2026-10-02",
+  "method": "unauthenticated POST /chat/completions (or /api/chat, or :generateContent) with max_tokens=1; no credentials read from anywhere",
+  "endpoints": 25,
+  "rounds": 3,
+  "summary": {
+    "NVIDIA NIM": {
+      "models_probe": {
+        "status": 200,
+        "ms": 377,
+        "err": null,
+        "model_count": 81,
+        "class": "ANON_OK"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 281,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 297,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 268,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Groq": {
+      "models_probe": {
+        "status": 403,
+        "ms": 55,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 403,
+          "ms": 61,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 403,
+          "ms": 53,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 403,
+          "ms": 50,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Google AI Studio": {
+      "models_probe": {
+        "status": 403,
+        "ms": 233,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 403,
+          "ms": 202,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 403,
+          "ms": 195,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 403,
+          "ms": 212,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Cloudflare Workers AI": {
+      "models_probe": {
+        "status": 405,
+        "ms": 78,
+        "err": null,
+        "model_count": null,
+        "class": "HTTP_405"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "NO_SUCH_ROUTE_OR_MODEL": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 404,
+          "ms": 88,
+          "err": null,
+          "class": "NO_SUCH_ROUTE_OR_MODEL",
+          "total_tokens": null
+        },
+        {
+          "status": 404,
+          "ms": 86,
+          "err": null,
+          "class": "NO_SUCH_ROUTE_OR_MODEL",
+          "total_tokens": null
+        },
+        {
+          "status": 404,
+          "ms": 85,
+          "err": null,
+          "class": "NO_SUCH_ROUTE_OR_MODEL",
+          "total_tokens": null
+        }
+      ]
+    },
+    "OpenRouter": {
+      "models_probe": {
+        "status": null,
+        "ms": 144,
+        "err": "JSONDecodeError",
+        "model_count": null,
+        "class": "UNREACHABLE (JSONDecodeError)"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 69,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 62,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 69,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Hugging Face router": {
+      "models_probe": {
+        "status": 200,
+        "ms": 419,
+        "err": null,
+        "model_count": 134,
+        "class": "ANON_OK"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 235,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 84,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 225,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "OrcaRouter": {
+      "models_probe": {
+        "status": 200,
+        "ms": 934,
+        "err": null,
+        "model_count": 205,
+        "class": "ANON_OK"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 280,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 277,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 430,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Onomeo": {
+      "models_probe": {
+        "status": 401,
+        "ms": 399,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 184,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 175,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 273,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Empero": {
+      "models_probe": {
+        "status": 503,
+        "ms": 767,
+        "err": null,
+        "model_count": null,
+        "class": "HTTP_503"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "HTTP_503": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 503,
+          "ms": 314,
+          "err": null,
+          "class": "HTTP_503",
+          "total_tokens": null
+        },
+        {
+          "status": 503,
+          "ms": 291,
+          "err": null,
+          "class": "HTTP_503",
+          "total_tokens": null
+        },
+        {
+          "status": 503,
+          "ms": 351,
+          "err": null,
+          "class": "HTTP_503",
+          "total_tokens": null
+        }
+      ]
+    },
+    "BazaarLink": {
+      "models_probe": {
+        "status": 200,
+        "ms": 1377,
+        "err": null,
+        "model_count": 124,
+        "class": "ANON_OK"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 920,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 278,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 277,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Token Harbor": {
+      "models_probe": {
+        "status": 403,
+        "ms": 547,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 403,
+          "ms": 420,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 403,
+          "ms": 435,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 403,
+          "ms": 423,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "AIHubMix": {
+      "models_probe": {
+        "status": 200,
+        "ms": 417,
+        "err": null,
+        "model_count": 417,
+        "class": "ANON_OK"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 224,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 229,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 204,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "TokenRouter": {
+      "models_probe": {
+        "status": 401,
+        "ms": 926,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 950,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 874,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 874,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Vercel AI Gateway": {
+      "models_probe": {
+        "status": null,
+        "ms": 515,
+        "err": "JSONDecodeError",
+        "model_count": null,
+        "class": "UNREACHABLE (JSONDecodeError)"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 309,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 308,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 308,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "OpenCode Zen": {
+      "models_probe": {
+        "status": 200,
+        "ms": 296,
+        "err": null,
+        "model_count": 85,
+        "class": "ANON_OK"
+      },
+      "anon_ok_rounds": 3,
+      "rounds": 3,
+      "classes": {
+        "ANON_OK": 3
+      },
+      "median_ms_ok": 1031,
+      "tokens_seen": [
+        158
+      ],
+      "runs": [
+        {
+          "status": 200,
+          "ms": 1031,
+          "err": null,
+          "class": "ANON_OK",
+          "total_tokens": 158
+        },
+        {
+          "status": 200,
+          "ms": 990,
+          "err": null,
+          "class": "ANON_OK",
+          "total_tokens": 158
+        },
+        {
+          "status": 200,
+          "ms": 1656,
+          "err": null,
+          "class": "ANON_OK",
+          "total_tokens": 158
+        }
+      ]
+    },
+    "AMD Token Factory": {
+      "models_probe": {
+        "status": 401,
+        "ms": 910,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 921,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 856,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 824,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Mistral API": {
+      "models_probe": {
+        "status": 401,
+        "ms": 234,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 232,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 222,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 226,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Cerebras": {
+      "models_probe": {
+        "status": 403,
+        "ms": 343,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 136,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 136,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 137,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Cohere": {
+      "models_probe": {
+        "status": 401,
+        "ms": 346,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 245,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 321,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 200,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "DeepInfra": {
+      "models_probe": {
+        "status": 200,
+        "ms": 958,
+        "err": null,
+        "model_count": 183,
+        "class": "ANON_OK"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 365,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 369,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 372,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Fireworks AI": {
+      "models_probe": {
+        "status": 401,
+        "ms": 471,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 416,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 318,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 327,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Together AI": {
+      "models_probe": {
+        "status": 403,
+        "ms": 94,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 403,
+          "ms": 51,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 403,
+          "ms": 55,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 403,
+          "ms": 54,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "SiliconFlow INTL": {
+      "models_probe": {
+        "status": 401,
+        "ms": 519,
+        "err": null,
+        "model_count": null,
+        "class": "AUTH_REQUIRED"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 225,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 201,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 236,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "Ollama Cloud": {
+      "models_probe": {
+        "status": 200,
+        "ms": 165,
+        "err": null,
+        "model_count": 17,
+        "class": "ANON_OK"
+      },
+      "anon_ok_rounds": 0,
+      "rounds": 3,
+      "classes": {
+        "AUTH_REQUIRED": 3
+      },
+      "median_ms_ok": null,
+      "tokens_seen": [],
+      "runs": [
+        {
+          "status": 401,
+          "ms": 220,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 186,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        },
+        {
+          "status": 401,
+          "ms": 169,
+          "err": null,
+          "class": "AUTH_REQUIRED",
+          "total_tokens": null
+        }
+      ]
+    },
+    "OpenCode Zen (no key)": {
+      "models_probe": {
+        "status": 200,
+        "ms": 253,
+        "err": null,
+        "model_count": 85,
+        "class": "ANON_OK"
+      },
+      "anon_ok_rounds": 3,
+      "rounds": 3,
+      "classes": {
+        "ANON_OK": 3
+      },
+      "median_ms_ok": 1323,
+      "tokens_seen": [
+        158
+      ],
+      "runs": [
+        {
+          "status": 200,
+          "ms": 1117,
+          "err": null,
+          "class": "ANON_OK",
+          "total_tokens": 158
+        },
+        {
+          "status": 200,
+          "ms": 1724,
+          "err": null,
+          "class": "ANON_OK",
+          "total_tokens": 158
+        },
+        {
+          "status": 200,
+          "ms": 1323,
+          "err": null,
+          "class": "ANON_OK",
+          "total_tokens": 158
+        }
+      ]
+    }
+  }
+}

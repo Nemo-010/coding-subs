@@ -54,3 +54,5 @@ zai-plan-update-announcement.md,https://docs.z.ai/devpack/transition.md,200,5323
 zai-teamplan.md,https://docs.z.ai/devpack/teamplan.md,200,10353,246b67a7efbbcab3164a7cb678fcfb4c5abf75275fc31a37bfe0fb82869f5ff2
 zed-pricing.html,https://zed.dev/pricing,200,546681,d72732493bb550454610da6b960a01e8060041d271c463ce0ebc3b7f94ad1b4a
 (2026-09-20 comparison baseline),,200,23283521,n/a
+tools/probe-free-tiers.py,"probe harness, not a source snapshot",n/a,10943,7774ade37b2c6dc01effc9ec98112b43943cdbf1eb2db74624a4fc7b7928d631
+2026-10-02/data/free-tier-probe.json,probe output (25 endpoints x 3 rounds),n/a,21065,edccc4dd4819cc92bee61d80a5b0fbdb66d725fc871adaccad5060bdcb1bb608
