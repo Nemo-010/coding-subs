@@ -1,0 +1,114 @@
+[
+  {
+    "approx_target": 428,
+    "file_tokens": 3468,
+    "runs": [
+      {
+        "turns": 10,
+        "in_tokens": 42039,
+        "solved": true,
+        "cache_frac": 0.734
+      },
+      {
+        "turns": 7,
+        "in_tokens": 19409,
+        "solved": true,
+        "cache_frac": 0.69
+      },
+      {
+        "turns": 11,
+        "in_tokens": 46403,
+        "solved": true,
+        "cache_frac": 0.73
+      }
+    ],
+    "in_mean": 35950,
+    "in_min": 19409,
+    "in_max": 46403,
+    "solved": 3
+  },
+  {
+    "approx_target": 4028,
+    "file_tokens": 32268,
+    "runs": [
+      {
+        "turns": 7,
+        "in_tokens": 99151,
+        "solved": true,
+        "cache_frac": 0.628
+      },
+      {
+        "turns": 10,
+        "in_tokens": 358835,
+        "solved": true,
+        "cache_frac": 0.735
+      },
+      {
+        "turns": 8,
+        "in_tokens": 132076,
+        "solved": true,
+        "cache_frac": 0.674
+      }
+    ],
+    "in_mean": 196687,
+    "in_min": 99151,
+    "in_max": 358835,
+    "solved": 3
+  },
+  {
+    "approx_target": 16028,
+    "file_tokens": 134886,
+    "runs": [
+      {
+        "turns": 6,
+        "in_tokens": 540979,
+        "solved": true,
+        "cache_frac": 0.641
+      },
+      {
+        "turns": 8,
+        "in_tokens": 812120,
+        "solved": true,
+        "cache_frac": 0.731
+      },
+      {
+        "turns": 8,
+        "in_tokens": 812120,
+        "solved": true,
+        "cache_frac": 0.731
+      }
+    ],
+    "in_mean": 721739,
+    "in_min": 540979,
+    "in_max": 812120,
+    "solved": 3
+  },
+  {
+    "approx_target": 65828,
+    "file_tokens": 563166,
+    "runs": [
+      {
+        "turns": 6,
+        "in_tokens": 1691029,
+        "solved": true,
+        "cache_frac": 0.62
+      },
+      {
+        "turns": 7,
+        "in_tokens": 2817977,
+        "solved": true,
+        "cache_frac": 0.692
+      },
+      {
+        "turns": 6,
+        "in_tokens": 1691033,
+        "solved": true,
+        "cache_frac": 0.62
+      }
+    ],
+    "in_mean": 2066679,
+    "in_min": 1691029,
+    "in_max": 2817977,
+    "solved": 3
+  }
+]

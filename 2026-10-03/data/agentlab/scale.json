@@ -1,0 +1,54 @@
+[
+  {
+    "target_lines": 50,
+    "file_lines": 74,
+    "file_tokens": 428,
+    "turns": 7,
+    "in_tokens": 4173,
+    "out_tokens": 75,
+    "solved": true,
+    "read_calls": 2,
+    "vendor_cached_total": 4173,
+    "cache_frac_mean": 0.696,
+    "cache_frac_last": 0.969
+  },
+  {
+    "target_lines": 500,
+    "file_lines": 704,
+    "file_tokens": 4028,
+    "turns": 7,
+    "in_tokens": 18145,
+    "out_tokens": 75,
+    "solved": true,
+    "read_calls": 2,
+    "vendor_cached_total": 15020,
+    "cache_frac_mean": 0.675,
+    "cache_frac_last": 0.9936
+  },
+  {
+    "target_lines": 2000,
+    "file_lines": 2804,
+    "file_tokens": 16028,
+    "turns": 7,
+    "in_tokens": 82273,
+    "out_tokens": 125,
+    "solved": true,
+    "read_calls": 2,
+    "vendor_cached_total": 84493,
+    "cache_frac_mean": 0.691,
+    "cache_frac_last": 0.9983
+  },
+  {
+    "target_lines": 8000,
+    "file_lines": 11204,
+    "file_tokens": 65828,
+    "turns": 7,
+    "in_tokens": 265445,
+    "out_tokens": 125,
+    "solved": true,
+    "read_calls": 2,
+    "vendor_cached_total": 209114,
+    "cache_frac_mean": 0.674,
+    "cache_frac_last": 0.9996
+  }
+]

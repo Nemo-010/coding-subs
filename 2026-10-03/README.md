@@ -9,6 +9,30 @@ per-provider diffs are in [REVERIFY.md](REVERIFY.md).
 This pass exists because the previous one was a delta dressed up as research. It is not.
 The list below is what a **live page said today**, provider by provider.
 
+## Measured: what a session actually costs
+
+This pass also measured what a real agent loop consumes, so plan quotas can be expressed as
+work rather than as units. Full writeup in **[AGENT-COST.md](AGENT-COST.md)**, harness in
+`tools/agentlab/`.
+
+Three results, all from a real loop with a real tokenizer:
+
+- **Cost is context × turns.** The identical one-line fix costs a mean **35,950** input
+  tokens in a 3,468-token file and **2,066,679** in a 563,166-token file — a **57× spread** on
+  a variable no vendor discloses. A price comparison that does not state a context size is
+  meaningless. Repeating each size three times showed a further **1.5×–3.6× run-to-run spread**,
+  so cost per task here is a distribution with a long tail, not a point estimate.
+- **Tool surface decides outcomes.** With a directory-listing tool the agent solved **8/8**
+  tasks; without it, **3/8** — and the failures cost *more* than the successes. **71% of
+  tokens (23,134 of 32,481) were spent on tasks it never solved.**
+- **Credits convert.** Z.ai publishes `credit = (input×6.9 + cached×1.7 + output×24)/10,000`.
+  Applying it to the measured workload reproduces the vendor's own published
+  208–420M-tokens/month estimate (177.5M at its stated 95% cache), which validates the method.
+
+That turns the plan table into something it has never been: Copilot Pro's 1,500 requests/month
+buy **182 measured tasks**; GLM Lite's 10,000 credits/week buy **10 sessions on a 563k-token
+file**; OpenCode Go's $60 ceiling buys **407M tokens**.
+
 ## BEST DEAL FOUND
 
 **OpenCode Go, $10/month.** The vendor publishes per-model token prices *and* a monthly

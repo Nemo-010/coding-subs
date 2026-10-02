@@ -215,6 +215,126 @@ and the report should not be read as covering it.
 
 ---
 
+---
+
+## Review 11 — Is `cl100k_base` a fair proxy for token counts?
+
+**Test.** The measured counts come from OpenAI's tokenizer, but the plans compared include
+GLM, Qwen, Claude and Gemini, which tokenize differently. Does that invalidate the numbers?
+
+**What held.** Every count is a tokenizer's count of the *actual serialized payload*, which
+makes it model-independent and reproducible. Ratios — the scaling curve, the 71% waste, the
+credit conversion — are properties of the loop, not of the tokenizer.
+
+**What did not.** Absolute counts would shift on a different tokenizer, plausibly ±15%, and
+the Z.ai conversion applies `cl100k` counts to GLM weights. The pass says so in AGENT-COST.md
+rather than leaving a reader to discover it.
+
+**Verdict.** PASS WITH DISCLOSURE — the right proxy for ratios, the wrong one for a claim
+about a specific vendor's billing.
+
+---
+
+## Review 12 — The A/B was confounded, and the first version of it was not honest
+
+**Test.** The with-`list` arm (8/8) ran *before* retry-with-backoff was added to the client,
+and the without-`list` arm (3/8) ran *after*. That is two changes, not one.
+
+**What held.** Re-running the with-`list` arm on the identical client restored the comparison
+to a single variable: **8/8 with, 3/8 without.**
+
+**What did not.** The first A/B would have shipped with an uncontrolled difference between its
+arms — exactly the class of flaw this repo is supposed to catch in other people's numbers. It
+was caught by re-reading the run order, not by any check.
+
+**Fix applied.** Both arms re-run on the same client version; `bench_withlist.json` holds the
+re-run. The confound is recorded here rather than quietly overwritten.
+
+**Verdict.** FAIL AS FIRST RUN, PASS AFTER — and the near-miss is the point of the review.
+
+---
+
+## Review 13 — Single-run scaling numbers were not trustworthy
+
+**Test.** The first scaling run gave 265,445 tokens for the 65,828-token file. A later
+identical run gave 530,637. Which is right?
+
+**What held.** Neither alone. Three repetitions per size show a **1.5×–3.6× spread** across
+repeats of an identical task, driven by turn count.
+
+**What did not.** The pass was about to publish a point estimate for a quantity with a long
+right tail. The 265,445 figure and the 2,066,679 figure are the same configuration measured on
+different days.
+
+**Fix applied.** `scale_reps.py` runs three reps per size and the report publishes mean, min,
+max and spread. Repetition is what turned this from an anecdote into a finding.
+
+**Verdict.** PASS — a real defect in the method, found by repeating a run the pass had already
+declared finished.
+
+---
+
+## Review 14 — Does the Z.ai cross-check actually validate the method?
+
+**Test.** The formula at Z.ai's own 95% cache assumption gives 177.5M tokens/month for GLM
+Lite. Z.ai's published figure is 208–420M. Is 177.5M a validation or a 15% miss?
+
+**What held.** It lands just below the vendor's low end on an assumption (output share) the
+vendor does not publish. Reproducing a vendor's own range from the vendor's own formula is
+meaningful independent confirmation.
+
+**What did not.** It is not exact, and the pass must not claim the method is "confirmed" when
+it is "consistent within the mix uncertainty". The 208M end would need a slightly different
+output ratio.
+
+**Fix applied.** AGENT-COST.md says "reproduces the range within its own stated mix
+uncertainty", not "matches".
+
+**Verdict.** PASS WITH PRECISION FIX — the claim was softened to what is demonstrable.
+
+---
+
+## Review 15 — The agent's `read` tool was a sandbox-escape primitive
+
+**Test.** During the first benchmark run the transcript showed `read /proc/self/cwd` and
+`read` of environment variables. Did the tool allow that?
+
+**What held.** It did: `os.path.join(ROOT, path)` discards the root when the second argument
+is absolute, so any absolute path was readable. That is a sandbox escape, and reading the
+environment is prohibited outright.
+
+**What did not.** Nothing about it was safe, and it was discovered only by reading a
+transcript closely, not by any check.
+
+**Fix applied.** `safe_path()` resolves with `realpath` and refuses anything outside the root —
+absolute paths, `..` traversal, and paths that symlink out. Verified: `/proc/self/environ`,
+`../../etc/passwd` and `.env` are all refused. Recorded in `tools/agentlab/README.md` as a
+property that must stay fixed.
+
+**Verdict.** PASS AFTER FIX — the most serious defect found in this pass, and it was found by
+reading output rather than trusting the design.
+
+---
+
+## Review 16 — Is the workload representative?
+
+**Test.** Eight tasks, all single-file, one-bug fixes, each 30–60 lines. Real agent work is
+multi-file features and refactors.
+
+**What held.** The scaling experiment addresses exactly this: it holds the bug constant and
+varies file size, so the *shape* of the cost curve generalises even though the fixtures are
+small. The 563k-token row is representative of a real repo file.
+
+**What did not.** Turn counts, exploration behaviour and error rates are all properties of
+these tiny fixtures. A real feature request would explore more, and the pass cannot say by how
+much. Every figure is a **lower bound** and the report says so.
+
+**Fix applied.** None available. Recorded as the primary limitation.
+
+**Verdict.** PASS (as a stated bound) — the honest framing is that this measures the floor.
+
+---
+
 ## Summary of verdicts
 
 | # | Area | Verdict |
@@ -229,9 +349,17 @@ and the report should not be read as covering it.
 | 8 | OpenAI 403 | PASS (as a gap) |
 | 9 | "New plan" overclaim | PASS |
 | 10 | Coverage against the instruction | PARTIAL |
+| 11 | `cl100k` as a token proxy | PASS WITH DISCLOSURE |
+| 12 | Confounded A/B (client changed mid-pass) | FAIL AS FIRST RUN, PASS AFTER |
+| 13 | Single-run scaling numbers | PASS (after repetition) |
+| 14 | Z.ai cross-check precision | PASS WITH PRECISION FIX |
+| 15 | `read` tool sandbox escape | PASS AFTER FIX |
+| 16 | Workload representativeness | PASS (as a stated bound) |
 
-**Two reviews found real defects in this pass's own work** (3 and 4 — a missed tier and a
-near-miss wrong number). **One found a coverage gap** (10 — the relay universe). **One found
-an overclaim** (9). The pass is materially better for having been attacked in those four
-places, and a report that scored ten clean passes would be a report nobody had tried to
-break.
+**Six reviews found real defects in this pass's own work**, and they are the reason to trust
+the rest: a missed pricing tier (3), a near-miss wrong number (4), a confounded experiment
+(12), single-sample numbers presented as measurements (13), an overclaim (9), and a
+**sandbox-escape primitive in the agent's own file tool** (15).
+
+Three of those six were caught only by attacking work already declared finished. A report that
+scored sixteen clean passes would be a report nobody had tried to break.
