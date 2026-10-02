@@ -58,6 +58,22 @@ PAGES = {
     "fx-cny-usd.txt": "https://open.er-api.com/v6/latest/USD",
     "aa-models-page.html": "https://artificialanalysis.ai/models",
     "modelsdev-api.json": "https://models.dev/api.json",
+    # --- added for the 2026-10-02 pass ---
+    "opencode-go.html": "https://opencode.ai/docs/go/",
+    "amp-pricing.html": "https://ampcode.com/pricing",
+    "jetbrains-ai.html": "https://www.jetbrains.com/ai/",
+    "xai-news.html": "https://x.ai/news",
+    "alibaba-coding-plan-doc-1002.html": "https://www.alibabacloud.com/help/en/model-studio/coding-plan",
+    "qwen-code-readme.md": "https://raw.githubusercontent.com/QwenLM/qwen-code/main/README.md",
+    # third-party directories referenced by issues #1/#2 (kept as snapshots, not as first-party evidence)
+    "thirdparty-free-llm-api-index.md": "https://raw.githubusercontent.com/robhunter/agentdeals/main/artifacts/free-llm-api-index/README.md",
+    "thirdparty-baipiaoji-limits.json": "https://raw.githubusercontent.com/f-tiger/verified-ai-free-tiers/main/limits.json",
+    "thirdparty-baipiaoji-limits.md": "https://raw.githubusercontent.com/f-tiger/verified-ai-free-tiers/main/limits.md",
+    "thirdparty-awesome-free-llm-api.md": "https://raw.githubusercontent.com/peter123023/awesome-free-llm-api/main/README.en.md",
+    "thirdparty-free-llm.md": "https://raw.githubusercontent.com/nejib1/Free-LLM/main/README.md",
+    "thirdparty-real-api-pricing-adopted.csv": "https://raw.githubusercontent.com/FeiZhuLulu/real-api-pricing/main/data/adopted.csv",
+    "thirdparty-real-api-pricing-readme.md": "https://raw.githubusercontent.com/FeiZhuLulu/real-api-pricing/main/README.md",
+    "thirdparty-subscription-multipliers.md": "https://raw.githubusercontent.com/phuryn/experiments/main/subscription-multipliers/README.md",
 }
 
 

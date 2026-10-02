@@ -10,6 +10,7 @@ coding-agent usage by subscription** — model landscape, provider arbitrage, pu
 |---|---|---|
 | **2026-09-13** | [2026-09-13/README.md](2026-09-13/README.md) | Full pass: 45-model landscape (AA snapshot), 44 access plans across 26 provider groups, workload tests, rankings |
 | **2026-09-20** | [2026-09-20/README.md](2026-09-20/README.md) | Re-verification + delta pass: all first-party sources re-fetched, 26 logged changes (Trae repriced upward, Kimi tiers restructured with the weekly window removed, Claude Code limits settled ~17% below the promo level, new Command Code / Devin / Kiro / Factory / Warp / Zed / Replit ladders), every non-USD price normalized at a cited FX rate, and the relay/sponsor "0.03x" market quarantined into a red-flag advisory instead of a ranking |
+| **2026-10-02** | [2026-10-02/README.md](2026-10-02/README.md) | Fresh pass twelve days on: every first-party source re-fetched and byte-compared, **four evidence classes** introduced (VERIFIED / DOCUMENTED / MEASURED / THIRD-PARTY), the metered *subscription multipliers* adopted as a class of evidence (SuperGrok 190×, Claude Max 20× 45.3×, ChatGPT $100 10.25×, Muse Code High 9.3×/114×), cost-per-usable-token and hourly-coverage tables, a 34-row free-tier index, a 2026-10-02 Artificial Analysis model snapshot (Opus 5.5, Sonnet 5.5, Gemini 4 Argon, GPT-6.1 Sol, GPT-6 Luna, Grok 4.7), and the two upstream issues (#1 sources, #2 adjusted/real usage) integrated as an evidence-evaluation pass rather than as adopted rankings |
 
 > The fork's earlier 2026-09-20 relay/reseller pass (sub2api + CLIProxyAPI sponsor table) is kept
 > as an archive at [2026-09-20/RELAY-MARKET-ADDENDUM.md](2026-09-20/RELAY-MARKET-ADDENDUM.md),
@@ -37,6 +38,20 @@ FX rate with the rate date. Each pass undergoes independent reviews (recorded in
 ## Conventions
 
 - Prices in USD unless marked otherwise; "M tokens" = millions of tokens.
-- VERIFIED = read directly from the provider's own current page/docs. THIRD-PARTY = reputable
-  secondary source. ESTIMATED = derived calculation. UNKNOWN = not published; never invented.
+- VERIFIED = read directly from the provider's own current page/docs. DOCUMENTED = the vendor
+  publishes the figure in a rate card (self-graded). MEASURED = the vendor's own usage meter was
+  ticked and every call priced at public API list, so the figure is an instrument reading, not a
+  claim. THIRD-PARTY = reputable secondary source, dated, with its URL. ESTIMATED = derived
+  calculation. ADVERTISED = marketing copy. UNKNOWN = not published; never invented.
+- A pass states which evidence class every headline number belongs to, and names its own falsifiers.
 - Repo layout per pass: `YYYY-MM-DD/{README.md, data/, references/, sources/}`.
+- `tools/validate.py` accepts two report shapes: the **classification** shape (2026-09-13,
+  2026-09-20) asserts the HIDDEN DEALS / ARBITRAGE / WHAT I WOULD BUY sections, and the **census**
+  shape asserts BEST DEAL / what changed / what would falsify it / known gaps instead.
+- `tools/parse-aa.py` pulls the Artificial Analysis top list and per-model fields out of a saved
+  snapshot, because the site's own dataset endpoint is brotli-encoded.  
+- `tools/fetch-firstparty.py` fetches the live pages into a pass's `sources/`; the URL list at the
+  top of that file is the pass's source manifest. `tools/sources-manifest.py` writes the same set
+  with `http_status`, `bytes` and `sha256` so a later pass can prove what changed. **A URL that
+  returned an error is recorded with its status, not deleted** — 2026-10-02's
+  `openai-codex-pricing.md` is recorded as HTTP 403 because that page refuses this network.

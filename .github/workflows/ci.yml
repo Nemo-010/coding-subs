@@ -8,3 +8,16 @@ jobs:
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
       - run: python3 tools/validate.py
+      - name: validate every pass
+        run: |
+          for d in 20*-*-*; do
+            [ -f "$d/README.md" ] || continue
+            python3 tools/validate.py "$d"
+          done
+      - name: source manifest present for each pass
+        run: |
+          for f in 20*-*-*/sources-manifest.csv; do
+            [ -f "$f" ] || continue
+            echo "$f:"
+            awk -F, 'NR>1 {s[$3]++} END {for (k in s) printf "  HTTP %s: %d\n", k, s[k]}' "$f"
+          done
