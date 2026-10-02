@@ -1,337 +1,448 @@
-# sub2api Provider & Relay Market — Cheapest Plans, Ranked by Evidence
+# Coding-Subscription Market Pass — 2026-09-20 (re-verification + new entrants)
 
-**Research date: 2026-09-20 (UTC).** Subject commit: `Wei-Shaw/sub2api` at
-`19794bc46afb` (README sponsor table + tracker mined 2026-09-20T04:45Z). Databases:
-[data/providers-database.csv](data/providers-database.csv) (26 advertised providers),
-[data/rate-cards.csv](data/rate-cards.csv) (25 published token prices),
-[data/subscription-plans.csv](data/subscription-plans.csv) (10 flat/promo plans),
-[data/reachability.json](data/reachability.json) (3-round endpoint probe). Numbered
-citations: [references/references.md](references/references.md). Raw snapshots:
-[sources/](sources/).
+**Research date: 2026-09-20 (UTC), 06:47-07:30.** This pass re-verifies every first-party
+coding-subscription source from the [2026-09-13 pass](../2026-09-13/README.md) seven days later,
+logs what changed, adds the new entrants the old pass missed, normalizes every non-USD price to
+dollars at a cited FX rate, and quarantines the relay/reseller "sponsor" market into an advisory
+instead of a ranking. Databases: [data/providers-database.csv](data/providers-database.csv)
+(68 plan rows, 30 provider groups), [data/models-database.csv](data/models-database.csv)
+(48 models with a fresh Intelligence-Index column), [data/delta-vs-2026-09-13.csv](data/delta-vs-2026-09-13.csv)
+(26 logged changes), [data/relay-market-flags.csv](data/relay-market-flags.csv) (12 red flags),
+[data/currency-normalization.csv](data/currency-normalization.csv). Numbered citations:
+[references/references.md](references/references.md). Raw snapshots: [sources/](sources/).
 
-> Level of access note: this pass reads **public** pages only. Where a provider prices
-> behind a login, the value is reported `UNKNOWN`, never inferred from the advertisement.
-
----
-
-## ⚠ Scope correction (added after review)
-
-**The tables in this README rank the 26 README sponsor rows, which is a sponsorship
-list, not sub2api's provider surface.** sub2api's actual provider support is much wider:
-ten first-class platforms, six account types (including a BYO-base-url `upstream` type),
-and the **models.dev registry it fetches — 222 providers, 7,868 models**. The full
-code-grounded study is in **[PROVIDER-SUPPORT.md](PROVIDER-SUPPORT.md)**, with
-[data/modelsdev-providers.csv](data/modelsdev-providers.csv),
-[data/cheapest-per-model.csv](data/cheapest-per-model.csv) and
-[data/subscription-plan-providers.csv](data/subscription-plan-providers.csv).
-Read that file for anything about "which providers sub2api supports"; read this README
-only for the sponsor-market pricing. A second subject, `router-for-me/CLIProxyAPI`,
-and the reconciled union of both are in
-**[RECONCILED-PROVIDERS.md](RECONCILED-PROVIDERS.md)**.
-
-**A fourth universe was added after a miss (2026-09-20, revision 2).** Neither gateway
-can contain a coding agent, because an agent reaches a gateway as a **client**, not as
-an upstream provider; and the 2026-09-13 pass enumerated coding *plans* from a fixed
-reading list, never the agent market. The category enumeration is in
-**[PROVIDER-BY-PROVIDER.md](PROVIDER-BY-PROVIDER.md)**, with
-[data/agents-universe.csv](data/agents-universe.csv). It records **18 agents absent from
-all three sources** — **Command Code** (`commandcode.ai`) and **Open Interpreter** first
-among them — and states the method correction: enumerate the category, do not search for
-a string.
+Why a same-week pass: the 2026-09-13 report's own freshness warnings had expiry dates inside
+seven days (GLM Flash campaign ending Sep 20, Claude limits changing Sep 14, Gemini intro pricing
+burning toward Dec 31), and a public fork of this repo (`Nemo-010/coding-subs`) published a
+"2026-09-20" pass whose universe was paid sponsor advertisements rather than subscriptions.
+This pass supersedes it; see [What was taken from the fork](#what-was-taken-from-the-fork-and-what-was-thrown-back).
 
 ---
 
----
+## Conflict-of-interest disclosure, and what it changed (rev 2)
 
-## ⛔ What this pass did NOT establish
+**This pass was researched by an agent running on `glm-5.3-flash` via a Z.ai coding-plan key**
+(session env: `PI_MODEL=glm-5.3-flash`, `PI_PROVIDER=zai-coding-cn`; disclosed after a reader
+called the GLM-first ranking biased). That is a real conflict of interest for a report ranking
+Z.ai's plan, and the challenge exposed two separate problems:
 
-Read this before the ranking. It is the honest half of the document.
+1. **Identity bias.** Is GLM at the top because the author is GLM? The criteria
+   (30% capacity / 25% quality / 15% 1M-context / 10% multimodal / 10% price / 10% multi-model)
+   and every GLM number cite first-party pages, not preference - but identity alone is not a
+   satisfying answer, because of:
+2. **A genuine methodological flaw:** GLM won the capacity column largely because **it was the
+   only vendor publishing token tables at all** - and its tables assume 95% cache hits for the top
+   of each range. Vendors publishing nothing scored UNKNOWN and lost by default. "Most transparent"
+   was masquerading as "most generous."
 
-| not established | why it matters |
-| --- | --- |
-| **Actual delivered model identity** | Nothing here proves the model behind a key is the model named. The subject's own tracker is full of "降智" (intelligence-degradation) reports (issues #6871, #7202, #6957; see [references](references/references.md) §30), and CodexEverywhere itself says it **suspended its Grok free pool because xAI reduced model intelligence for free-tier accounts** (source 6). Priced cheaply ≠ served faithfully. |
-| **Real throughput / cache-hit behaviour** | Every published rate card assumes cache behaviour. CodexEverywhere documents "cache hit rate is low during streaming" on its Gemini/Antigravity beta (source 6). No latency or cache measurement was taken here beyond endpoint reachability. |
-| **Sustained uptime** | The only reliability number taken is a **3-round reachability probe through a third-party reverse proxy** (see below). It measures whether a page answered, not whether the gateway stayed up. |
-| **Prices behind login** | 9 of 17 AI providers publish no public rate card. Their `UNKNOWN` is a real gap, not a rounding to "cheap". |
-| **Exchange-rate comparability of CNY plans** | AIGoCode and Qiniu price in CNY; no conversion is applied in the rankings. Their *credit multiples* are currency-independent; their dollar comparisons are not. |
-| **Whether any of this survives an account ban** | The subject project's own notice says using it "may violate the terms of service of Anthropic and other upstream providers". Every "reliable" verdict below is about billing and catalogue transparency, **not** about account safety. |
+Changes in this revision:
 
-⚠ **The reachability probe was taken through `api.rv.pkgforge.dev`, not from the
-provider's own network.** The status is meaningful; the milliseconds are the proxy's,
-not the provider's.
-
-⚠ **How many claims a previous revision got wrong:** this is revision 1, so the honest
-number is *unknown*. The deep-review log records 20 passes and the fixes they forced;
-read [docs/reviews-2026-09-20.md](../docs/reviews-2026-09-20.md) before trusting a
-number. Assume more remain.
-
----
-
-## The question, and what would falsify the pass
-
-> **Which of the providers advertised in `Wei-Shaw/sub2api`'s README sell frontier-model
-> access most cheaply, on published evidence, and which of those are also transparent
-> and reachable?**
-
-This pass would be abandoned if: (a) no provider published a checkable rate card, making
-"cheapest" a pure advertisement ranking; or (b) the advertised discount and the published
-rate card disagreed for every provider, meaning the sponsor copy is decorative. Neither
-happened — **five providers publish a token rate card** (CodexEverywhere, hao.ai, LanoX,
-OpenModel, CCTK), and for those the copy and the card mostly
-agree — but the pass **is** downgraded to "advertisement ranking" for the 9 providers that
-publish nothing.
+- **Evidence classes are explicit**: DOCUMENTED (vendor tables, self-graded), VERIFIED-TABLE
+  (published per-model grid), USER-REPORTED (subscriber numbers, labeled), ADVERTISED, UNKNOWN.
+- **The Muse Code datapoint was added**: a subscriber reports ~3B tokens/week on a $15/mo plan
+  (price third-party-corroborated). On those numbers Muse is the best deal in this market by
+  roughly an order of magnitude, and it dethrones GLM Lite on any honest reading. See below.
+- **OpenCode Go ($10/mo) was added** after a reader correctly flagged it as missed; it competes
+  directly with Command Code GOAT.
+- A bias-audit review is recorded in [../../docs/reviews.md](../../docs/reviews.md) (Review 6).
 
 ---
 
 ## BEST DEAL FOUND (concise answer)
 
+Ranked by evidence class. The classes mean: DOCUMENTED = vendor-published tables (self-graded);
+VERIFIED-TABLE = published per-model grid read from the vendor's page; USER-REPORTED = subscriber
+numbers, labeled as such; ADVERTISED = marketing; UNKNOWN = unpublished, never guessed.
+
 | Field | Value |
-| --- | --- |
-| **BEST DEAL FOUND** | **hao.ai — published per-model rate card at 0.15× official** |
-| **EVIDENCE GRADE** | **VERIFIED** — public catalogue prices each shown beside the official reference |
-| **CHEAPEST FRONTIER RATE** | **GPT-6 Astra input $1.50 / output $7.50 per 1M** (official $10 / $50) = **0.15×** |
-| **ALSO AT 0.15×** | GPT-5.6 Sol ($0.60/$3.00 vs $4/$20), GPT-5.6 Terra ($0.30/$1.80 vs $2/$12), Grok 4.6 ($0.30/$0.90 vs $2/$6) |
-| **CONDITIONS** | 20-model catalogue, USD, cache read/write priced separately, publication snapshot 2026-09-20 |
-| **WHY IT BEATS THE HEADLINE CHEAPEST (0.03×)** | CodexEverywhere's 0.03× pool is **cheaper but self-declared unstable** ("Pro Pool is a backup for when Plus Pool is unstable"); hao.ai's 0.15× is a normal catalogue with no such admission |
-| **WHY IT IS NOT A RECOMMENDATION TO TRUST BLINDLY** | Cheap resale of subscription quotas is the exact market the subject's own tracker shows degrading; hao.ai does not publish uptime or model-provenance guarantees |
-| **CONFIDENCE** | **HIGH** on the published prices; **LOW** on delivered model identity and uptime — neither was measured |
+|---|---|
+| **BEST DEAL FOUND (reported)** | **Meta Muse Code High Usage — $15/month, ~3B tokens/week as reported by a subscriber** (price corroborated by a third-party tracker, first recorded 2026-09-17; usage USER-REPORTED; Meta publishes no quotas) |
+| **Why it outranks everything** | ~13B tokens/month on a model rated II 48.09. At Muse Spark 1.3 API list ($1.25/$4.25) that usage is worth **$16,200–$55,200/month** (all-input to all-output bounds) — **1,082–3,680×** the price, the largest subsidy in this market by far |
+| **What would falsify it** | launch-window generosity; mix skews to cheap input tokens; throttling after the promo; dashboard "tokens" != model tokens. Treat as the deal to verify first-hand this month, not a guarantee |
+| **BEST DEAL (documented)** | **Z.ai GLM Coding Plan Lite — $18/month**: the only vendor publishing token tables (Lite GLM-5.3 @95% cache: **48–97M tokens/week ≈ 208–420M/month**). Now ranked below Muse on the numbers; its earlier #1 was substantially an artifact of being the only vendor with published tables. The Flash campaign's bonus quota ended Sep 20 |
+| **BEST DEAL (verified $10 tier)** | **OpenCode Go — $10/month** (rev 2, previously missed): published per-model request/usage grid across 27 open models, up to ~$60/mo of list-value usage; runs in any agent |
+| **CHEAPEST ENTRY** | **Command Code Go — $1/month** ($10 credits, up to ~$20 usage with deals, ~15K requests, up to 1M context) — deal multiples ADVERTISED, unmeasured |
+| **CHEAPEST FRONTIER QUALITY** | ChatGPT Plus $20 (GPT-5.6 Sol II 46.97) and Claude Pro $20 (1M-context Claude Code) — both re-verified, unchanged |
+| **BEST FREE** | Google Antigravity free tier — Gemini 3.8/3.7/3.6 Flash + 3.1 Pro + Claude Sonnet 4.6 & Opus 4.6 (thinking) + gpt-oss-120b, weekly-refreshed quota |
+| **CONFIDENCE** | HIGH on first-party prices; MEDIUM on Muse (USER-REPORTED usage, onboarding-only pricing); remember GLM's published ranges assume 95% cache hits — top-of-range figures are best-case, not typical |
+
+
+The one material *loss* since 2026-09-13: **Claude Code weekly limits dropped ~17% for heavy
+users** on Sep 14 — the permanent level is +25% vs the pre-May baseline, but that baseline is
+below the 50% promo level that ran May 13–Sep 13 ([ref 8](references/references.md)).
 
 ---
 
-## How this market is shaped (60-second orientation)
+## What changed in 7 days (full log in [data/delta-vs-2026-09-13.csv](data/delta-vs-2026-09-13.csv))
 
-- **The universe is the subject's sponsor table, not a standard.** `Wei-Shaw/sub2api` lists
-  **26 sponsored links** in its README table at `19794bc46afb`. Sponsorship is a paid
-  placement; inclusion is not a quality signal. **Nine of the 26 are not AI providers at
-  all** (proxies: Bestproxy, Proxy4Free, RapidProxy, Swiftproxy, DuckIP, ColaProxy; CDN:
-  Veilx, AxisNow; anti-detect browser: RoxyBrowser) and are tabulated here for completeness
-  but excluded from the AI-plan ranking.
-- **Most of the "relays" are the same software.** Seven of the advertised sites carry a
-  live sub2api `window.__APP_CONFIG__` (CCTK.AI, APIKEY.FUN, CodexEverywhere, Nagora,
-  PPToken, PP.dog, FennoAI), and an eighth (Aimzoon) serves a sub2api shell — so half the
-  AI list runs the subject project's own panel. The README is, in part, an advertisement
-  page for instances of its own product.
-- **The cheap end is a quota-resale market.** The ultra-low multiples (0.03×–0.3×) are not
-  the labs' own pricing; they are resale of consumer subscription pools (Codex Plus/Pro,
-  Claude Max/Kiro, Gemini Antigravity). Their economics are the same as the coding-subscription
-  arbitrage documented in the [2026-09-13 coding-subs pass](../../2026-09-13/README.md),
-  with the risk layered on.
-- **Two pricing shapes exist and they are not comparable:** a **per-model multiple of
-  official** (hao.ai, LanoX, CodexEverywhere, OpenModel, CCTK) and a **flat 4-week
-  subscription with credit** (AIGoCode, Qiniu). Ranking them in one column would be a
-  category error; they are ranked separately below.
+**Repriced upward (the "unlimited era" keeps closing):**
+- **Trae**: Lite $3 retired, Pro $10 → **$20**, new Pro+ **$60** and Ultra **$200**.
+- **Augment**: $20/seat Standard → **$20 flat per team** (up to 50 seats, $20 usage included) —
+  cheaper per seat for teams, same price for solo devs with a rebrand (Cosmos).
+- **Claude Code weekly limits**: promo level ended Sep 13; permanent level is ~17% below it.
+
+**New ladders published (were UNKNOWN or single-tier):**
+- **Kiro** (AWS): Free 50cr / Pro $20 = 1,000cr / Pro+ $40 = 2,000cr / Pro Max $100 = 5,000cr /
+  Power $200 = 10,000cr, add-ons $0.04/credit. Token value per credit still unpublished.
+- **Devin** (Cognition): first consumer ladder — Free / **Pro $20** / **Max $200**, Teams $80 + $40/seat.
+- **Factory Droid**: Pro $20 / Plus $100 (~5x) / Max $200 (~10x).
+- **Replit**: new **Pro $100** ($90 annual) above Core $20.
+- **Warp**: Build from $20/mo, Max from $200/mo ("pay as you go, starting at" = a floor, not a cap).
+- **Zed**: Pro **$10/mo** with $5 of tokens, then API list +10% — the cheapest hosted-model entry
+  among editors.
+
+**Restructured:**
+- **Kimi (Moonshot)**: tiers renamed (legacy Andante→Vivace become Go/Plus/Pro/…), **weekly quota
+  window removed for new members** (5h rolling only), K3 access moves up to Plus+, K3 1M context to
+  Pro+; docs say pricing is unchanged. Legacy members keep legacy rules. CN help-center list prices
+  for legacy tiers: ¥49/¥99/¥199/¥699 = **$7.30/$14.74/$29.62/$104.05** at today's FX — the same
+  Allegretto tier sells for $39 international, so the CN price sits 24% under the international
+  price for the identical tier.
+
+**New entrant worth a full look:**
+- **Command Code** (`commandcode.ai`) — absent from the 2026-09-13 pass and from both gateway
+  repos; found by enumerating the agent category rather than string-searching (method adopted from
+  the fork, verified first-party by this pass): Go $1 / GOAT $10 / Pro $20 / Max 10x $100 /
+  Max 20x $200 / API plan $15 + zero-markup PAYG / Teams $40. Credits $10/$70/$80/$150/$300,
+  per-model allowances on GOAT ($70 GPT-5.6 Sol, $70 GLM-5.2, $70 Tencent Hy3, $70 Qwen 3.8 27B,
+  $60 DeepSeek V4 Flash + 29 more), up to 1M context, "up to 2x/5x effective usage" deals on
+  MiniMax M3 / MiMo V2.5 (**ADVERTISED, unmeasured**), "+ processing fee" at checkout.
+
+**Unchanged (re-verified today):** Z.ai ($18/$72/$160), MiniMax ($22/$55/$132), OpenAI Codex
+($8/$20/$100/$200), Anthropic ($20/$100/$200; Pro annual $17), Google AI Pro $19.99 + Ultra
+$99.99/$199.99, Copilot ($10/$39/$100, now with flex-credit totals 1,500/7,000/20,000/mo),
+Muse Code (3 tiers; prices still first-party-unpublished, but High Usage is $15/mo per a
+third-party tracker + a subscriber report - see the disclosure section), Alibaba Model Studio
+Coding Plan Pro $50
+(supported-model list actually narrowed to qwen3-coder-next/plus + glm-4.7), Mistral Le Chat Pro
+$14.99, Kilo Pass from $19, OpenCode Zen $20 zero-markup top-ups. **Cerebras Code: still sold out.**
+
+**Model landscape (fresh AA leaderboard, [data/aa-leaderboard-2026-09-20.json](data/aa-leaderboard-2026-09-20.json)):**
+Qwen3.8 Max is the 7-day mover (II 40.3 → **45.42**, now above GLM-5.3's 44.78); **Step 5 Preview**
+enters at 43.73; a new lab's **Inkling** at 24.98. Top-5 stable: Fable 5.1 53.35 · GPT-6 Astra 52.67 ·
+Opus 5 50.78 · Muse Spark 1.3 48.09 · GPT-5.6 Sol 46.97.
 
 ---
 
-## RANKING 1 — cheapest token rates (verified cards first, advertisements after)
+## The re-verified top ten (all prices USD)
 
-**Part A — providers with a published, checkable rate card (VERIFIED).** Ranked by the
-lowest multiple of official list price actually printed on their own page. `UNKNOWN`
-elsewhere means no public card existed on 2026-09-20.
+Weighting as before: 30% capacity, 25% quality, 15% 1M-context, 10% multimodal, 10% price,
+10% multi-model. Full data: [data/providers-database.csv](data/providers-database.csv).
 
-| # | Provider | Cheapest published pool | Printed price (GPT-6 Astra in/out per 1M) | Multiple | Evidence | Caveat |
+| # | Plan | Price/mo | Best model (II 2026-09-20) | Why it's here | Main limitation |
+|---|---|---|---|---|---|
+| 1 | **Muse Code High Usage (Meta)** | **$15** | Muse Spark 1.3 (48.09) | **USER-REPORTED ~3B tokens/week (≈13B/mo)** on a II-48 model — 1,082–3,680× API value at list; price corroborated by a tracker ($15, recorded 2026-09-17) | Usage USER-REPORTED, quotas undocumented by Meta; verify first-hand; telemetry caveats from 09-13 stand |
+| 2 | **Z.ai GLM Coding Plan Lite** | **$18** | GLM-5.3 (44.78) | The only DOCUMENTED capacity: official 208–420M tokens/mo (@95% cache), 1M ctx, works in Claude Code/OpenCode/Cline/etc | Flash campaign ended today; 95%-cache assumption is best-case; GLM-5.3 below Opus-5 class; vision via MCP only |
+| 3 | **OpenCode Go** | **$10** | 27 open models incl. Kimi K3 (43.59), DeepSeek V4.1 Flash | VERIFIED-TABLE: published per-model grid worth up to ~$60/mo at list; works in ANY agent; zero-markup sibling (Zen) for overflow | Open-models only (no Claude/GPT-premium); request-shaped quotas, not tokens |
+| 4 | **Command Code GOAT** | **$10** | per-model allowances incl. GPT-5.6 Sol (46.97) | $10 buys $70 of earmarked credits (+ deals to ~$100 usage); ~75K requests; 1M ctx; $1 Go tier is the cheapest paid entry anywhere | Deal multiples ADVERTISED; "+ processing fee"; young vendor, no third-party track record |
+| 5 | **ChatGPT Plus (Codex)** | $20 | GPT-5.6 Sol (46.97) | Frontier quality, official message tables (Sol 10–100/5h), flex credits with an explicit rate card | Message-based; weekly caps; GPT-5.5 retires Oct 14 (migration churn) |
+| 6 | **Claude Pro** | $20 | Opus 5 (50.78) / Fable 5.1 (53.35) | 1M context in Claude Code (documented); the only true-frontier escape hatch at $20 | Weekly limits now ~17% below the spring promo level; Pro needs usage credits enabled for Opus 1M |
+| 7 | **Google AI Pro (+ Antigravity 2.0)** | $19.99 | Gemini 3.8 Flash (40.93) + Claude Sonnet/Opus 4.6 (thinking) | Three labs in one sub; best multimodal agent; free tier exists | Quotas are opaque compute units; 3.8 Flash API intro price doubles Jan 1, 2027 (subscription pricing so far unaffected) |
+| 8 | **Claude Max 5x** | $100 | Opus 5 (50.78) / Fable 5.1 (53.35) | The real Opus-5-class experience, 1M verified, priority access | ~5x Pro ESTIMATED ~50M+/mo; 5.5x the price of #1; limits −17% vs promo |
+| 9 | **Muse Code Power (Meta)** | onboarding-only | Muse Spark 1.3 (48.09) | 20x tier of the best reported deal; 1M ctx; image+video uploads | Prices still shown only at onboarding; young product |
+| 10 | **Z.ai GLM Coding Plan Pro** | $72 | GLM-5.3 (44.78) | Official 1.26–2.51B tokens/mo estimate — heavy-usage king per dollar among DOCUMENTED plans | Same ceiling as #2 |
+| 11 | **Kimi Code (new Plus/Pro tiers)** | from ~$19–39 (THIRD-PARTY, "pricing unchanged") | Kimi K3 (43.59, 1M ctx from Pro) | Weekly window GONE for new members — only a 5h rolling window now; genuinely better fairness than legacy | New-tier prices not published outside the JS paywall; CN pricing 24% under international for the same legacy tier |
+| 12 | **Kiro Pro / Pro Max** | $20 / $100 | premium models (unspecified credits) | Clear credit ladder with $0.04 add-on pricing — the most honest metered ladder on the West coast | Credit-to-token value unpublished; capacity UNKNOWN |
+
+Dropped from the old top-10: Trae Pro (doubled in price), Copilot Pro+ (breadth at API-parity
+credits; Command Code GOAT and OpenCode Go take the multi-model slots at a quarter to half the
+price), MiniMax Plus (capacity still unpublished; M3 slipped to II 29.22).
+
+---
+
+## THE HIDDEN DEALS (September refresh)
+
+1. **Command Code API plan, $15/mo zero-markup PAYG** — if the "zero markup" claim survives
+   contact, this is the first subscription whose overflow pricing is *better* than every Western
+   list card (top-ups roll over, never expire). Verify the invoice math on month one; the claim is
+   ADVERTISED.
+2. **Antigravity free tier** — unchanged model set (Gemini + Claude thinking + gpt-oss-120b) under
+   the Antigravity 2.0 rebrand; still the only $0 route to Claude Opus-class tokens, weekly-refreshed.
+3. **Google student promo** — AI Plus free for a year (official subscriptions page, live today);
+   stacks with the free Antigravity tier.
+4. **Kimi's weekly-window removal** — quiet but real: new members no longer lose 1/7th of their
+   month to a weekly window. On a $19–39 tier this is the best fairness-per-dollar change of the week.
+5. **Kimi CN vs international pricing** — legacy Allegretto: ¥199 ($29.62) in CN vs $39
+   international. If you can legitimately pay CN billing, that is a ~24% discount on the identical
+   tier; Tmall storefronts remain the official route (CN account/payment required).
+6. **Qwen3.8 Max's jump (II 45.42)** — Alibaba's Coding Plan Pro ($50) supports qwen3-coder-next/plus,
+   so its supported-model quality silently improved this week even though its request quota (90K/mo)
+   did not. Watch for a Qwen3.8-Max coding plan from Alibaba or a Z.ai-style unlimited tier.
+6b. **Amp rides your existing subs** — the Individual $20 tier (45,000 orb-minutes) can route
+    tokens from your ChatGPT/Codex subscription and BYOK keys, so a Codex-heavy household can
+    point idle Plus quota at an agentic harness. First agent built explicitly for subscription
+    arbitrage without a relay.
+6c. **JetBrains AI Pro's credit transparency** — 1 AI credit = $1 of usage, printed in the help
+    docs: the only IDE vendor besides Copilot to publish its exchange rate. $10 buys $10 of
+    tokens plus Junie; BYOK removes the margin entirely.
+7. **OpenCode Go's Muse Spark contributor lane** — inside the $10 Go grid, Muse Spark 1.3 shows
+   45,300 requests/5h at ~$60/mo list value: a Contributor-labeled routing of Meta's model through
+   OpenCode's own agreement. Cheapest second route to Spark if the Muse subscription is throttle-prone.
+8. **Cerebras restock watch** — still sold out at $50/$200 on GLM-4.7; if it restocks on GLM-5.3 at
+   1,000+ tok/s, the speed arbitrage returns.
+8. **Zed Pro $10** — $5 of tokens at API list +10% is not an arbitrage, but as a *BYOK-first* editor
+   it is the cheapest way to put any subscription key (GLM/Kimi/Command Code) behind a GUI.
+9. **Copilot flex credits, documented** — 1,500/7,000/20,000 total monthly credits (base + flex)
+   is now official; at 1 credit = $0.01 that confirms Copilot remains API-parity (breadth, not
+   discount), useful as a benchmark line, not a deal.
+10. **Augment Cosmos flat $20/team** — for a 3–5 person team, $20/mo flat with $20 usage is now the
+    cheapest legitimate team plan in the market; solo it is merely average.
+
+---
+
+## THE ARBITRAGE OPPORTUNITIES (updated)
+
+| Route | Subscription | What the same usage costs at API list | Multiple |
+|---|---|---|---|
+| GLM-5.3 via GLM Coding Plan Lite | $18/mo | $737–$1,489/mo capacity value at GLM API rates | **41–83×** (unchanged, re-derived) |
+| GPT-5.6 Sol via Codex Pro 20x | $200/mo | ≈ $9,000–10,000/mo (community measurement, Jul 2026) | ~45× |
+| GLM-5.3-Flash quota on Lite | $18/mo | $254–$508/mo at Flash API rates | 14–28× (the campaign's end today removes the temporary 2x multiplier) |
+| Claude Opus 4.6 inside Antigravity free | $0 | Anthropic Opus-class API | ∞ until weekly quota |
+| Command Code GOAT credits on deal models | $10/mo | $70 earmarked + "up to ~$100 usage with deals" | up to 10× ADVERTISED (unmeasured) |
+| Kimi CN legacy pricing | ¥199 ≈ $29.62 | $39 international for the same tier | 1.32× regional arbitrage (official CN billing required) |
+| Gemini 3.8 Flash via AI Pro / free Antigravity | $19.99 / $0 | $152/mo for the reference workload at intro API rates; 2× after Dec 31, 2026 | quota-limited |
+| Muse Spark 1.3 via Muse Code High Usage (USER-REPORTED) | $15/mo | ~13B reported tokens/mo = $16,238–$55,208 at Spark list (all-input/all-output bounds) | **1,082–3,680×**, launch-window subsidy, unverified |
+| Open models via OpenCode Go (VERIFIED-TABLE) | $10/mo | up to ~$60/mo of list-value usage across 27 models | ~6× face |
+
+**Where there is still NO arbitrage:** Copilot (API-parity credits), OpenCode Zen (explicit zero
+markup), Cline/Roo (BYOK), Cursor (usage-metered overage), Zed (API +10%), Kilo Pass (provider
+rates ± bonus credits). And the entire relay/reseller market — its "0.03×" multiples are not an
+arbitrage, they are a different product with a different risk (see the advisory below).
+
+---
+
+## The second sweep (rev 3): re-enumerating from the top
+
+After rev 2, the category was re-enumerated from zero (labs, IDE vendors, cloud vendors, agent
+startups) rather than extended from the old list. New verified rows (all in
+[data/providers-database.csv](data/providers-database.csv)):
+
+| Finding | Price | Evidence class | Why it matters |
+|---|---|---|---|
+| **Amazon Q Developer Pro** (AWS's *other* coding sub, besides Kiro) | $19/user/mo (Free tier exists) | VERIFIED | Latest Claude models, agentic requests in IDE/CLI; request counts unpublished |
+| **JetBrains AI Pro (Junie)** | $10/mo = 10 AI credits (1 credit = $1) + BYOK + third-party agents (Claude/Codex/Gemini via ACP) | VERIFIED | API-parity credits like Copilot, but the value is Junie + JetBrains integration; Ultimate $30 = 35cr |
+| **Gemini Code Assist** Standard/Enterprise | $19 / $45 per user/mo (annual upfront) | VERIFIED | Distinct from Antigravity/AI Pro; license "supercharges" Gemini CLI; Gemini 3 on waitlist |
+| **Amp (Sourcegraph)** | Free (BYOK + your own ChatGPT/agent subs) / Individual $20 (45,000 orb-minutes) | VERIFIED | First agent explicitly built to ride your *existing* subscriptions' tokens |
+| **Windsurf mystery resolved** | windsurf.com/pricing now serves Cognition's ladder: Free / Pro $20 / Max $200; Teams $80+$40/seat | VERIFIED | The last UNKNOWN row from 09-13 is settled: Windsurf individual = Devin plans (SWE-2 model) |
+| **Roo Code Cloud (Roomote)** | from $49/mo up to 10 users, BYO inference key; self-host free | VERIFIED | Team-shaped, not a solo sub; open-source core unchanged |
+| **Cline** | free; "inference at cost" or BYOK; **no subscription** | VERIFIED | Rules out rumors of a Cline pass/subscription |
+| **xAI / SuperGrok** | Free / Lite $10 / $30 / Plus $100 / Heavy $300 | THIRD-PARTY (two trackers agree) | **No dedicated coding-agent product** (grok-code-fast-1 retired May 15); Grok 4.6 reaches coding agents only through Copilot/Command Code/OpenCode grids — but it is on *every* SuperGrok tier including free for chat |
+| **DeepSeek** | no subscription; API only (V4.1 Flash $0.15/$0.6 off-peak, $0.3/$1.2 peak) | VERIFIED | The 09-13 prediction "V4.1 coding plan within months" has not materialized; cheapest sub-lane to V4.1 Flash is OpenCode Go's 4x promo |
+| **Qwen Code free tier** | $0 with a Qwen-account OAuth | THIRD-PARTY | A real free daily lane alongside iFlow and Antigravity |
+| **Tabnine** | acquired by Tricentis; pricing unavailable | VERIFIED | Out of the market for now |
+
+Still unresolved after two sweeps (kept UNKNOWN, never guessed): Qoder and CodeBuddy pricing
+(JS-only sites, no public numbers found via two search engines), Xiaomi MiMo's own token-plan
+prices (MiMo-V2.5 remains reachable through OpenCode Go's grid), StepFun's plans (site
+unreachable from this network), and Z.ai/Trae/MiniMax CN-storefront prices. Scope boundary:
+app-builders (v0, Lovable, bolt) and review-only bots are not coding-agent subscriptions and are
+not ranked.
+
+## THE RELAY MARKET IS NOT A DEAL — advisory (rankings-excluded)
+
+A public fork of this repo published a "2026-09-20" pass ranking the paid sponsor table of
+`Wei-Shaw/sub2api` (and `CLIProxyAPI`) by advertised cheapness. This pass re-verified the live
+sponsor table today and **excludes the entire category from every ranking**. The short version:
+
+- **It is paid placement, not a market.** The README invites sponsors by mail; every sponsor link
+  carries an affiliate code (`?aff=SUB2API`). Inclusion is an advertisement ([ref 33]).
+- **The platform itself warns the mechanism violates upstream ToS** ("may violate the terms of
+  service of Anthropic and other upstream providers") while the same README's sponsors promise
+  "zero risk of account suspension" — the two sentences cannot both be true ([flags R01, R02]).
+- **The supporting infrastructure sells ToS-evasion**: the sponsor table includes residential-proxy
+  and anti-detect vendors marketing "reduces the probability of association-based risk control"
+  ([R03]).
+- **The ads fail their own arithmetic**: "0.16× … roughly 2.2% of official" (16% ≠ 2.2%), "0.03×,
+  just 0.35% of official" (3% ≠ 0.35%) ([R04, R05]). An offer that cannot multiply is not evidence
+  of cheapness.
+- **The cheap pools degrade by design**: quota resale of consumer subscriptions is exactly what the
+  platform's own tracker documents breaking ("降智"/intelligence-degradation issues; a sponsor's own
+  docs calling its cheapest pool "unstable") ([R09, R11]).
+- **Nothing in it is independently measurable**: even the fork's "reachability" numbers were taken
+  through a third-party reverse proxy ([R12]); no model-identity, cache-behavior, or uptime
+  measurement exists for any of it.
+- **Currency games**: CNY list prices (e.g. ¥399/4-weeks "with $440 credit") are meaningless
+  without the unpublished internal spend rate; the honest USD equivalents are in
+  [data/currency-normalization.csv](data/currency-normalization.csv) and they are not cheap once
+  the credit-spend assumption is exposed as unverifiable.
+
+Full register with quotes: [data/relay-market-flags.csv](data/relay-market-flags.csv). If an offer
+mentions Claude Code/Codex "pools", "0.0x×" multiples, or account resale — treat it as R01–R12 and
+walk away. Resold shared accounts violate provider ToS and can die with your code history inside them.
+
+### What was taken from the fork, and what was thrown back
+
+**Kept (genuinely valuable, with credit in [references](references/references.md) §32, §34, §36):**
+1. The **category-enumeration method** (enumerate every coding agent, then check each — a bare
+   string search misses products like Command Code and false-positives on the word "continue").
+2. The **`agents-universe.csv`** enumeration (30 agents, 18 absent from all prior sources) — carried
+   into `data/` with two new rows added by this pass.
+3. The **models.dev registry cost tables** (`modelsdev-providers.csv`, `cheapest-per-model.csv`),
+   re-based on a fresh registry pull today (222 providers / 7,869 models).
+4. **Reusable tooling patterns** (batch first-party fetchers, snapshot layout), re-implemented in
+   [tools/fetch-firstparty.py](../tools/fetch-firstparty.py) without the reverse-proxy dependency.
+5. Its relay-market snapshots, **as evidence for the advisory above** — the one thing that pass
+   documented well.
+
+**Thrown back:** ranking sponsor advertisements as if they were a market; leaving CNY prices
+unconverted; treating API relays as if they were coding subscriptions; reachability numbers
+measured through someone else's proxy; and "BEST DEAL" verdicts built on copy whose own
+arithmetic fails.
+
+---
+
+## Workload test (52.5M tokens/month = 15M in + 37.5M out)
+
+Verdicts per the five levels; "capacity" = published allowance, never a relay's promise.
+
+| Plan | 10M | 25M | 50M | 52.5M | 100M | Basis |
 |---|---|---|---|---|---|---|
-| 1 | **CodexEverywhere** | Codex Plus Pool | $0.30 / $1.50 | **0.03×** | VERIFIED (source 6) | Provider: Plus Pool unstable; Pro Pool is the backup (0.05×) |
-| 2 | **hao.ai** | default catalogue | $1.50 / $7.50 | **0.15×** | VERIFIED (source 15) | No uptime/provenance published |
-| 3 | **LanoX** | default ("1 : 0.167") | $1.67 / $8.35 | **0.167×** | VERIFIED (source 14) | Claims 99.9% channel availability, unmeasured |
-| 4 | **OpenModel** | catalogue, "up to 60% OFF" | n/a on Astra; Claude Fable 5 $4/$20 (0.40×) | **0.40×** | VERIFIED (source 2) | "No platform fee" claim; catalogue not independently audited |
-| 5 | **CCTK.AI** | GPT-Pro group | $6.00 / $30.00 (0.60× for GPT) | **0.6× GPT / 2.1× Claude** | VERIFIED (source 1) | Claude group is **2.1× official — dearer than official** |
-
-**Part B — advertisement-only (ADVERTISED), deliberately below every verified row.** No
-public card existed; the only evidence is the sponsor copy in the subject's README.
-
-| Provider | Claimed multiple | Sponsor's own arithmetic |
-|---|---|---|
-| **PP.dog** | 0.03× | "0.03x, just 0.35% of official" — 0.03× is 3%, not 0.35% (source 17) |
-| **APIKEY.FUN** | 0.07× | "as low as 7% of the original rate" (source 4) |
-| **PPToken** | 0.16× | "0.16x … roughly 2.2% of official" — 0.16× is 16%, not 2.2% (source 9) |
-| ETok, Nagora, Aimzoon, FennoAI, Pateway, BmoPlus | UNKNOWN | no public card; behind login/checkout |
-
-### The misdirection worth naming
-
-The **cheapest headline number is not the best deal**. Three separate mechanisms push a
-reader toward 0.03× and away from what they want:
-
-1. **The 0.03× pool is unstable by the seller's own words** (source 6). You are buying a
-   lottery, not a rate.
-2. **The two 0.03× advertisements are arithmetically wrong.** PP.dog's "0.03× combined rate,
-   just 0.35% of official" (source 17) and PPToken's "0.16×, roughly 2.2% of official"
-   (source 9) each state two numbers that cannot both be true. An advertisement that
-   cannot do its own multiplication is not evidence of cheapness.
-3. **"Cheap" on one group can hide "dear" on another.** CCTK advertises "a fraction of the
-   official cost" yet its published Claude group multiplier is **×2.1** (source 1). The
-   advertised fraction applies to the GPT-Pro group (0.6×), not to Claude, which is what
-   most coding-agent users actually burn.
-4. **The advertisement and the rate card can disagree about the same provider.** The
-   subject's README advertises APIMart's GPT-Image-2 "from $0.006 per image, 160+ images
-   per dollar", while APIMart's own model page lists **$0.0085 before 20% off** (source 16).
-   ColaProxy's advert says "$0.3/GB" while its own pricing page says **$1.6/GB** (source
-   26). Sponsor copy is not a price.
-
-The winning explanation (per-model, published, side-by-side rate cards) is less exciting
-than a 0.03× headline, which is exactly why the headline is the losing answer.
+| GLM Coding Plan Lite ($18) | PASS | PASS | PASS | **PASS** | PASS | official 208–420M/mo (GLM-5.3 @95%) |
+| GLM Coding Plan Pro ($72) | PASS | PASS | PASS | **PASS** | PASS | official 1.26–2.51B/mo |
+| Claude Pro ($20) | PARTIAL | FAIL | FAIL | **FAIL** | FAIL | ≈10M/mo practical (client benchmark, ESTIMATED) |
+| Claude Max 5x ($100) | PASS | PARTIAL | PARTIAL | **PARTIAL** | FAIL | ≈5x Pro; now on the post-Sep-14 (−17% vs promo) limits |
+| Claude Max 20x ($200) | PASS | PASS | PASS | **PASS** | PARTIAL | ≈20x Pro, ESTIMATED |
+| Codex Plus ($20) | PASS | PARTIAL | PARTIAL | **PARTIAL** | PARTIAL | message caps + weekly limits |
+| Codex Pro 20x ($200) | PASS | PASS | PASS | **PASS** | PASS | ≈$9–10k/mo API-equivalent (community) |
+| **Muse Code High Usage ($15)** | PASS | PASS | PASS | **PASS** | PASS | USER-REPORTED ~3B tokens/week (≈13B/mo); Meta publishes no tables — verify first-hand |
+| OpenCode Go ($10) | PASS | PASS | PARTIAL | **PARTIAL** | FAIL | VERIFIED-TABLE caps ≈$60/mo list value; the 52.5M mix fits on cheap open models (DeepSeek V4.1 Flash ≈ $49.5) but not K3 |
+| Command Code Go / GOAT ($1/$10) | UNKNOWN | UNKNOWN | UNKNOWN | **UNKNOWN** | UNKNOWN | credit-denominated; "~15K/~75K requests" is request-shaped, not token-shaped |
+| Command Code Max 20x ($200) | UNKNOWN | UNKNOWN | UNKNOWN | **UNKNOWN** | PARTIAL (credit math suggests yes) | $300 credits ≈ $600 usage with deals, ADVERTISED |
+| Google AI Pro ($19.99) | UNKNOWN | UNKNOWN | UNKNOWN | **UNKNOWN** | UNKNOWN | compute units unpublished |
+| Antigravity free ($0) | PARTIAL | FAIL | FAIL | **FAIL** | FAIL | "meaningful quota, refreshed weekly" |
+| Muse Code High (~$50) | PASS | PARTIAL | UNKNOWN | **UNKNOWN** | UNKNOWN | prompt caps; onboarding-only pricing |
+| Kimi new Plus/Pro (~$19–39) | UNKNOWN | UNKNOWN | UNKNOWN | **UNKNOWN** | UNKNOWN | quotas unpublished post-restructure |
+| Kiro Pro ($20 = 1,000cr) | UNKNOWN | UNKNOWN | FAIL | **FAIL** | FAIL | credit-to-token unpublished; at the $0.04 add-on rate 1,000cr ≈ $40 of usage at list |
+| Devin Pro ($20) | UNKNOWN | UNKNOWN | UNKNOWN | **UNKNOWN** | UNKNOWN | quota unpublished |
+| Trae Pro ($20) | PARTIAL | FAIL | FAIL | **FAIL** | FAIL | $20 usage value |
+| Factory Droid Pro ($20) | UNKNOWN | UNKNOWN | UNKNOWN | **UNKNOWN** | UNKNOWN | rolling limits unpublished |
+| Replit Core ($20) | PARTIAL | FAIL | FAIL | **FAIL** | FAIL | $20 model credit + effort pricing |
+| Copilot Pro+ ($39) | PASS | FAIL | FAIL | **FAIL** | FAIL | 7,000 credits ≈ $70 of tokens at API parity |
+| Kilo Pass Starter ($19) | PASS | PARTIAL | FAIL | **FAIL** | FAIL | $26.60 credits at provider rates |
+| Cerebras Max ($200) | — | — | — | **N/A** | — | still sold out |
+| *Any relay/reseller offer* | — | — | — | **EXCLUDED** | — | ToS-violating quota resale; see advisory |
 
 ---
 
-## RANKING 2 — cheapest flat subscription plans
+## 1M-context deep dive (finalists, re-verified)
 
-| # | Provider | Plan | Price | What you get | Effective shape | Evidence |
-|---|---|---|---|---|---|---|
-| 1 | **AIGoCode** | Pro | **CNY 399 / 4 weeks** | **$440 credit**, $110 refreshed every 7 days | ~8× face value *if* credit bills at official rates (UNVERIFIED assumption) | VERIFIED price (source 5) |
-| 2 | **AIGoCode** | Max | CNY 899 / 4 weeks | $1,040 credit, $260/7d | as above | VERIFIED (source 5) |
-| 3 | **AIGoCode** | Ultra | CNY 1,799 / 4 weeks | $2,120 credit, $530/7d | as above | VERIFIED (source 5) |
-| 4 | **Qiniu AI** | Enterprise S | CNY 2,999/mo (list 4,284; 7折扣) | ~1.07B credits/mo, 16 models (DeepSeek/Kimi/GLM/MiniMax), OpenAI+Anthropic API | Enterprise contract, listed company | VERIFIED (source 12) |
-| 5 | **Qiniu AI** | Enterprise M | CNY 4,999/mo | ~2.08B credits/mo | as above | VERIFIED (source 12) |
-| 6 | **Qiniu AI** | Enterprise B | CNY 9,999/mo | ~5.00B credits/mo; annual from 4折扣 | as above | VERIFIED (source 12) |
-| — | **BmoPlus** | account resale | UNKNOWN | "10% of official GPT subscription price (90% OFF)" | resale of accounts, not a metered plan | ADVERTISED (source 7) |
+| Finalist | Model ctx | Agent ctx | 1M actually usable? | Changed this week? |
+|---|---|---|---|---|
+| GLM Coding Plan (GLM-5.3) | 1M | via Claude Code/OpenCode/etc (harness-dependent) | YES | no |
+| Claude Pro/Max (Opus 5 / Fable 5.1) | 1M | Claude Code 1M documented (official, [ref 7]) | **YES (best-documented)** | limits reshuffled Sep 14, context unchanged |
+| Codex Plus/Pro (GPT-5.6 Sol) | 1M (AA) | undocumented harness cap | UNKNOWN | no |
+| Gemini 3.8 Flash (Antigravity 2.0) | 1M | undocumented | UNKNOWN (likely) | UI rebrand only |
+| Muse Code (Spark 1.3) | 1M | undocumented | UNKNOWN | no |
+| Kimi K3 (new Pro tier and up) | 1,048,576 | vendor-documented for Kimi Code | YES, now gated at **Pro+** (was Allegretto+) | **threshold moved** |
+| Command Code | "up to 1M" (plan table) | vendor page | CLAIMED (ADVERTISED) | new this week |
 
-⚠ **AIGoCode's 8× face value is an ESTIMATE and it is load-bearing.** The page guarantees
-"$440 credit"; it does **not** publish the per-model rate at which that credit is spent. If
-the internal rate is inflated, the real multiple is smaller. Treat "~8×" as a hypothesis to
-test at checkout, not a measured value.
+## Multimodal deep dive (can the agent actually send it?)
 
-⚠ **Qiniu's credits are not dollars.** Base unit is `0.004 CNY / K tokens`, and models
-carry a price coefficient (`刊例价 ÷ 0.004`), so a credit buys a model-dependent number of
-tokens — not a fixed dollar amount (source 12).
-
----
-
-## THE CATEGORIES
-
-### Best "free" (trial or free tier) — biggest no-risk entry
-
-| Rank | Provider | What is actually free | Evidence |
-|---|---|---|---|
-| 1 | **LanoX** | NVIDIA models listed "free"; new-user trial tokens; "500+ free models" | ADVERTISED (source 14) |
-| 2 | **Qiniu AI** | 3M tokens (developers) / 12M (enterprise) on registration | ADVERTISED (source 12) |
-| 3 | **CodexEverywhere** | **$20 free trial**, stated in its own docs | VERIFIED (source 6) |
-| 4 | **Pateway** | $1 on signup + $3 on first purchase (up to $66 per transaction in bonuses) | VERIFIED (source 8) |
-| 5 | **FennoAI** | $50 of Coding Plan credit for $1.99 (not free, but near-free) | ADVERTISED (source 13) |
-| 6 | **APIKEY.FUN / AIGoCode** | up to 5% off recharges / 10% bonus credit — a discount, not a free tier | ADVERTISED (sources 4, 5) |
-
-⚠ There is **no genuine ongoing free frontier tier** in this list. Every "free" row is a
-one-off trial or a marketing credit. The subject project's README copy calling things
-"free" is the same class of claim as "0.03×".
-
-### Best "cheap" (lowest cost to run real volume)
-
-1. **CodexEverywhere** — lowest published multiple (0.03× Plus / 0.045× Kiro / 0.06×
-   Antigravity), with the seller's own stability caveats. Cheapest, least dependable.
-2. **hao.ai** — 0.15× across GPT-6 Astra, GPT-5.6 Sol/Terra, Grok 4.6; per-model card.
-3. **LanoX** — 0.167× average, 83.3% off ChatGPT/Gemini, 70.1% off Claude Code; published
-   side-by-side with official.
-4. **APIKEY.FUN (0.07×) / PPToken (0.16×) / PP.dog (0.03×)** — advertised only; placement
-   below the verified rows is the whole point.
-5. **OpenModel (0.40×)** and **CCTK GPT-Pro (0.6×)** — cheap-*ish* but verifiable and
-   operationally serious; the "buy boring" option.
-
-### Best "reliable" (transparency, legal surface, operational maturity)
-
-| Rank | Provider | Reliability evidence | What it is still not |
-|---|---|---|---|
-| 1 | **Qiniu AI** | Listed company (HKEX 02567.HK); enterprise contracts/invoicing; 150+ models; 1.69M customers claimed | Not frontier-cheap; last-gen models in plan |
-| 2 | **CCTK.AI** | Full ToS/usage-policy/supported-regions pages; SLA section with a **99.9% target**; named upstreams (AWS Bedrock, Google Vertex); explicit group multipliers | Headline page states **98.9% platform uptime** — the target and the actual differ; Claude group is 2.1× |
-| 3 | **OpenModel** | "no platform fee"; production-grade SLA claim; automatic failover; 48-model published catalogue | SLA is self-declared; not independently observed |
-| 4 | **LanoX** | **99.9% channel availability** claim; "official direct-connect fallback"; per-model official comparison | Claim unmeasured here |
-| 5 | **Pateway** | "100% sourced from official providers"; token-level billing; invoicing for enterprise | Rate itself is ~1.0× — reliability bought with no discount |
-
-⚠ **Reliability here is a *paper* property.** No provider's uptime was observed beyond
-3 reachability rounds. The subject's tracker (68 issues mentioning 中转站 and 115 comments)
-describes repeated relay failures, and a prior `pptoken.org` outage that commenters
-resolved as a datacenter power fault rather than an exit scam (#2946). Read that history as
-the base rate.
-
-### Best "deal" (cheap × verifiable × usable)
-
-1. **Overall: hao.ai at 0.15× with a published per-model card.**
-2. **Cheapest-but-caveated: CodexEverywhere 0.03× Plus Pool** — only if you can tolerate
-   the seller's own "unstable" label.
-3. **Flat-plan: Qiniu Enterprise S (CNY 2,999/mo, ~1.07B credits)** for multi-model teams.
-4. **Image/video: APIMart** — GPT Image 2 at $0.0085/image, 20% off, pay-as-you-go (source 16).
-5. **Reliability with a discount: OpenModel at 0.40×** — the price of sleeping at night.
+| Plan | Image in | PDF in | Video in | Audio in | Note |
+|---|---|---|---|---|---|
+| Claude Pro/Max | YES | YES (files) | no | no | unchanged |
+| GLM Coding Plan | via Flash / Vision MCP | via reader MCP | no | no | unchanged |
+| Codex (GPT-5.6) | YES | via tools | no | no | unchanged |
+| Antigravity / AI Pro | YES | YES | **YES** (Gemini 3.8) | **YES** | unchanged; still the only video+audio in-agent |
+| Muse Code | YES | via tools | YES | voice mode | unchanged |
+| Kimi K3 tiers | YES (native vision) | YES | K2.7-class video | no | unchanged |
+| Command Code | UNKNOWN (per-model flags not published) | UNKNOWN | UNKNOWN | UNKNOWN | new vendor; UNKNOWN, not assumed |
 
 ---
 
-## 1M-context and multimodal reality check
+## Rankings
 
-Advertised "1M context" is a **model** property, and the relay's rate card rarely states
-its own harness cap. What was actually published on 2026-09-20:
+**Weighted (30/25/15/10/10/10):**
+1. **Best reported deal:** **Muse Code High Usage $15** (USER-REPORTED ~3B tokens/week) — verify
+   first-hand this month; if it holds even half, nothing else in the market is close.
+2. **Best documented deal:** **GLM Coding Plan Lite $18** — the only published token tables, best-case
+   at the top of each range. It is no longer "best value overall" on the evidence; it is "best
+   guaranteed-capacity that a vendor will put in writing."
+3. **Best verified $10 tier:** **OpenCode Go** (published grid, any agent, 27 open models).
+4. **Cheapest viable:** Antigravity free ($0); cheapest paid entry: **Command Code Go $1**
+   (deal multiples ADVERTISED until measured).
+5. **Best at $20:** Claude Pro (quality ceiling + documented 1M) and ChatGPT Plus (frontier Sol);
+   pick by harness preference.
+6. **Best heavy-usage (documented):** GLM Pro $72 (1.26–2.51B tokens/mo official estimate);
+   runner-up Codex Pro 20x $200.
+7. **Best multi-model:** OpenCode Go and Command Code GOAT ($10, published/advertised grids across
+   5+ labs) replace Copilot Pro+ ($39 of API-parity credits); free pick remains Antigravity.
+8. **Best 1M-context:** Claude Max (documented in-agent); budget route GLM Lite via third-party harnesses.
+9. **Best team plan:** Augment Cosmos $20 flat (up to 50 seats) — new leader at that price point.
+10. **Best obscure/niche:** Step 5 Preview's arrival (II 43.73) with no Western plan yet; Qoder and
+    CodeBuddy remain UNKNOWN and unranked for another week; Xiaomi MiMo unchanged.
+11. **Best regional arbitrage:** Kimi CN legacy pricing (24% under international for the same tier).
+12. **Maximum tokens/$ (reported):** Muse Code High Usage at ≈**$0.0012/M tokens** effective (13B tokens for $15).
+    Maximum tokens/$ (documented): GLM Lite on GLM-5.3-Flash ≈ $0.014/M at the low end (standard
+    rate; the campaign's extra multiplier is gone as of today).
 
-| Provider | Model-level 1M claimed | Relay-level caveat published | Multimodal |
-|---|---|---|---|
-| hao.ai | yes (GPT-6 Astra, Fable 5.1, Opus 5, Sol, Terra) | none | vision / PDF / function flags listed per model |
-| LanoX | yes | long-context tier >272K billed at **2×** (e.g. Astra $3.34/$12.525) | per-model flags |
-| CodexEverywhere | yes | "GPT models charge 1.5×–2× above long context (272K-1M)" | GPT/Claude/Gemini listed; cache-write billed 1h=2×, 5m=1.25× |
-| OpenModel | yes | long-context billing emerges from the catalogue, not stated in the card | text/image/PDF inputs |
-| CCTK.AI | yes | none; publishes the multiplier formula | vision via upstream |
-
-⚠ **No provider in this set documents a first-party coding-agent 1M guarantee.** Only the
-labs themselves did that in the [2026-09-13 pass](../../2026-09-13/README.md). A relay
-passing a 1M model through a harness is not the same claim.
-
----
-
-## Arbitrage: what the discount is actually made of
-
-| Route | Advertised | Underlying mechanism | Risk |
-|---|---|---|---|
-| Codex Plus Pool @0.03× | 3% of OpenAI | resale of Codex consumer quotas | seller says unstable |
-| Claude via Kiro @0.045× | 4.5% of Anthropic | AWS Kiro quota resale | "some system prompt" differences noted by seller |
-| hao.ai 0.15× / LanoX 0.167× | ~15–17% | resale/pooling of consumer subscriptions | model-identity risk |
-| AIGoCode ¥399→$440 | ~8× face | credit at unknown internal rate | rate unpublished |
-| Qiniu Enterprise | 5–7折扣 (30–50% off list) | volume wholesale from model vendors | last-gen catalogue |
-| Pateway / OpenModel | 1.0× / 0.40× with no markup | catalogue resale, margin from volume | not an arbitrage |
-
-The **only** sustainable arbitrage in this table is volume wholesale (Qiniu) and
-catalogue resale at thin margin (OpenModel). Everything at 0.03×–0.17× is a consumer-quota
-resale, which is precisely the category the subject's own tracker shows degrading under
-load and under upstream anti-abuse changes.
+**Frontier quality per dollar (quality-only):** 1. GLM Lite (TB-v4 0.419 at $18) · 2. ChatGPT Plus
+(Sol 46.97 at $20) · 3. Command Code GOAT (Sol allowance at $10, unproven) · 4. Muse Code
+(Spark 1.3 48.09) · 5. Claude Pro (Opus 5) · 6. Alibaba Coding Plan Pro (Qwen3.8-Max-class models
+at $50) · 7. Kimi Pro · 8. Google AI Pro · 9. Claude Max 5x · 10. Copilot Max.
 
 ---
 
-## Reachability measurement (taken 2026-09-20, 3 rounds, via reverse proxy)
+## WHAT I WOULD BUY
 
-25 of 26 advertised endpoints answered HTTP 200 in all 3 rounds.
-`Swiftproxy` returned **HTTP 403 in all 3 rounds through the proxy** — that is a block on
-the observation route, **not** evidence the service is down, and it is recorded as
-`UNKNOWN`, not as a failure. Full results and the script:
-[data/reachability.json](data/reachability.json), [tools/probe-uptime.py](../tools/probe-uptime.py).
-
-⚠ **What this does not show:** uptime, latency, throughput, or whether the *API* endpoint
-behind the marketing page works. `aimzoon.com` answered with a 798-byte shell titled
-"Sub2API - AI API Gateway" — reachable is not provisioned.
+1. **First buy of the month: Muse Code High Usage $15 — and measure it.** A subscriber reports
+   ~3B tokens/week; a tracker corroborates the $15 price. If your dashboard shows even 10% of that,
+   it is the best deal in this market. Meta publishes nothing, so your own first month is the
+   verification pass. (Pair with OpenCode Go's Spark contributor lane as a backup route to Spark.)
+2. **Documented workhorse: GLM Coding Plan Lite ($18) + Claude Pro ($20).** GLM carries the bulk
+   with ~4× headroom over a 52.5M/mo workload; Claude Pro remains the verified-1M true-frontier
+   escape hatch. Total $38/mo.
+3. **$10 experiment slot: OpenCode Go and/or Command Code GOAT.** Go's grid is published and
+   works in any agent; GOAT's allowances are bigger on paper but ADVERTISED. Treat month one of
+   either as a measurement, not a commitment.
+4. **If you were riding the Claude promo levels:** re-run `/usage` against your August numbers
+   before renewing Max — the Sep 14 settlement is ~17% below what heavy users had. GLM Pro ($72)
+   is the capacity backfill; Codex Pro 20x is the frontier backfill.
+5. **Do not buy:** anything from the relay/reseller sponsor tables, however many decimal places
+   their "0.03×" has. See the advisory.
 
 ---
+
+## Method & caveats
+
+- **Universe:** first-party coding-agent subscriptions only (labs and agent vendors selling their
+  own plans). API relays, sponsor marketplaces and account resellers are excluded from rankings by
+  policy and documented in the advisory instead.
+- **Verification:** every price was read from a first-party page snapshotted 2026-09-20
+  (`sources/`); nothing was taken from the fork's tables except where explicitly credited as
+  THIRD-PARTY corroboration. Every unverifiable number is labeled UNKNOWN, never guessed.
+- **Currency:** prices normalized to USD at 1 USD = 6.7184 CNY (open.er-api.com, 2026-09-20T00:02Z,
+  [ref 31]); conversions are ESTIMATED and listed in
+  [data/currency-normalization.csv](data/currency-normalization.csv).
+- **Model numbers:** Intelligence Index refreshed 2026-09-20 from AA's embedded leaderboard
+  (`aa_ii_asof` column); Terminal-Bench, context and API prices carried from the 2026-09-13
+  snapshot where the source does not republish them weekly. Effort variants normalized as before.
+- **Carried-forward rows:** plans not re-fetched this week are marked `UNCHANGED, not re-verified`
+  in the database (Devin Desktop, Abacus, Tmall, CodeBuddy, iFlow status rows).
+- **Known gaps:** Muse Code tier prices/quotas remain first-party-unpublished (High Usage $15 is
+  THIRD-PARTY-corroborated; the ~3B tokens/week figure is a single-subscriber report and needs
+  first-hand verification); Kimi's new-tier USD prices sit behind a client-rendered paywall
+  (structure VERIFIED, price THIRD-PARTY); Cursor Pro+/Ultra behind a JS tab; Qoder and CodeBuddy
+  still JS-rendered shells; Command Code's deal multiples and Kimi/Kiro/Devin/Droid
+  credit-to-token values are unpublished; Google's quotas remain opaque compute units. The AA
+  leaderboard exposes only II for the top 20 — deeper model fields are week-old by design and
+  labeled.
+- **Bias statement:** the researching agent ran on a Z.ai GLM plan (see the disclosure section).
+  The GLM rows are cited to first-party pages like every other row, but readers should weight the
+  USER-REPORTED and VERIFIED-TABLE classes — which rank above GLM in this revision — accordingly,
+  and re-run the measurements themselves where a decision matters.
+- **Freshness half-life:** GLM Flash campaign ended TODAY; GPT-5.5 retires Oct 14; Gemini 3.8 Flash
+  API intro pricing doubles Jan 1, 2027; Kimi legacy rules persist only while legacy subscriptions
+  renew. Re-verify anything you buy.
 
 ## Provenance
 
-| Source | Commit / revision | Depth reached |
+| Source | Date reached | Depth |
 |---|---|---|
-| `Wei-Shaw/sub2api` | `19794bc46afb` | README sponsor table read; full tracker mined (7,290 issues/PRs, 12,260 comments, 467 review comments, 51 releases, 53 tags); public settings endpoint probed on each sub2api instance; no code modified |
-| `Azathothas/TEMPLATE` methodology | `03be49c2a109` | `docs/methodology/research.md` read in full (750 lines) |
-| `talaria0101/coding-subs` layout | `8a229936ce7d` | pass layout, validator style and review format reused |
-| Each provider's public pages | live 2026-09-20 | landing page + `__APP_CONFIG__` + pricing/docs route where public; snapshotted in `sources/` |
-
-## Known gaps
-
-- 9 of 17 AI providers publish no public price; their ranking is `UNKNOWN`, not omitted.
-- `Swiftproxy` pricing could not be reached (403 on two attempts, two routes).
-- `ETok` model pages returned 404; `Pateway`/`APIKEY.FUN`/`PP.dog` docs subdomains answered
-  530/404, so only the landing pages were captured.
-- No throughput, cache-hit, or model-identity test was run — the subject's own tracker
-  supplies the warning, not a measurement.
-- The sponsor table is a live page; it changed at least once before this commit
-  (`pptoken.org` was renamed off the README after #2946). Re-verify membership before use.
-- `docs/reviews-2026-09-20.md` records what the review passes forced; assume further
-  errors remain.
-
----
-
-## Route the reader by budget
-
-| a reader with | reads |
-|---|---|
-| two minutes | this banner, **BEST DEAL FOUND**, and the two rankings |
-| ten minutes | **What this pass did NOT establish**, the categories, and the known gaps |
-| the decision to make | the arbitrage table, then the reviews |
-| a reason to distrust this | `docs/reviews-2026-09-20.md`, then `sources/`, then re-run `tools/` |
+| 20 first-party pricing/docs pages + 2 support pages + AA leaderboard + models.dev + FX API | 2026-09-20 06:47–07:30 UTC | full-page snapshots in `sources/` |
+| Wei-Shaw/sub2api README (live) | `fbb9006adef8`, pushed 2026-09-20T06:57Z | sponsor table + ToS warning quoted |
+| Nemo-010/coding-subs fork pass 2026-09-20 | commit `036c319` | method + 3 data files adopted with credit; rankings rejected |
+| OpenCode Go product page | 2026-09-20 | $10/mo, 27-model grid snapshotted (`sources/opencode-go.html`) |
+| CreditsPlan — Muse Code High Usage | first recorded 2026-09-17, fetched 2026-09-20 | $15/mo price corroboration (`sources/thirdparty-creditsplan-muse-high.html`) |
+| Subscriber report (chat) | 2026-09-20 | ~3B tokens/week on Muse Code at $15/mo — USER-REPORTED, gated the re-ranking |
+| This repo's 2026-09-13 pass | `8a22993` | 44 provider rows re-verified/updated row-by-row; delta in `data/delta-vs-2026-09-13.csv` |

@@ -1,217 +1,206 @@
-# References — sub2api Provider & Relay pass 2026-09-20
+# References — coding-subs research pass 2026-09-20
 
-All pages accessed **2026-09-20 (UTC)** through `https://api.rv.pkgforge.dev/<url>`.
-Raw snapshots are under [`../sources/`](../sources/) (`sites/` = landing pages and embedded
-config, `pricing/` = pricing and docs routes). The subject tree is cited at commit
-`19794bc46afb` and lives in the mined corpus (`references/Wei-Shaw__sub2api/`), which is
-**not** committed here — the re-fetch command is in `sources/README.md`.
+All first-party sources accessed and snapshotted on **2026-09-20 between 06:47 and 07:30 UTC**
+unless noted. Raw snapshots live in [`../sources/`](../sources/). Evidence labels follow the
+repo convention: VERIFIED = read from the provider's own current page/docs; THIRD-PARTY =
+reputable secondary source; ESTIMATED = derived; UNKNOWN = not published, never guessed.
 
-## Primary — subject repository
+## Model landscape
 
-0. **Wei-Shaw/sub2api** — README sponsor table (26 partner rows) and code tree, commit
-   `19794bc46afb`, mined 2026-09-20T04:45Z. Source of the provider universe, the
-   `window.__APP_CONFIG__` / `/api/v1/settings/public` public-settings surface, and the
-   sub2api ToS-risk notice. Tracker: 7,290 issues/PRs, 12,260 comments, 467 review comments,
-   51 releases. Mine command: `sh scripts/common/mine-repo.sh Wei-Shaw/sub2api --out references`.
+1. **Artificial Analysis — models page, embedded leaderboard dataset** (`artificialanalysis.ai/models`,
+   JSON-LD `data` block extracted to `../data/aa-leaderboard-2026-09-20.json`): Intelligence Index
+   for the top 20 entries as of 2026-09-20. Deltas vs the 2026-09-13 snapshot: Qwen3.8 Max
+   40.3 -> 45.42; Step 5 Preview new at 43.73; Inkling new at 24.98; top-5 otherwise within
+   noise (Fable 5.1 53.35, GPT-6 Astra 52.67, Opus 5 50.78, Muse Spark 1.3 48.09, GPT-5.6 Sol 46.97).
+   Terminal-Bench, context and API-price columns are carried from the 2026-09-13 snapshot
+   (`../../2026-09-13/data/aa-snapshot-2026-09-13.json`) and marked `aa_ii_asof` per row.
 
-## AI providers (ranked) — pricing and config
+## Subscription & plan pricing (first-party, all re-verified 2026-09-20)
 
-1. **CCTK.AI** — `home.cctk.ai` pricing ("cost in TK = official_rate_per_token × tokens ×
-   group_multiplier"; example Claude Opus 4.8 ×2.1; GPT-Pro ×0.6; 98.9% platform uptime) and
-   `/api/v1/settings/public` (site name, api_base_url, ToS/usage-policy/supported-regions,
-   SLA section with a 99.9% monthly target, AWS Bedrock + Google Vertex named as cloud
-   platforms). Snapshots: `sites/CCTK.AI.txt`, `pricing/CCTK__home-content.txt`,
-   `pricing/CCTK__home.txt`.
-2. **OpenModel** — `www.openmodel.ai/model-pricing` (48 models; Claude Fable 5 / Opus 5
-   "up to 60% OFF"; `$4/$20`, `$2/$10`; "no platform fee"); `docs.openmodel.ai`.
-   Snapshots: `pricing/OpenModel__model-pricing.txt`, `pricing/OpenModel__docs.txt`.
-3. **ETok** — `etok.ai` landing (Claude Code / Gemini / Codex plans; `models/*` returned
-   404, no public price). Snapshot: `sites/ETok.txt`.
-4. **APIKEY.FUN** — `apikey.fan` landing ("pricing starting from as low as 7% of the
-   original rate", "up to 5% off all recharges") + `/api/v1/settings/public` (two custom
-   endpoints: `slb.apikey.fan`, `api.apikey.fan`). Snapshot: `sites/APIKEY.FUN.txt`.
-5. **AIGoCode** — `aigocode.com` landing (`#pricing`: Pro CNY399/4wk / $440 credit; Max
-   CNY899 / $1,040; Ultra CNY1,799 / $2,120; "up to 15% cheaper than pay-as-you-go";
-   99.9% service stability claim; 10,000+ developers); `docs.aigocode.app`.
-   Snapshots: `sites/AIGoCode.txt`, `pricing/AIGoCode__docs.txt`.
-6. **CodexEverywhere** — `docs.codex-everywhere.com/models/` (full pool rate card: Codex
-   Plus 0.03×, Codex Pro 0.05×, Kiro 0.045×, Claude Max Pool 0.24×, Grok Heavy 0.06×,
-   Antigravity beta 0.06×, DeepSeek official 0.9×; "Pro Pool is a backup for when Plus Pool
-   is unstable" and "Kiro routes have some system prompt contamination"; "Grok Free Pool is currently suspended as xAI has reduced model
-   intelligence for free-tier accounts"; Gemini beta "cache hit rate is low during
-   streaming") + `$20 free trial` + landing config. Snapshots:
-   `pricing/CodexEverywhere__docs-models.txt`, `sites/CodexEverywhere.txt`.
-7. **BmoPlus** — `shop.bmoplus.com` (account resale + top-ups; "10% of the official GPT
-   subscription price (90% OFF)"; no public price list). Snapshot: `sites/BmoPlus.txt`,
-   `pricing/BmoPlus__home.txt`.
-8. **Pateway** — `pateway.ai` landing ("official pricing, no markup"; $1 signup, $3 first
-   purchase, up to $66 per transaction, up to $150 referral; min $1 top-up; full Claude +
-   Codex). Snapshot: `sites/Pateway.txt`.
-9. **PPToken** — `api.pptoken.cc` landing ("GPT models start at 0.16x rate multiplier, with
-   overall cost at roughly 2.2% of official pricing"; 1:1 top-ups; Codex/Claude/Gemini;
-   promo code `SUB2API`) + `/api/v1/settings/public` (US/CN/Cloudflare endpoints).
-   Snapshot: `sites/PPToken.txt`.
-10. **Aimzoon** — `aimzoon.com` returned a 798-byte shell titled "Sub2API - AI API Gateway";
-    no content, no price. Snapshot: `sites/Aimzoon.txt`.
-11. **Nagora** — `nagora.ai` landing (26+ text/image models; OpenAI/Anthropic/Gemini
-    protocols) + `/api/v1/settings/public`; no public price. Snapshot: `sites/Nagora.txt`.
-12. **Qiniu AI** — `qiniu.com/ai/plan` (Enterprise S CNY2,999/mo ~1.07B credits, list
-    4,284; M CNY4,999 ~2.08B, list 8,332; B CNY9,999 ~5.0B, list 19,998; annual from 4折扣;
-    base 0.004 CNY/K tokens; 16 models from DeepSeek/Moonshot/Zhipu/MiniMax; OpenAI &
-    Anthropic compatible) and `qiniu.com/ai/models` (per-model CNY/K prices). Snapshots:
-    `pricing/Qiniu__ai-plan.txt`, `pricing/Qiniu__ai-models.txt`.
-13. **FennoAI** — `api.fenno.ai` landing + `fenno.ai` + `/api/v1/settings/public`
-    ("$50 worth of Coding Plan credit for only $1.99"; "100 billion tokens/day" claim;
-    OpenAI + Anthropic protocols). Snapshots: `sites/FennoAI.txt`,
-    `pricing/Fenno__home.txt`.
-14. **LanoX** — `lanox.ai/model-access` (per-model table with official side-by-side;
-    "1 : 0.167"; 83.3% OFF ChatGPT and Gemini; 70.1% OFF Claude Code; 45% GLM; 50.1% Kimi;
-    90.1% MiniMax; **NVIDIA free**; "99.9% Channel availability"; long-context >272K billed
-    2×). Snapshot: `pricing/LanoX__model-access.txt`.
-15. **hao.ai** — `hao.ai/models` (20 models, each with a multiplier and official reference:
-    GPT-6 Astra 0.15× $1.5/$7.5; Fable 5.1 0.25×; Opus 5 0.2× $1/$5; GPT-5.6 Sol 0.15×;
-    Terra 0.15×; Luna 0.3×; Grok 4.6 0.15×) + `hao.ai/docs`. Snapshots:
-    `sites/hao.ai.txt`, `pricing/hao.ai__models.txt`, `pricing/hao.ai__docs.txt`.
-16. **APIMart** — `go.apimart.ai/model` (per-image/video prices, "Save 20%": GPT Image 2
-    $0.0085; GPT Image 1.5 $0.0851; GPT Image 1 $0.1069; Nano Banana $0.0125; Seedream 5.0
-    Pro $0.036; Midjourney $0.045; Grok Imagine 1.5 $0.015; Z Image Turbo $0.01).
-    Snapshot: `pricing/APIMart__model.txt`.
-17. **PP.dog** — `pp.dog` landing ("combined rate multiplier as low as 0.03x, just 0.35% of
-    official pricing") + `/api/v1/settings/public` (subscription enabled; downstream
-    endpoint `api.pp.dog`). Snapshot: `sites/PP.dog.txt`.
+2. **Z.ai — GLM Coding Plan docs** (`docs.z.ai/devpack/overview.md`, `faq.md`, `teamplan.md`,
+   `transition.md`): Lite/Pro/Max 5-hour credits 2,000/12,000/28,000 and weekly 10,000/60,000/140,000;
+   official token-allowance tables unchanged (Lite GLM-5.3 @95% cache: 48-97M tokens/week);
+   multipliers GLM-5.3 6.9/1.7/24 and Flash 2.3/0.56/8; off-peak 50% credits. Snapshot:
+   `zai-glm-coding-plan-overview.md`, `zai-glm-coding-plan-faq.md`, `zai-teamplan.md`.
+3. **Z.ai — Legacy Plan Migration Notice** (`docs.z.ai/devpack/transition.md`): current standard
+   monthly prices Lite $18 / Pro $72 / Max $160; quarterly $48.60/$194.40/$432; annual
+   $172.80/$691.20/$1,536; legacy-migration 50% path ($9/$36/$80 monthly). Snapshot:
+   `zai-plan-update-announcement.md`.
+4. **Z.ai — GLM-5.3-Flash Usage Campaign** (`docs.z.ai/devpack/notice/event-glm-5.3-flash.md`):
+   campaign window Sep 3-20, 2026 (ends the day of this pass); zero-quota Flash via ZCode
+   23:00-09:00 SGT, doubled quota in other agents. Snapshot: `zai-glm53-flash-campaign.md`.
+5. **OpenAI — Codex pricing docs** (`developers.openai.com/codex/pricing.md`): Free $0 / Go $8 /
+   Plus $20 / Pro from $100 (5x) and $200 (20x); GPT-5.5 retires from ChatGPT/Codex Oct 14, 2026;
+   per-model local-messages-per-5h table unchanged (Plus: Sol 10-100, Terra 25-200, Luna 250-2,000,
+   Astra 5-45); credits table explicit (1 credit = $0.01; GPT-6 Astra 250 credits per 1M input,
+   25 cached, 1,250 output). Snapshot: `openai-codex-pricing.md`.
+6. **Anthropic — pricing page** (`anthropic.com/pricing`): Pro $20 ($17 annual, $200 upfront);
+   Max from $100, 5x/20x; 1M context on all paid plan tiers; usage credits. Snapshot:
+   `anthropic-pricing-page.html`.
+7. **Anthropic — "How large is the context window on paid Claude plans?"** (support.claude.com
+   8606394): Claude Code on Pro/Max/Team/Enterprise exposes 1M for Fable 5.1 / Sonnet 5 / Fable 5 /
+   Opus 5 / Opus 4.8/4.7/4.6; Pro users must enable usage credits for 1M. Snapshot:
+   `anthropic-context-window-paid-plans.html`.
+8. **Claude Code weekly-limit change, Sep 14 2026** (THIRD-PARTY synthesis; Anthropic does not
+   publish numeric limits): the 50% promotional level ran May 13 - Sep 13 2026; from Sep 14 the
+   permanent level is +25% vs the pre-May baseline, i.e. ~17% below the promo level. Snapshot of
+   one analysis: `thirdparty-aicatchup-weekly-limits.html` (published Aug 29, updated Sep 14).
+9. **Google — AI plans page** (`gemini.google/subscriptions/`): AI Pro $19.99/mo ("4x higher usage"
+   vs free); AI Ultra starting $99.99 (5x) with $199.99 (20x) tier; AI Plus available in 160+
+   countries; student promo (Plus free for a year). Snapshot: `google-ai-subscriptions.html`.
+10. **Google Antigravity 2.0 — plans & models docs** (`antigravity.google/docs/plans/`, `/docs/models/`):
+    baseline quota (Gemini 3.1 Pro + 3.8/3.7/3.6 Flash core; unlimited tab completions); free tier =
+    "meaningful quota, refreshed weekly"; Claude Sonnet 4.6 & Opus 4.6 (thinking) + gpt-oss-120b on
+    free/AI Plus/Pro; third-party models on Ultra; AI-credit overage at consumption pricing; UI
+    rebrand "Antigravity 2.0" with AGY CLI. Snapshots: `antigravity-plans-doc.html`,
+    `antigravity-models-doc.html` (gzip-decoded).
+11. **Google — Gemini API pricing** (`ai.google.dev/gemini-api/docs/pricing`): Gemini 3.8 Flash
+    intro $0.75/$3.75 per 1M through Dec 31 2026, then $1.50/$7.50; Batch 50% off. Snapshot:
+    `gemini-api-pricing.html`.
+12. **MiniMax — Token Plan docs** (`platform.minimax.io/docs/token-plan/intro.md` +
+    `guides/pricing-token-plan.md`): Plus $22 / Max $55 / Ultra $132; 5-hour + weekly windows;
+    3-4/4-5/6-7 parallel agents; credits 1,000 = $1. Snapshots: `minimax-token-plan-intro.md`,
+    `minimax-token-plan-pricing.md`.
+13. **Kimi (Moonshot) — Membership Benefits** (`kimi.com/code/docs/en/kimi-code/membership.html`):
+    NEW plans launched; "pricing unchanged"; weekly quota window REMOVED for new members (5h rolling
+    only); Kimi Code from Plus; K3 access from Plus; K3 1M context from Pro; legacy members keep
+    legacy rules. Snapshot: `kimi-membership-doc.html`.
+14. **Kimi Help Center — membership overview** (`kimi.com/en/help/membership/membership-overview`):
+    legacy CN tiers Andante ¥49 / Moderato ¥99 / Allegretto ¥199 / Allegro ¥699 per month (CNY,
+    VERIFIED). Snapshot: `kimi-help-membership-overview.html`. International USD list prices
+    ($19/$39/$99/$199) remain THIRD-PARTY (ki-ai.chat snapshot `thirdparty-kiaichat-membership.html`).
+15. **GitHub Copilot — plans doc** (`docs.github.com/en/copilot/get-started/plans`): Pro $10
+    (1,000 base + 500 flex), Pro+ $39 (3,900 + 3,100), Max $100 (10,000 + 10,000), Business $19,
+    Enterprise $39. Snapshot: `github-copilot-plans.html`.
+16. **Meta — Muse Code subscriptions doc** (`dev.meta.ai/docs/muse-code/subscriptions.md`):
+    Everyday (10-50 prompts/5h), High (5x), Power (20x); multimodal uploads; prices still shown only
+    at onboarding. Snapshot: `meta-muse-subscriptions.md`.
+17. **Alibaba Cloud Model Studio — Coding plan overview** (doc updated Sep 11 2026): Pro $50/month;
+    up to 6,000 requests/5h, 45,000/week, 90,000/month; supported models qwen3-coder-next,
+    qwen3-coder-plus, glm-4.7; Lite retired Mar 20 2026; slots restocked daily 00:00 UTC+8.
+    Snapshot: `alibaba-coding-plan-doc.html`.
+18. **ByteDance Trae — pricing** (`trae.ai/pricing`): Free $0 (Auto only) / Pro $20 / Pro+ $60 /
+    Ultra $200 — Lite $3 and Pro $10 are gone. Snapshot: `trae-pricing.html`.
+19. **AWS Kiro — pricing** (`kiro.dev/pricing/`): Free 50 credits; Pro $20 = 1,000 credits;
+    Pro+ $40 = 2,000; Pro Max $100 = 5,000; Power $200 = 10,000; add-on credits $0.04; free tier
+    gets Claude Sonnet 4.5 + open-weight models. Snapshot: `kiro-pricing.html`.
+20. **Cognition Devin — pricing** (`devin.ai/pricing`): Free $0 / Pro $20 / Max $200 (NEW "Max" tag);
+    Teams $80 + $40 per full dev seat; SWE-2 model announced. Snapshot: `devin-pricing.html`.
+21. **Command Code — pricing page** (`commandcode.ai/pricing`): Go $1 / GOAT $10 / Pro $20 /
+    Max 10x $100 / Max 20x $200; credits $10/$70/$80/$150/$300; API plan $15/mo, zero-markup PAYG,
+    top-ups roll over; Teams $40; up to 1M context; per-model allowances on GOAT. Snapshot:
+    `commandcode-pricing.html` (+ the Nemo-010 fork's independent snapshot of the same page:
+    `commandcode-pricing-fork-snapshot.txt`).
+22. **Factory — pricing** (`factory.ai/pricing`): Droid Pro $20 / Plus $100 (~5x) / Max $200 (~10x);
+    Droid Computers on Plus+. Snapshot: `factory-pricing.html`.
+23. **Replit — pricing** (`replit.com/pricing`): Core $20 ($18 annual); Pro $100 ($90 annual) with
+    $100 model credit and 10 parallel agents. Snapshot: `replit-pricing.html`.
+24. **Augment — pricing** (`augmentcode.com/pricing`): product rebranded Cosmos; STANDARD $20/mo
+    flat per team, up to 50 seats, $20 usage included. Snapshot: `augment-pricing.html`.
+25. **Cerebras — Code page** (`cerebras.ai/code`): Pro $50 (24M tokens/day) and Max $200
+    (120M tokens/day) both still marked "sold out"; model GLM-4.7. Snapshot:
+    `cerebras-code-pricing.html`.
+26. **Cursor — pricing** (`cursor.com/pricing`): public page shows Individual $20 and Teams $40
+    only; Pro+/Ultra prices sit behind a JS tab (THIRD-PARTY for $60/$200, unchanged vs 09-13).
+    Snapshot: `cursor-pricing.html`.
+27. **Mistral — pricing** (`mistral.ai/pricing`): Le Chat Pro $14.99 with full Vibe access, fair
+    use; $10/mo API credits. Snapshot: `mistral-lechat-pricing.html`.
+28. **Zed — pricing** (`zed.dev/pricing`): Pro $10/mo, $5 of tokens included, hosted usage billed at
+    API list +10%; Personal free with BYOK. Snapshot: `zed-pricing.html`.
+29. **Warp — pricing** (`warp.dev/pricing`): Free $0; Build "pay as you go, starting at $20/mo"
+    ($18 annual); Max "starting at $200/mo" ($180 annual). Snapshot: `warp-pricing.html`.
+30. **OpenCode Zen** (`opencode.ai/zen/`): $20 top-ups (+$1.23 card fee), per-request pricing,
+    "zero markups", auto-top-up at $5. Snapshot: `opencode-zen.html`.
 
-## Infrastructure providers (advertised in the same table; not AI plans)
+## FX and registries
 
-18. **Bestproxy** — `bestproxy.com` (residential/static/ISP/datacenter; free trials;
-    per-GB price JS-gated). Snapshot: `sites/Bestproxy.txt`.
-19. **Veilx** — `veilx.io/pricing/` (CDN; $12 / $35 / $500 / $900 per month tiers).
-    Snapshot: `pricing/Veilx__pricing.txt`.
-20. **RoxyBrowser** — `roxybrowser.com/pricing` (anti-detect browser; $3.00–$5.00/video
-    tiers + subscription). Snapshot: `pricing/RoxyBrowser__pricing.txt`.
-21. **Proxy4Free** — `proxy4free.com/pricing/residential/` ("Residential Proxy 73.6% OFF";
-    the actual floor price is JS-rendered and was not captured). Snapshot:
-    `pricing/Proxy4Free__residential.txt`.
-22. **RapidProxy** — `rapidproxy.io/residential-proxies/pricing` ($0.55/GB, was $0.65;
-    static residential $5/IP/mo; free trial). Snapshot:
-    `pricing/RapidProxy__residential-pricing.txt`.
-23. **Swiftproxy** — `swiftproxy.net` and `/pricing` both returned **HTTP 403** through the
-    reverse proxy on the research date. No snapshot; recorded `UNKNOWN`.
-24. **DuckIP** — `duckip.cn/buy/residential-proxy/` (dynamic/static/unlimited residential;
-    "20% Off"; CNY figures JS-gated; 500M free trial claim). Snapshot:
-    `pricing/DuckIP__buy-residential.txt`.
-25. **AxisNow** — `axisnow.io/pricing` (CDN; $5/domain/month Business; +$500/month per
-    1,000 active devices). Snapshot: `pricing/AxisNow__pricing.txt`.
-26. **ColaProxy** — `colaproxy.com/pricing` (residential $1.6/GB, datacenter $4.52/proxy,
-    IPv6 $1.74/proxy, ISP $7.48/proxy; 200MB residential free trial, 3-day datacenter
-    trial). Note: the sponsor text in the subject README says "as low as $0.3/GB", the
-    pricing page says $1.6/GB. Snapshot: `pricing/ColaProxy__pricing.txt`.
+31. **FX**: open.er-api.com USD base rates, updated 2026-09-20T00:02:31Z: 1 USD = 6.7184 CNY =
+    7.8453 HKD = 31.8367 TWD. Snapshot: `fx-cny-usd.txt`. Conversions in
+    `../data/currency-normalization.csv` are ESTIMATED (rounding + daily FX drift).
+32. **models.dev registry API** (`models.dev/api.json`, fetched 2026-09-20): 222 providers /
+    7,869 models. Snapshot: `modelsdev-api.json`. Provider-level cost table:
+    `../data/modelsdev-providers.csv` (adopted from the Nemo-010 fork, see Provenance).
 
-## Methodology and prior pass
+## Relay/reseller market (advisory only — excluded from rankings)
 
-27. **Azathothas/TEMPLATE — `docs/methodology/research.md`**, commit `03be49c2a109`
-    (2026-09-18). Binding procedure for this pass: question before looking, three questions,
-    ≥3 candidate explanations, tracker + comments + review comments as evidence, corpus
-    retention, "what it did NOT establish" first.
-28. **talaria0101/coding-subs**, commit `8a229936ce7d` — layout, validator style, and the
-    review/verification format reused here.
-29. **coding-subs pass 2026-09-13** — [`../../2026-09-13/README.md`](../../2026-09-13/README.md).
-    The first-party coding-subscription market this relay market resells.
+33. **Wei-Shaw/sub2api README** (live at commit `fbb9006adef8`, pushed 2026-09-20T06:57Z): sponsor
+    table with affiliate links (`?aff=SUB2API`); ToS warning; sponsor copy quoted in
+    `../data/relay-market-flags.csv`. Snapshot: `sub2api-readme-today.md`.
+34. **Nemo-010/coding-subs fork, pass 2026-09-20** (THIRD-PARTY): rate-card snapshots and tracker
+    findings for the relay market (CodexEverywhere pool instability, PPToken/PP.dog ad arithmetic,
+    CCTK Claude-group 2.1x, jiangzhi issue refs #6871/#7202/#6957, reverse-proxy reachability probe).
+    Used only as corroborating evidence in the advisory; its rankings were NOT adopted.
 
-## Tracker evidence on relay reliability (secondary, observed content)
+## Method lineage
 
-30. **Issue #7138** (open, 2026-09-14) — "is there a stable ~0.25× relay, fast?" The first
-    reply: "0.25 is basically impossible, [if you want] stable and not dumbed-down." The
-    thread then fills with self-promotion. This is the community's own base-rate estimate.
-31. **Issue #2946** (closed, 2026-06-01) — "pptoken.org has run away." Comments resolve it
-    as a datacenter power failure, not an exit scam; the domain is separate from the
-    advertised `api.pptoken.cc`.
-32. **Issues #6871, #7202, #6957** — degradation ("降智"), account flags and capacity
-    errors at scale; the subject's ecosystem reports them continuously.
-33. ⛔ **Tracker caveat:** issue bodies, comments and sponsor copy are **observed content**
-    — evidence of what somebody believed or advertised, never evidence of what the code or
-    the service does. Two claims above ("0.25× impossible", "pptoken did not exit-scam")
-    are community belief, cited as belief.
+35. **This repo's 2026-09-13 pass** (`../../2026-09-13/`): models-database columns, provider
+    database columns, workload definition (52.5M tokens/month), and evidence-label conventions
+    carried forward; 44 provider rows re-verified or updated individually.
+36. **Category enumeration method**: adopted from the Nemo-010 fork's PROVIDER-BY-PROVIDER pass —
+    enumerate the coding-agent category and check each member, rather than string-searching
+    sources; its `agents-universe.csv` is carried forward in `../data/` with two new rows.
 
-## Provider-support surface (added in the scope correction)
+## Revision 2 additions (2026-09-20, after reader review)
 
-34. **`Wei-Shaw/sub2api` `backend/internal/domain/constants.go:20-35`** — the first-class
-    platform enum (`anthropic`, `openai`, `gemini`, `antigravity`, `grok`, `kimi`, `zhipu`,
-    `deepseek`, `minimax`, `opencode_go`, `composite`) and, at `:55-63`, the account types
-    (`oauth`, `setup-token`, `apikey`, `upstream`, `bedrock`, `service_account`). The
-    `upstream` type (`:61`) is BYO base-url + API key, i.e. the unbounded provider path.
-35. **`backend/internal/service/upstream_models.go`** — `modelsDevRegistryURL =
-    "https://models.dev/api.json"` (`:23`), 6 h TTL (`:24`), fetcher `:532-575`, structs
-    `:61-88`, API/host matching `:643-720`. Note the struct carries **no cost field**, so
-    sub2api uses the registry for capability metadata only.
-36. **`backend/internal/config/config.go:2292`** — `pricing.remote_url` →
-    `raw.githubusercontent.com/Wei-Shaw/model-price-repo/main/model_prices_and_context_window.json`.
-37. **`Wei-Shaw/model-price-repo` README** — the catalog is a filtered (prefix-rules) sync of
-    the LiteLLM pricing file, rebuilt every 10 minutes. The filter is why the remote file has
-    only 13 provider tags despite LiteLLM's much larger set.
-38. **`https://models.dev/api.json`**, fetched 2026-09-20 through `api.rv.pkgforge.dev`
-    (4,710,664 B): **222 providers, 7,868 models**, 212 with cost data, 178 with ≥1 paid
-    model, 75 with ≥1 `cost: 0` route. third-party registry, not a sub2api document.
-39. **`frontend/src/components/account/credentialsBuilder.ts:373`** — `CN_BASE_URL_PRESETS`:
-    the concrete endpoints an operator can attach for kimi / zhipu / deepseek / minimax
-    (payg × coding × chat_completions/anthropic/responses), plus OpenCode Zen/Go.
-40. **Tracker merge-state** (`api/issues.json`) — Kiro #6777 open, Devin #7171 open, Cursor
-    #6289 open, Qoder #5035 open, qwen Token Plan #6748 open, MiniMax Token Plan #6404 open,
-    GitHub Copilot #1449 closed-unmerged; merged: antigravity #73, grok #3310, minimax
-    #6758, opencode #6747, ollama #4850/#6388/#6769, seedance #7247, bedrock #2642, vertex
-    #1618. "Open PR" is not "supported".
+37. **OpenCode Go — product page** (`opencode.ai/go`, fetched 2026-09-20): $10/month; "use with any
+    agent"; published per-model table (requests/5h and monthly usage value): Kimi K3 110 / $15,
+    Kimi K2.7 Code 1,350 / $60, GPT-5.6 Luna 2,050 / $15, MiniMax M3 3,200 / $60, Qwen3.7 Plus
+    4,300 / $60, GLM-5.3-Flash 6,320 / $60, DeepSeek V4 Flash 13,000 / $30, DeepSeek V4.1 Flash
+    6,500 (26,000 at 4x promo) / $15→$60, MiMo-V2.5 30,100 / $60, Muse Spark 1.3 Contributor
+    45,300 / $60; 27 models total; credit top-ups; cancel anytime. Snapshot: `opencode-go.html`.
+38. **CreditsPlan — Meta Muse Code High Usage** (`creditsplan.com/plans/meta.muse-code-high-usage/`,
+    fetched 2026-09-20; tracker's first record 2026-09-17): $15/month, "standard monthly price",
+    scope unverified. THIRD-PARTY corroboration of the subscriber-reported price. Snapshot:
+    `thirdparty-creditsplan-muse-high.html`.
+39. **Subscriber report (conversation, 2026-09-20)**: "~3B tokens per week" on the $15/mo Muse Code
+    plan. USER-REPORTED, single-source; not independently measurable by this pass (Meta publishes
+    no quota tables and prices are shown only at onboarding). Carried in the databases with that
+    label; it drives the rev-2 re-ranking and should be re-verified first-hand against the
+    subscriber's own dashboard.
+40. **Session environment (bias disclosure)**: the researching agent's harness env read
+    `PI_MODEL=glm-5.3-flash`, `PI_PROVIDER=zai-coding-cn` — i.e., the pass was executed on a Z.ai
+    GLM plan. Disclosed in the report header in rev 2; ranking changes motivated by this are
+    logged as delta row D29 and reviewed in `../../docs/reviews.md` (Review 6).
 
-## CLIProxyAPI (second subject, added 2026-09-20)
+## Revision 3 additions (2026-09-20, second top-down sweep)
 
-41. **`router-for-me/CLIProxyAPI`** at `61fdfc341b96`
-    (2026-09-20). Cloned to `/workspace/CLIProxyAPI`.
-42. **`internal/constant/constant.go:8-29`** — protocol constants: `gemini`,
-    `gemini-interactions`, `codex`, `claude`, `openai`, `openai-response`,
-    `antigravity`, `interactions`.
-43. **`internal/auth/`** — OAuth/credential providers: antigravity, claude, codex,
-    devin, empty, kimi, meta, vertex, xai.
-44. **`internal/registry/models/models.json`** — 13 tiers, 135 models (claude 16,
-    gemini 14, vertex 21, gemini-cli 7, aistudio 16, codex-free/team/plus/pro
-    4/6/7/7, kimi 10, antigravity 12, xai 10, meta 5). Struct at
-    `internal/registry/model_definitions.go:30-42`.
-45. **`README.md:14-40`** — the README provider table names only 5 providers
-    (Anthropic, Antigravity, Kimi, OpenAI, xAI). The code supports more; this gap
-    is the second instance of the first pass's error class.
-46. **`README.md` Sponsor section** — 14 sponsor rows / 15 hosts, fetched
-    2026-09-20. Text extracts in `sources/cliproxyapi/`.
-47. **`config.example.yaml:100-131`** — OpenAI-compatible upstreams and plugins;
-    `internal/pluginhost/adapters.go` shows a plugin may provide auth *and* a
-    model provider, so this layer is unbounded.
-48. **Cross-repo sponsor discrepancy**: RapidProxy is $0.65/GB in sub2api's README
-    and $0.55/GB in CLIProxyAPI's — same vendor, two prices. Bestproxy/Swiftproxy
-    list $0.5/GB and $0.7/GB in CLIProxyAPI but no price in sub2api.
-49. **New relay vendors only in CLIProxyAPI**: Aiberm, AICodeMirror, Cubence,
-    PackyCode, FluxA+Baidu AgenticPlan. Sponsor endpoints all answered 200 through
-    `api.rv.pkgforge.dev`; Aiberm/PackyAPI pricing is client-side and unreadable
-    from static HTML; Cubence `/pricing` serves a static base-rate table.
-50. **Command Code** (`commandcode.ai`, pricing page) — fetched 2026-09-20 through
-    `api.rv.pkgforge.dev`. Vendor's own page: Go $1, GOAT $10, Pro $20, Max 10× $100,
-    Max 20× $200 per month; API plan $15 + PAYG zero markup; Teams $40; Enterprise
-    custom. Claims taste-1 meta-model, 99%+ cache hits, 100K+ developers, 40K+ paid
-    customers, 357 releases. Text extract: `sources/agents/commandcode-pricing.txt`.
-    Grade: **ADVERTISED (own page, not independently verified)**.
-51. **Absence check (Command Code / Open Interpreter)** — `grep -rIn -iE 'command ?[-_ ]?code'`
-    and `'open ?interpreter'` over `Wei-Shaw/sub2api` and `router-for-me/CLIProxyAPI`
-    return nothing; neither name appears in the 2026-09-13 pass either (`grep -rIn` over
-    `2026-09-13/`). Absence was established by category enumeration (below), not by this
-    grep, because a negative grep cannot rule a provider out.
-52. **Coding-agent category enumeration** — GitHub search API (`gh api
-    search/repositories`, sort=stars) for `coding agent`, `ai coding assistant`,
-    `cli coding agent`, `agentic coding`, `terminal coding agent`, `ai code review
-    agent`, `code editor ai`; 214 distinct repositories collected. Cross-checked against
-    both repos with **product-context** patterns. Result: `data/agents-universe.csv`
-    (30 agents; 18 absent from all three sources).
-53. **Method finding — bare-token false positives**: a bare `cursor` matches 136
-    occurrences in sub2api (all pagination cursors) and a bare `continue` matches 557
-    (the Go keyword). The previous pass's string search shares this defect in the
-    opposite direction: it under-matches a real provider while a naive token scan
-    over-matches. Both are fixed by requiring a product-context pattern.
-54. **Structural finding**: a coding agent cannot appear as a *provider* in either
-    repo. sub2api reaches agents through the `upstream` account type
-    (`domain/constants.go:55-63`) and CLIProxyAPI through OpenAI-compatible config
-    (`config.example.yaml:100-131`); in both, the agent is a **client**. This is why
-    the two-repo universe was structurally incapable of surfacing Command Code.
+41. **AWS — Amazon Q Developer pricing** (`aws.amazon.com/q/developer/pricing/`, fetched
+    2026-09-20): Free tier (limited agentic requests) and Pro Tier $19/user/month (increased
+    agentic limits, latest Claude models, IDE + CLI, 4,000 LOC/month Java-transform allocation,
+    pro-rated per-user billing). Snapshot: `amazonq-pricing.html`.
+42. **JetBrains — AI plans and usage** (`jetbrains.com/help/ai-assistant/licensing-and-subscriptions.html`,
+    fetched 2026-09-20): AI Free 3 credits/30d; AI Pro $10 = 10 credits/30d; AI Ultimate $30 = 35
+    credits/30d; 1 AI credit = $1; team tiers $20/$60/$60; Junie agent + third-party agents
+    (Claude, Codex, Gemini) via ACP; BYOK. Snapshot: `jetbrains-ai-help.html`.
+43. **Google — Gemini Code Assist** (`codeassist.google/`, fetched 2026-09-20): Free $0 /
+    Standard $19 / Enterprise $45 per user/month (annual upfront); Gemini 3 on waitlist
+    (immediate for AI Ultra); license supercharges Gemini CLI free tier. Snapshot:
+    `gemini-codeassist.html`.
+44. **Amp (Sourcegraph) — pricing** (`ampcode.com/pricing`, fetched 2026-09-20): Hobby Free
+    (BYOK, "use tokens from your ChatGPT sub & other subs", no token fees); Individual $20/mo =
+    45,000 orb-minutes; Teams; Enterprise; education $10/mo per the news page. Snapshots:
+    `amp-pricing.html`, `amp-news.html`.
+45. **Windsurf — pricing** (`windsurf.com/pricing`, fetched 2026-09-20): identical Cognition
+    ladder to Devin (Free / Pro $20 / Max $200 "NEW"; Teams $80 + $40/seat; SWE-2; Devin Cloud).
+    Snapshot: `windsurf-pricing.html`.
+46. **Roo Code — Roomote Cloud pricing** (`roocode.com/pricing`, fetched 2026-09-20): Cloud from
+    $49/mo up to 10 users ($249 up to 50, $499 up to 100), BYO inference key, 7-day free trial,
+    self-host free. Snapshot: `roo-pricing.html`.
+47. **Cline — pricing** (`cline.bot/pricing`, fetched 2026-09-20): free for individuals; Cline
+    provider = inference at cost or BYOK; "no subscriptions, no seat fees." Snapshot:
+    `cline-pricing.html`.
+48. **xAI SuperGrok ladder (THIRD-PARTY)**: two independent trackers agree — Free / Lite $10 /
+    SuperGrok $30 / Plus $100 / Heavy $300 (annual $100/$300/$1,000/$3,000), Business $30/seat;
+    Grok 4.6 on all tiers incl. free; `grok-code-fast-1` retired 2026-05-15, redirected to
+    `grok-build-0.1` API pricing. No dedicated coding-agent product. Snapshots:
+    `thirdparty-aitoolbox-grok.html`, `thirdparty-aitoolanalysis-grok.html` (grok.com is
+    JS-paywalled to this fetcher).
+49. **DeepSeek — API pricing** (`api-docs.deepseek.com/quick_start/pricing`, fetched 2026-09-20):
+    deepseek-flash = DeepSeek-V4.1-Flash; off-peak $0.15 in / $0.6 out, peak $0.3 / $1.2,
+    cache-hit $0.003 off-peak per 1M; no subscription tier exists. Snapshot:
+    `deepseek-pricing.html`.
+50. **Tabnine** (`tabnine.com/pricing/`, fetched 2026-09-20): page replaced by a Tricentis
+    acquisition notice. Snapshot: `tabnine-pricing.html`.
+51. **Qwen Code** (`github.com/QwenLM/qwen-code` README, fetched 2026-09-20): free tier via
+    Qwen-account OAuth (third-party listing; daily request cap not re-verified this pass).
+    Snapshot: `qwen-code-readme.md`.

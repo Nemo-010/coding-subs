@@ -34,3 +34,5 @@ Warp,terminal + agent,no,subscription,UNKNOWN this pass,no,no,no,UNKNOWN,https:/
 CodeWhale,coding agent,yes,BYOK,free (BYOK),no,no,no,THIRD-PARTY github listing 2026-09-20,https://github.com/Hmbown/Codewhale
 Qwen Code,coding agent,yes,BYOK + Qwen account,free tier with Qwen account,no,no,no,THIRD-PARTY github listing 2026-09-20,https://github.com/QwenLM/qwen-code
 DeepSeek-Reasonix,coding agent,no,BYOK,UNKNOWN this pass,no,no,no,UNKNOWN,https://github.com/esengine/DeepSeek-Reasonix
+Kimi Code CLI (Moonshot),coding agent,no,subscription (Kimi membership),renamed tiers 2026-09-20: weekly window removed for new members; K3 from Plus; K3 1M from Pro,no,no,yes,VERIFIED official docs 2026-09-20,kimi-membership-doc.html
+Devin CLI / Warp Agent CLI / AGY CLI (Antigravity 2.0),coding agent,no,varies,listed for completeness: agent CLIs keep multiplying; pricing covered in providers-database.csv,no,no,partial,VERIFIED official pages 2026-09-20,devin-pricing.html + warp-pricing.html + antigravity-plans-doc.html

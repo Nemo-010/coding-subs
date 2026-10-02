@@ -79,3 +79,120 @@ supply-chain/prompt-injection surface, scam exposure.
 **Verdict: all five lenses produced at least one accepted fix (11 fixes total across 10
 findings + 1 correct initial failure). The pass was published only after fixes 1–12 landed
 and `python3 tools/validate.py` returned OK.**
+
+---
+
+# Deep Reviews — pass 2026-09-20
+
+Review passes were run before publishing, each with a distinct lens, each required to find
+something real or state what would have made it fire. Fixes were folded in before the next pass.
+
+## Review 1 — Re-derivation (recompute every number from raw snapshots)
+
+Re-derived from `sources/`, not from the report's own text: GLM weekly-to-monthly capacity
+(Lite 48/97, Pro 290/580, Max 676/1,352 M/wk at 95% cache, x 4.33), FX conversions at
+6.7184 CNY/USD (¥49 -> $7.30, ¥99 -> $14.74, ¥199 -> $29.62, ¥699 -> $104.05, ¥399/4wk -> $59.39),
+Kimi regional spread ($29.62 CN vs $39 international = 24% under / 32% over), Copilot flex totals
+(1,500 / 7,000 / 20,000), Gemini 3.8 Flash workload cost (15 x 0.75 + 37.5 x 3.75 = $151.88),
+GLM Flash cost floor (18 / 1,264 = $0.01424), and every II quoted against
+`data/aa-leaderboard-2026-09-20.json`.
+
+**Finding 1 — FIXED.** The provider DB's GLM Pro/Max capacity rows (inherited from 2026-09-13)
+used x4 weeks (1,160-2,320M / 2,700-5,400M) while the README and the review convention use x4.33
+(1,256-2,511M / 2,927-5,854M). DB rows corrected and marked "capacity re-derived x4.33wk".
+
+## Review 2 — Claim-scope audit (VERIFIED / THIRD-PARTY / ADVERTISED / UNKNOWN)
+
+Audited every price sentence against its evidence source.
+
+**Finding 2 — FIXED.** Three sentences implied more than their source: Kimi new-tier prices are
+THIRD-PARTY ("pricing unchanged") with only the structure VERIFIED - relabeled everywhere,
+including the top-10 table row. Cursor Pro+/Ultra is THIRD-PARTY (behind a JS tab). Command Code's
+"up to 2x/5x effective usage" and its API plan's "zero markup" are ADVERTISED, vendor-page-only -
+now labeled in the DB, the top-10 row, the workload table (UNKNOWN verdicts), and WHAT I WOULD BUY
+(month one is a measurement, not a commitment).
+
+## Review 3 — DB/report consistency
+
+Cross-checked every row quoted in the README against `data/providers-database.csv`.
+
+**Finding 3 — FIXED.** The Devin (team) row still carried "UNKNOWN for 2026 tiers" as its price
+while the same row's published_quota said "$80 base + $40/seat". Price field corrected.
+
+## Review 4 — Scope policy (the fork question)
+
+Checked that nothing from the Nemo-010 fork is presented as this pass's research.
+
+**Finding 4 — none.** The fork's contributions are adopted with credit (method, agents-universe,
+models.dev tables, relay snapshots as advisory evidence) and its rankings are rejected with named
+reasons (sponsor universe, CNY unconverted, relay != subscription, proxy-measured uptime,
+self-contradicting ad arithmetic). The live sub2api README was re-fetched today so the advisory's
+quotes stand on this pass's own snapshot, not the fork's.
+
+## Review 5 — Validator + arithmetic gates
+
+`tools/validate.py 2026-09-20` and `tools/validate.py 2026-09-13` both pass. The validator was
+extended: the references date check now reads the pass directory's own date (was hard-coded to
+2026-09-13), and models with unpublished context windows may carry `ctx_ge_1m=UNKNOWN` instead of
+failing the integer check.
+
+## What would have made each review fire
+
+R1: any capacity or FX figure differing from the raw snapshot by more than rounding. R2: any
+ADVERTISED number wearing a VERIFIED label. R3: any README claim absent from the DB or vice versa.
+R4: any fork table reused without relabeling. R5: a failing validator.
+
+## Review 6 — Bias audit (rev 2, after a reader challenge: "you are a glm model and put glm at top")
+
+The challenge had two parts; both were checked against the raw sources.
+
+**Part 1, identity.** Confirmed: the session env reads `PI_MODEL=glm-5.3-flash`,
+`PI_PROVIDER=zai-coding-cn`. The report now discloses this in its header. Every GLM number remains
+cited to first-party pages, but disclosure alone would have been the coward's fix, because:
+
+**Part 2, method.** The reader's underlying point survives the identity question: GLM's #1 rank
+depended on it being the only vendor that publishes token tables (self-graded, 95%-cache-assumed),
+while everyone publishing nothing scored UNKNOWN and lost by default. "Most transparent" was
+masquerading as "most generous."
+
+**Findings and fixes:**
+1. FIXED — disclosure section added; evidence classes made explicit (DOCUMENTED /
+   VERIFIED-TABLE / USER-REPORTED / ADVERTISED / UNKNOWN).
+2. FIXED — a subscriber-reported Muse Code datapoint ($15/mo, ~3B tokens/week; price
+   third-party-corroborated by CreditsPlan, recorded 2026-09-17) was added and ranked on its own
+   evidence class. On those numbers Muse dethrones GLM Lite; the BEST DEAL FOUND block and the
+   rankings were re-ordered accordingly, with falsification conditions stated.
+3. FIXED — OpenCode Go ($10/mo, published per-model grid) was missing; added (delta D27,
+   providers DB, references §37) with credit to the reader who flagged it.
+4. NONE — the relay advisory, FX normalization, and delta log were re-checked and stand.
+
+What would have made this review fire earlier: any ranking that lets a vendor's self-published
+table outrank a competitor's report purely because the competitor publishes nothing. The fix is
+structural (evidence classes), not editorial.
+
+## Review 7 — Second top-down sweep (rev 3, after "think what else you missed")
+
+The category was re-enumerated from zero in four lanes: (a) frontier labs (do they sell coding
+subs?), (b) cloud/IDE vendors bundling agents, (c) agent startups, (d) sites the earlier passes
+left as JS shells.
+
+**Findings:**
+1. FIXED — six real products were missing from the market picture entirely and are now verified
+   rows: Amazon Q Developer Pro $19 (AWS's second coding sub - 09-13 only ever listed Kiro under
+   AWS), JetBrains AI Pro $10 (Junie; 1 credit = $1 printed), Gemini Code Assist $19/$45 (a
+   distinct product line from Antigravity), Amp Free/$20 (the first agent that consumes your
+   existing ChatGPT/agent subscription tokens), Roo Cloud from $49 (team-shaped), Qwen Code's free
+   OAuth tier.
+2. FIXED — one standing UNKNOWN from the 09-13 pass resolved: windsurf.com/pricing now serves the
+   Cognition ladder (Free/$20/$200; Teams $80+$40/seat), so "Devin Desktop (ex-Windsurf)" is no
+   longer UNKNOWN.
+3. FIXED — three scope questions answered and closed rather than left dangling: xAI sells no
+   coding-agent subscription (chat-first ladder; grok-code-fast-1 retired; Grok 4.6 reaches agents
+   only via third-party grids), DeepSeek still has no coding plan (the 09-13 "within months"
+   prediction failed its own deadline), Tabnine is acquired and out of the market.
+4. NONE — Cline confirmed subscription-free; Kiro/Trae/Qoder/CodeBuddy/MiMo/StepFun/Z.ai-CN
+   remain UNKNOWN where unverifiable, and the report says so instead of guessing.
+
+What would have made this review fire earlier: enumerating vendors by *category* (cloud vendor,
+IDE vendor) instead of by *product fame*. The 09-13 and rev-1/rev-2 passes both failed AWS twice
+by checking Kiro and never asking "does AWS sell a second coding agent?"
