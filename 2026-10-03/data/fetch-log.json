@@ -1,0 +1,497 @@
+[
+  {
+    "label": "zai-overview.md",
+    "url": "https://docs.z.ai/devpack/overview.md",
+    "http": 200,
+    "bytes": 8315,
+    "ms": 534,
+    "sha256": "594793a77de76dcdd30662a200f1f48599cbf353f08c00e2df8eb9d00e3c0851",
+    "error": null
+  },
+  {
+    "label": "zai-faq.md",
+    "url": "https://docs.z.ai/devpack/faq.md",
+    "http": 200,
+    "bytes": 9838,
+    "ms": 616,
+    "sha256": "af2d4b98eab9b9290dfd1f09abd9e9b7eceb08f07e910d754a51bb346bc72839",
+    "error": null
+  },
+  {
+    "label": "zai-teamplan.md",
+    "url": "https://docs.z.ai/devpack/teamplan.md",
+    "http": 200,
+    "bytes": 10353,
+    "ms": 510,
+    "sha256": "246b67a7efbbcab3164a7cb678fcfb4c5abf75275fc31a37bfe0fb82869f5ff2",
+    "error": null
+  },
+  {
+    "label": "zai-transition.md",
+    "url": "https://docs.z.ai/devpack/transition.md",
+    "http": 200,
+    "bytes": 5323,
+    "ms": 474,
+    "sha256": "14e37269e96a98d4cb75b94840b98c4eb276653bd0b955cba411d32f1303207e",
+    "error": null
+  },
+  {
+    "label": "zai-flash-campaign.md",
+    "url": "https://docs.z.ai/devpack/notice/event-glm-5.3-flash.md",
+    "http": 200,
+    "bytes": 1947,
+    "ms": 379,
+    "sha256": "d0805c7fb3e27d72a049b380426a96714edbe89f32f79a5a11a118a67f2c18f9",
+    "error": null
+  },
+  {
+    "label": "zai-llms-index.txt",
+    "url": "https://docs.z.ai/llms.txt",
+    "http": 200,
+    "bytes": 8897,
+    "ms": 329,
+    "sha256": "eb829f723defccea7c06148093f5229d8b760a2e9dca5102fe38c12c63a144af",
+    "error": null
+  },
+  {
+    "label": "minimax-token-plan-intro.md",
+    "url": "https://platform.minimax.io/docs/token-plan/intro.md",
+    "http": 200,
+    "bytes": 5952,
+    "ms": 728,
+    "sha256": "f5ae718c4ecb4017325ad578046c34a029e03f2c937235d2b57fb7a5174f33c5",
+    "error": null
+  },
+  {
+    "label": "minimax-token-plan-pricing.md",
+    "url": "https://platform.minimax.io/docs/guides/pricing-token-plan.md",
+    "http": 200,
+    "bytes": 2185,
+    "ms": 430,
+    "sha256": "ffd421a8af33a00706062745e80f18b773fdf1e3db02b3bae671163585472fc0",
+    "error": null
+  },
+  {
+    "label": "kimi-membership.html",
+    "url": "https://www.kimi.com/code/docs/en/kimi-code/membership.html",
+    "http": 200,
+    "bytes": 70700,
+    "ms": 788,
+    "sha256": "ec75fef91f4d3388a64690b023bbbe8cd801d60a8d9ce4f9d11f1e2917c7dcf2",
+    "error": null
+  },
+  {
+    "label": "kimi-help-membership.html",
+    "url": "https://www.kimi.com/en/help/membership/membership-overview",
+    "http": 200,
+    "bytes": 523930,
+    "ms": 1418,
+    "sha256": "dc69ecafb3b786cc1b4979cdeaf7ec68f89782cdacf5adf60979112d26d8d25a",
+    "error": null
+  },
+  {
+    "label": "kimi-api-pricing.md",
+    "url": "https://platform.kimi.ai/docs/pricing/chat.md",
+    "http": 200,
+    "bytes": 4383,
+    "ms": 1026,
+    "sha256": "27a3d7395175e11aff6a9d76dc83b077a6cc126ad08c58404248bbcff47cfc31",
+    "error": null
+  },
+  {
+    "label": "meta-muse-subscriptions.md",
+    "url": "https://dev.meta.ai/docs/muse-code/subscriptions.md",
+    "http": 200,
+    "bytes": 6107,
+    "ms": 385,
+    "sha256": "7f5dd48d7a1fa6d79425157792e6323c90c74359b563944cfc242c35ce4a517f",
+    "error": null
+  },
+  {
+    "label": "openai-codex-pricing.md",
+    "url": "https://developers.openai.com/codex/pricing.md",
+    "http": 403,
+    "bytes": 7079,
+    "ms": 373,
+    "sha256": "1564da7fea3782cf721cedc20590161bff55ce9e0ab57008931b91c66efab367",
+    "error": "HTTP 403"
+  },
+  {
+    "label": "openai-chatgpt-pricing.html",
+    "url": "https://openai.com/chatgpt/pricing/",
+    "http": 403,
+    "bytes": 6632,
+    "ms": 230,
+    "sha256": "7f803b178f902940d71a24be71cfc74fb10266d00ece15ce3718402758e24d09",
+    "error": "HTTP 403"
+  },
+  {
+    "label": "anthropic-pricing.html",
+    "url": "https://www.anthropic.com/pricing",
+    "http": 200,
+    "bytes": 1183277,
+    "ms": 557,
+    "sha256": "3533e031ed3e2b64a2e5325ee66749b2270fdcb59f64f1fdcba2f71c0bdd676a",
+    "error": null
+  },
+  {
+    "label": "anthropic-models.md",
+    "url": "https://docs.claude.com/en/docs/about-claude/models/overview.md",
+    "http": 200,
+    "bytes": 447830,
+    "ms": 963,
+    "sha256": "30181ca87d80292fdb7f4793709143aa9b3ef7376471191ed6871230b356095d",
+    "error": null
+  },
+  {
+    "label": "anthropic-context-paid.html",
+    "url": "https://support.claude.com/en/articles/8606394-how-large-is-the-context-window-on-paid-plans",
+    "http": 200,
+    "bytes": 353186,
+    "ms": 1028,
+    "sha256": "90b8ae867b125f05c5a5dd3bef74a5395f31c0fe40d4ebcd0bad1730d553a25d",
+    "error": null
+  },
+  {
+    "label": "google-gemini-api-pricing.html",
+    "url": "https://ai.google.dev/gemini-api/docs/pricing",
+    "http": 200,
+    "bytes": 1021772,
+    "ms": 5075,
+    "sha256": "a51cf1b129c448a0c91dabfeb7f29cfe3ab2a234b195fb487e8174a4f6bee1dd",
+    "error": null
+  },
+  {
+    "label": "google-ai-subscriptions.html",
+    "url": "https://gemini.google/subscriptions/",
+    "http": 200,
+    "bytes": 251580,
+    "ms": 697,
+    "sha256": "1771e05729d50fcc493250304ee310c00bb9476bb56ba68a48866c91632289b1",
+    "error": null
+  },
+  {
+    "label": "antigravity-plans.html",
+    "url": "https://antigravity.google/docs/plans/",
+    "http": 200,
+    "bytes": 67050,
+    "ms": 534,
+    "sha256": "26717e504c7404b1988f2e9ad5c8423d26bf9a3935a815f263f70a566256eedb",
+    "error": null
+  },
+  {
+    "label": "antigravity-models.html",
+    "url": "https://antigravity.google/docs/models/",
+    "http": 200,
+    "bytes": 82487,
+    "ms": 329,
+    "sha256": "48339ae4c832671cedf6579d0947f62d726593efcaa0016759ed7b35fb787b65",
+    "error": null
+  },
+  {
+    "label": "github-copilot-plans.html",
+    "url": "https://docs.github.com/en/copilot/get-started/plans",
+    "http": 200,
+    "bytes": 1071279,
+    "ms": 1403,
+    "sha256": "588021026f29d16d52bc0c32cc2fa940d95a172d7e3523f1123751d048f2554e",
+    "error": null
+  },
+  {
+    "label": "alibaba-coding-plan.html",
+    "url": "https://www.alibabacloud.com/help/en/model-studio/coding-plan",
+    "http": 200,
+    "bytes": 26003,
+    "ms": 1681,
+    "sha256": "fcf85bf333ff99c5373f15b8280965f68e24cf0ce057f219c3351fb85b1584d3",
+    "error": null
+  },
+  {
+    "label": "trae-pricing.html",
+    "url": "https://www.trae.ai/pricing",
+    "http": 200,
+    "bytes": 87124,
+    "ms": 1946,
+    "sha256": "133c60eddd19090622334e62e80de1d4c4fe37ceb53ca0b77be1f376b2c07abb",
+    "error": null
+  },
+  {
+    "label": "kilo-pricing.html",
+    "url": "https://kilo.ai/pricing",
+    "http": 200,
+    "bytes": 510744,
+    "ms": 1127,
+    "sha256": "8eccb42b1ea26bd6935702bbe96aabdad26fb0daaf42aa90513369b824d62758",
+    "error": null
+  },
+  {
+    "label": "cline-docs.html",
+    "url": "https://docs.cline.bot/getting-started/installing-cline",
+    "http": 200,
+    "bytes": 342007,
+    "ms": 693,
+    "sha256": "c1b1dadf67bf5df5ce33315ec8f52cca454a6281fb1e9a66bdac2e1359307962",
+    "error": null
+  },
+  {
+    "label": "opencode-go.html",
+    "url": "https://opencode.ai/docs/go/",
+    "http": 200,
+    "bytes": 103111,
+    "ms": 348,
+    "sha256": "bdef8d7bf9f3939d25a31fdd8eaeff375402bdae41de57cc0ac5e56bdd1ae994",
+    "error": null
+  },
+  {
+    "label": "opencode-zen.html",
+    "url": "https://opencode.ai/zen/",
+    "http": 200,
+    "bytes": 39100,
+    "ms": 328,
+    "sha256": "06dbc1db8a3add49aa23872d3195b42d3c3e991b5f33a208b4f4afbf545d86b4",
+    "error": null
+  },
+  {
+    "label": "cursor-pricing.html",
+    "url": "https://cursor.com/pricing",
+    "http": 200,
+    "bytes": 251483,
+    "ms": 481,
+    "sha256": "db55c1cdd5f80718d2d6e0e8a8d410ed5715336a59d8c8c14a298322382deeee",
+    "error": null
+  },
+  {
+    "label": "devin-pricing.html",
+    "url": "https://devin.ai/pricing",
+    "http": 200,
+    "bytes": 623080,
+    "ms": 636,
+    "sha256": "4d26b6bd7ccc9c7bf84b53c9d1ec3712579f223921e53eff0e340abfd980452d",
+    "error": null
+  },
+  {
+    "label": "windsurf-pricing.html",
+    "url": "https://windsurf.com/pricing",
+    "http": 200,
+    "bytes": 623080,
+    "ms": 888,
+    "sha256": "626113e8826e4fc6e45988674c0ec38259ca893583233ee94bee0991213951f6",
+    "error": null
+  },
+  {
+    "label": "kiro-pricing.html",
+    "url": "https://kiro.dev/pricing/",
+    "http": 200,
+    "bytes": 193873,
+    "ms": 393,
+    "sha256": "308079113d82175128ee270fcd0052b597409b516fada7e7328f422908e49a8d",
+    "error": null
+  },
+  {
+    "label": "replit-pricing.html",
+    "url": "https://replit.com/pricing",
+    "http": 200,
+    "bytes": 269196,
+    "ms": 439,
+    "sha256": "a9baef84ffaee44ee510285ace5202671c954892a4e351ca5d7caa76b4e62254",
+    "error": null
+  },
+  {
+    "label": "augment-pricing.html",
+    "url": "https://www.augmentcode.com/pricing",
+    "http": 200,
+    "bytes": 270526,
+    "ms": 699,
+    "sha256": "15c2ce12915dcfdd7cd9ea1169e07287ec17e3ee39ed791fc1dc27f1b7da4585",
+    "error": null
+  },
+  {
+    "label": "mistral-pricing.html",
+    "url": "https://mistral.ai/pricing",
+    "http": 200,
+    "bytes": 487471,
+    "ms": 952,
+    "sha256": "94c58768944bdd8b27e20fe9f1ff1dd48b6bddb73920d94c309e16a64fd31bc8",
+    "error": null
+  },
+  {
+    "label": "commandcode-pricing.html",
+    "url": "https://commandcode.ai/pricing",
+    "http": 200,
+    "bytes": 326965,
+    "ms": 227,
+    "sha256": "eb3c6a6afa67add13c7ca5cafc77ce641c523710f2b6836aff39e4b5e4404073",
+    "error": null
+  },
+  {
+    "label": "factory-pricing.html",
+    "url": "https://factory.ai/pricing",
+    "http": 200,
+    "bytes": 317772,
+    "ms": 795,
+    "sha256": "d75c6cc69ca64ac6cb58e868004e2a49a6b30d794dccc50d1ed29d41ca76765c",
+    "error": null
+  },
+  {
+    "label": "zed-pricing.html",
+    "url": "https://zed.dev/pricing",
+    "http": 200,
+    "bytes": 546681,
+    "ms": 1284,
+    "sha256": "d72732493bb550454610da6b960a01e8060041d271c463ce0ebc3b7f94ad1b4a",
+    "error": null
+  },
+  {
+    "label": "warp-pricing.html",
+    "url": "https://www.warp.dev/pricing",
+    "http": 200,
+    "bytes": 508159,
+    "ms": 763,
+    "sha256": "4d1f149001c736c080f7b5daa213a4265b4f047443c7dfceabac775c1b7b12d2",
+    "error": null
+  },
+  {
+    "label": "amp-pricing.html",
+    "url": "https://ampcode.com/pricing",
+    "http": 200,
+    "bytes": 105700,
+    "ms": 419,
+    "sha256": "90fe2ac05938504a02e7ad2f95d86393f15a70db8f24782499efa51e913c915e",
+    "error": null
+  },
+  {
+    "label": "jetbrains-ai.html",
+    "url": "https://www.jetbrains.com/ai/",
+    "http": 200,
+    "bytes": 180449,
+    "ms": 363,
+    "sha256": "a2d9f47a457caf894ccf13ea017214fbca1b640fae2fb59d660cc8a66d3abe96",
+    "error": null
+  },
+  {
+    "label": "xai-news.html",
+    "url": "https://x.ai/news",
+    "http": 200,
+    "bytes": 274909,
+    "ms": 174,
+    "sha256": "2b27fdfa95d5b9bc8aa4622c7be6c329554da2357a02feb064706f26c0cad232",
+    "error": null
+  },
+  {
+    "label": "xai-grok-pricing.html",
+    "url": "https://x.ai/api",
+    "http": 200,
+    "bytes": 363144,
+    "ms": 188,
+    "sha256": "4e1d68f96a30485a01f04c3d66621f061f6a3825b782e272753006c6ffd12828",
+    "error": null
+  },
+  {
+    "label": "deepseek-pricing.html",
+    "url": "https://api-docs.deepseek.com/quick_start/pricing",
+    "http": 200,
+    "bytes": 23982,
+    "ms": 2308,
+    "sha256": "210f102275ccf1a6542f08a3bc9e4b4c7c83278cb74b35217bffa112df6363b2",
+    "error": null
+  },
+  {
+    "label": "qwen-code-readme.md",
+    "url": "https://raw.githubusercontent.com/QwenLM/qwen-code/main/README.md",
+    "http": 200,
+    "bytes": 13274,
+    "ms": 245,
+    "sha256": "0370888b25018bef847a5edb740947bd02e06cf785e1923797a8f901b7c835f7",
+    "error": null
+  },
+  {
+    "label": "models-dev-api.json",
+    "url": "https://models.dev/api.json",
+    "http": 200,
+    "bytes": 5293409,
+    "ms": 985,
+    "sha256": "1290e78c59b72a425cb6c39c1c354a780a4e002605f03c9867f17271c7cb04b9",
+    "error": null
+  },
+  {
+    "label": "fx-usd.json",
+    "url": "https://open.er-api.com/v6/latest/USD",
+    "http": 200,
+    "bytes": 2970,
+    "ms": 162,
+    "sha256": "3227165b119a7ff2c204a11cd5c7c74d87aa83f92bc0f972d0536282c90f404b",
+    "error": null
+  },
+  {
+    "label": "issue1-awesome-free-llm-api.md",
+    "url": "https://raw.githubusercontent.com/peter123023/awesome-free-llm-api/main/README.en.md",
+    "http": 200,
+    "bytes": 72939,
+    "ms": 468,
+    "sha256": "7bbe3e3f34d7b28bde7f722039313873febdabba23cc22323b53a89faed28db8",
+    "error": null
+  },
+  {
+    "label": "issue1-verified-ai-free-tiers-limits.json",
+    "url": "https://raw.githubusercontent.com/f-tiger/verified-ai-free-tiers/main/limits.json",
+    "http": 200,
+    "bytes": 167032,
+    "ms": 243,
+    "sha256": "835d255b4d78aff8aa7fe3cb50609fa575a159fb3aeb26160e8ad2855c3d7c46",
+    "error": null
+  },
+  {
+    "label": "issue1-verified-ai-free-tiers-limits.md",
+    "url": "https://raw.githubusercontent.com/f-tiger/verified-ai-free-tiers/main/limits.md",
+    "http": 200,
+    "bytes": 159944,
+    "ms": 234,
+    "sha256": "76e5c806a34221a4978196ae5438e91d06eb0df6647f2c7969eae1f0f340af24",
+    "error": null
+  },
+  {
+    "label": "issue1-free-llm.md",
+    "url": "https://raw.githubusercontent.com/nejib1/Free-LLM/main/README.md",
+    "http": 200,
+    "bytes": 24101,
+    "ms": 187,
+    "sha256": "502ce63262fe86582beee445dd54deae67130f80172a8b76a5687d80eb6c9492",
+    "error": null
+  },
+  {
+    "label": "issue1-agentdeals-index.md",
+    "url": "https://raw.githubusercontent.com/robhunter/agentdeals/main/artifacts/free-llm-api-index/README.md",
+    "http": 200,
+    "bytes": 32250,
+    "ms": 226,
+    "sha256": "e7997c1be1a85c57d4303244130d7a38f63c9238e103629f3b9df22700da1336",
+    "error": null
+  },
+  {
+    "label": "issue2-subscription-multipliers.md",
+    "url": "https://raw.githubusercontent.com/phuryn/experiments/main/subscription-multipliers/README.md",
+    "http": 200,
+    "bytes": 8018,
+    "ms": 181,
+    "sha256": "e006b523874524d3dfb6fa15ebce089837c682436d7ec7d18c4bc9e4da65398b",
+    "error": null
+  },
+  {
+    "label": "issue2-real-api-pricing.md",
+    "url": "https://raw.githubusercontent.com/FeiZhuLulu/real-api-pricing/main/README.md",
+    "http": 200,
+    "bytes": 14436,
+    "ms": 202,
+    "sha256": "3f87ea5d041179d4f3fd0d7ed876633916ff6a573db0009e1d721eb7a93d8cb2",
+    "error": null
+  },
+  {
+    "label": "issue2-real-api-pricing-adopted.csv",
+    "url": "https://raw.githubusercontent.com/FeiZhuLulu/real-api-pricing/main/data/adopted.csv",
+    "http": 200,
+    "bytes": 236446,
+    "ms": 257,
+    "sha256": "d57ba8bf14565de4852b77d67cb0157190572a8428780788e3547c65bfe55cf7",
+    "error": null
+  }
+]

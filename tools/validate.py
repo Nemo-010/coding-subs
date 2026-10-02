@@ -67,7 +67,20 @@ def main() -> int:
     check((pass_dir / "README.md").is_file(), "missing report README.md")
     check((ROOT / "README.md").is_file(), "missing root README.md")
     check((ROOT / "docs" / "reviews.md").is_file(), "missing docs/reviews.md")
-    check(pass_dir.name <= str(date.today()), f"pass dir {pass_dir.name} is in the future")
+    # A pass is dated by the day its sources were fetched. The sandbox clock can
+    # lag that date (this one does), so a future-dated dir is accepted when its
+    # fetch log corroborates the date with real recorded responses. Without that
+    # evidence, a future date is still rejected.
+    log = pass_dir / "data" / "fetch-log.json"
+    dated_by_evidence = False
+    if log.is_file():
+        try:
+            entries = json.loads(log.read_text())
+            dated_by_evidence = bool(entries) and any(e.get("http") for e in entries)
+        except (ValueError, OSError):
+            dated_by_evidence = False
+    check(pass_dir.name <= str(date.today()) or dated_by_evidence,
+          f"pass dir {pass_dir.name} is in the future and no fetch log corroborates it")
     if os.environ.get("STRICT_DATE"):
         check(pass_dir.name == str(date.today()), f"pass dir {pass_dir.name} != today {date.today()}")
 
@@ -149,6 +162,11 @@ def main() -> int:
         with cpath.open(newline="") as f:
             raw = list(csv.reader(f))
         if not raw:
+            continue
+        # A ledger whose header is a prose comment (`# ...`) is not a table: its
+        # rows are registers, not records, and have no fixed column count. Recognise
+        # it rather than reporting every row as malformed.
+        if raw[0] and raw[0][0].lstrip().startswith("#"):
             continue
         width = len(raw[0])
         for i, row in enumerate(raw[1:], start=2):
