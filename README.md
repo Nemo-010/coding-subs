@@ -10,7 +10,8 @@ coding-agent usage by subscription** — model landscape, provider arbitrage, pu
 |---|---|---|
 | **2026-09-13** | [2026-09-13/README.md](2026-09-13/README.md) | Full pass: 45-model landscape (AA snapshot), 44 access plans across 26 provider groups, workload tests, rankings |
 | **2026-09-20** | [2026-09-20/README.md](2026-09-20/README.md) | Re-verification + delta pass: all first-party sources re-fetched, 26 logged changes (Trae repriced upward, Kimi tiers restructured with the weekly window removed, Claude Code limits settled ~17% below the promo level, new Command Code / Devin / Kiro / Factory / Warp / Zed / Replit ladders), every non-USD price normalized at a cited FX rate, and the relay/sponsor "0.03x" market quarantined into a red-flag advisory instead of a ranking |
-| **2026-10-02** | [2026-10-02/README.md](2026-10-02/README.md) | Fresh pass twelve days on: every first-party source re-fetched and byte-compared, **four evidence classes** introduced (VERIFIED / DOCUMENTED / MEASURED / THIRD-PARTY), the metered *subscription multipliers* adopted as a class of evidence (SuperGrok 190×, Claude Max 20× 45.3×, ChatGPT $100 10.25×, Muse Code High 9.3×/114×), cost-per-usable-token and hourly-coverage tables, a 34-row free-tier index, a 2026-10-02 Artificial Analysis model snapshot (Opus 5.5, Sonnet 5.5, Gemini 4 Argon, GPT-6.1 Sol, GPT-6 Luna, Grok 4.7), and the two upstream issues (#1 sources, #2 adjusted/real usage) integrated as an evidence-evaluation pass rather than as adopted rankings |
+| **2026-10-02** | [2026-10-02/README.md](2026-10-02/README.md) | Re-verification pass twelve days on: every first-party source re-fetched and byte-compared, **four evidence classes** introduced (VERIFIED / DOCUMENTED / MEASURED / THIRD-PARTY), the metered *subscription multipliers* adopted as a class of evidence (SuperGrok 190×, Claude Max 20× 45.3×, ChatGPT $100 10.25×, Muse Code High 9.3×/114×), cost-per-usable-token and hourly-coverage tables, a 34-row free-tier index, a 2026-10-02 Artificial Analysis model snapshot (Opus 5.5, Sonnet 5.5, Gemini 4 Argon, GPT-6.1 Sol, GPT-6 Luna, Grok 4.7), the two upstream issues (#1 sources, #2 adjusted/real usage) integrated as an evidence-evaluation pass, and an **anonymous-access probe**: 25 free-tier endpoints called with no credential, three rounds each — **1 answered** (`space-bunny-free` on OpenCode Zen) and 22 were *gated, not down* |
+| **2026-10-03** | [2026-10-03/README.md](2026-10-03/README.md) | **Source-by-source re-verification.** Every first-party source fetched serially, one at a time (55 URLs, 53 clean, 2 × HTTP 403 for OpenAI), with a per-source `http/bytes/ms/sha256` fetch log. 26 of 28 providers re-verified against a live page today. Found **five plans the previous table did not have** — Cursor **Pro+ $60**, Google **AI Plus $4.99**, AWS Kiro **Pro+ $40 / Pro Max $100 / Power $200**, Meta Muse **Everyday Usage**, Cognition Devin **Max $200** — and established that Meta publishes **no Muse prices at all**, so the old `$15` row was third-party and is now UNKNOWN. Ten deep reviews, two of which found defects in this pass's own work |
 
 > The fork's earlier 2026-09-20 relay/reseller pass (sub2api + CLIProxyAPI sponsor table) is kept
 > as an archive at [2026-09-20/RELAY-MARKET-ADDENDUM.md](2026-09-20/RELAY-MARKET-ADDENDUM.md),
@@ -50,6 +51,17 @@ FX rate with the rate date. Each pass undergoes independent reviews (recorded in
   shape asserts BEST DEAL / what changed / what would falsify it / known gaps instead.
 - `tools/parse-aa.py` pulls the Artificial Analysis top list and per-model fields out of a saved
   snapshot, because the site's own dataset endpoint is brotli-encoded.  
+- `tools/fetch-all-2026-10-03.py` is the serial, one-source-at-a-time fetcher used for the
+  2026-10-03 pass: 55 URLs, one request each, writing `data/fetch-log.json` with `http`, `bytes`,
+  `ms` and `sha256` per source. Paired with `tools/extract-2026-10-03.py` (per-provider
+  extraction) and `tools/compare-2026-10-03.py` (old-vs-new), so an extraction bug cannot hide
+  behind a comparison written to match it.
+- `tools/validate.py` enforces two things it did not before: **every `data/*.csv` row must have
+  the same field count as its header** (a surplus cell silently shifts every trailing column and
+  `csv.DictReader` hides it under a `None` key), and **every cost row's price, token count and
+  $/M must agree within 5%**, since those are one quantity in three units. It also accepts a
+  future-dated pass directory **only** when `data/fetch-log.json` corroborates the date with
+  recorded responses, and skips prose ledgers whose header line starts with `#`.
 - `tools/fetch-firstparty.py` fetches the live pages into a pass's `sources/`; the URL list at the
   top of that file is the pass's source manifest. `tools/sources-manifest.py` writes the same set
   with `http_status`, `bytes` and `sha256` so a later pass can prove what changed. **A URL that
